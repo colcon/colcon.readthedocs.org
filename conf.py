@@ -40,6 +40,13 @@ release = u''
 # ones.
 extensions = [
 ]
+try:
+    import sphinxcontrib.spelling  # noqa: F401
+    extensions.append('sphinxcontrib.spelling')
+except ImportError:
+    pass
+
+spelling_word_list_filename = 'spelling_wordlist.txt'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
