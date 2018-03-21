@@ -14,6 +14,10 @@ The documentation is organized into a few sections:
 
 * :ref:`user-docs`
 
+Information about development is also available:
+
+* :ref:`developer-docs`
+
 .. _user-docs:
 
 .. toctree::
@@ -22,3 +26,11 @@ The documentation is organized into a few sections:
 
    user/installation
    user/quick-start
+
+.. _developer-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Developer Documentation
+
+   developer/design
