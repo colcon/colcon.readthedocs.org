@@ -21,3 +21,4 @@ The documentation is organized into a few sections:
    :caption: User Documentation
 
    user/installation
+   user/quick-start
