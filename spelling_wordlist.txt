@@ -3,4 +3,5 @@ devel
 macOS
 metadata
 refactored
+venv
 workflow

@@ -34,3 +34,4 @@ Information about development is also available:
    :caption: Developer Documentation
 
    developer/design
+   developer/bootstrap
