@@ -76,13 +76,14 @@ While that makes the project more modular it also increases the effort necessary
 ``colcon`` can make this process easy again.
 
 In order to build a specific Gazebo version you need the right versions of the ignition libraries.
+At the time of writing Gazebo 9 is the latest release so we will use that for the purpose of this example.
 The following steps use a ``.repos`` to specify the various repositories with specific branches.
 
 .. code-block:: bash
 
     $ mkdir -p /tmp/gazebo/src && cd /tmp/gazebo
-    $ wget https://gist.githubusercontent.com/dirk-thomas/99ece26beb36553e57f02ac903109978/raw/c6e952f9c2b40955d51841eee45d741a3a4962f3/gazebo.repos
-    $ vcs import src
+    $ wget https://gist.githubusercontent.com/dirk-thomas/6c1ca2a7f5f8c70ce7d3e1ef10a9f678/raw/490aaba72321284af956c9db12f9ef1550ef88cf/Gazebo9.repos
+    $ vcs import src < Gazebo9.repos
 
 .. note::
 
