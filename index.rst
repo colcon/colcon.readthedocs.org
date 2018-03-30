@@ -13,6 +13,7 @@ The code is open source, and `available on GitHub`_.
 The documentation is organized into a few sections:
 
 * :ref:`user-docs`
+* :ref:`migration-docs`
 
 Information about development is also available:
 
@@ -35,3 +36,13 @@ Information about development is also available:
 
    developer/design
    developer/bootstrap
+
+.. _migration-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Migrate from other build tools
+
+   migration/ament_tools
+   migration/catkin_make_isolated
+   migration/catkin_tools

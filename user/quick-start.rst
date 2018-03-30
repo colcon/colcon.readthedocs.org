@@ -49,6 +49,8 @@ Instead of invoking ``ament build`` you can invoke ``colcon``.
 
 In order to use the built packages you need to source the ``install/prefix.<ext>`` rather than the ``local_setup.<ext>`` script mentioned in the instructions.
 
+For detailed information how command line arguments of ``ament_tools`` are mapped to ``colcon`` please see the :doc:`ament_tools migration guide <../migration/ament_tools>`.
+
 Build ROS 1 packages
 --------------------
 
@@ -67,6 +69,9 @@ Instead of invoking ``catkin_make_isolated --install`` you can invoke ``colcon``
     Instead it requires each package to be installed so each package must declare an install step in order to work with ``colcon``.
 
 In order to use the built packages you need to source the ``install/prefix.<ext>`` rather than the ``setup.<ext>`` script mentioned in the instructions.
+
+For detailed information how command line arguments of ``catkin_make_isolated`` are mapped to ``colcon`` please see the :doc:`catkin_make_isolated migration guide <../migration/catkin_make_isolated>`.
+For detailed information how command line arguments of ``catkin_tools`` are mapped to ``colcon`` please see the :doc:`catkin_tools migration guide <../migration/catkin_tools>`.
 
 Build Gazebo and the ignition packages
 --------------------------------------
