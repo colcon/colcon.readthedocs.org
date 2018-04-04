@@ -36,6 +36,7 @@ Information about development is also available:
 
    developer/design
    developer/bootstrap
+   developer/contribution
 
 .. _migration-docs:
 
