@@ -52,7 +52,7 @@ In the first build we will use the minimal features provided by ``colcon-core`` 
 
 .. code-block:: bash
 
-    $ ./src/colcon-core/bin/colcon build --base-paths src/*
+    $ ./src/colcon-core/bin/colcon build --paths src/*
 
 The build of the packages will run sequentially and for each package the output will be printed directly to the console.
 The install directory will contain a ``prefix.sh`` (or ``.bat`` on Windows).
