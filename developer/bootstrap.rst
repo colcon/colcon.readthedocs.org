@@ -34,7 +34,7 @@ Fetch the sources
 
 .. code-block:: bash
 
-    $ mkdir /tmp/colcon-from-source && /tmp/colcon-from-source
+    $ mkdir /tmp/colcon-from-source && cd /tmp/colcon-from-source
     $ wget https://raw.githubusercontent.com/colcon/colcon.readthedocs.org/master/colcon.repos
     $ mkdir src
     $ vcs import src < colcon.repos
