@@ -24,8 +24,8 @@ The most commonly used arguments for the ``build`` and ``test`` verbs are to onl
 
 .. code-block:: bash
 
-    $ colcon build --package-whitelist <name-of-pkg>
-    $ colcon build --package-up-to <name-of-pkg>
+    $ colcon build --packages-select <name-of-pkg>
+    $ colcon build --packages-up-to <name-of-pkg>
 
 .. note::
 

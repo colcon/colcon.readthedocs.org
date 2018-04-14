@@ -39,10 +39,10 @@ The following describes the mapping of some ``catkin_make_isolated`` options and
   ``--cmake-force-configure``
 
 ``--pkg PKGNAME1 ... PKGNAMEn``
-  ``--package-whitelist PKGNAME1 ... PKGNAMEn``
+  ``--packages-select PKGNAME1 ... PKGNAMEn``
 
 ``--from-pkg PKGNAME``
-  ``--package-start PKGNAME``
+  ``--packages-start PKGNAME``
 
 ``--only-pkg-with-deps PKGNAME1 ... PKGNAMEn``
   ``--packages-up-to PKGNAME1 ... PKGNAMEn``
