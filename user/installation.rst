@@ -24,7 +24,7 @@ If you want to install the packages globally it might be necessary to invoke ``p
 
 .. note::
 
-    You can find a list of released packages on `PyPI <https://pypi.python.org/pypi?%3Aaction=search&term=colcon&submit=search>`_ using the keyword ``colcon``.
+    You can find a list of released packages on `PyPI <https://pypi.org/search/?q=colcon>`_ using the keyword ``colcon``.
 
 Shell specific packages:
 ~~~~~~~~~~~~~~~~~~~~~~~~
