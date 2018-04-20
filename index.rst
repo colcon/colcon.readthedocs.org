@@ -27,6 +27,7 @@ Information about development is also available:
 
    user/installation
    user/quick-start
+   user/configuration
 
 .. _developer-docs:
 

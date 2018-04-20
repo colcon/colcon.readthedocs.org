@@ -12,5 +12,7 @@ macOS
 metadata
 online
 refactored
+symlink
 venv
 workflow
+yaml
