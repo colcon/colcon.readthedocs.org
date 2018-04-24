@@ -43,6 +43,9 @@ extensions = [
 try:
     import sphinxcontrib.spelling  # noqa: F401
     extensions.append('sphinxcontrib.spelling')
+
+    from sphinxcontrib.spelling.filters import ContractionFilter
+    spelling_filters = [ContractionFilter]
 except ImportError:
     pass
 
