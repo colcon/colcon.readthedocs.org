@@ -86,6 +86,10 @@ The following are a few examples (see e.g. ``colcon build --help``):
 * When ``--metas`` is not passed and a file ``./colcon.meta`` exists it is being used.
 * Any file passed with ``--metas <path/to/file>`` is being used.
 
+.. note::
+
+    The default value for the environment variable ``COLCON_HOME`` is pointing to the directory ``.colcon`` within the users home directory.
+
 defaults.yaml
 -------------
 
