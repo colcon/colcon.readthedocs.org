@@ -25,16 +25,16 @@ ament build | test
   The colcon option ``--merge-install`` has the inverse logic.
 
 ``--start-with PKGNAME``
-  ``--package-start PKGNAME``
+  ``--packages-start PKGNAME``
 
 ``--end-with PKGNAME``
-  ``--package-end PKGNAME``
+  ``--packages-end PKGNAME``
 
 ``--only-packages PKGNAME1 ... PKGNAMEn``
-  ``--package-whitelist PKGNAME1 ... PKGNAMEn``
+  ``--packages-select PKGNAME1 ... PKGNAMEn``
 
 ``--skip-packages PKGNAME1 ... PKGNAMEn``
-  ``--package-blacklist PKGNAME1 ... PKGNAMEn``
+  ``--packages-skip PKGNAME1 ... PKGNAMEn``
 
 ``--parallel``
   colcon uses the parallel execution by default.

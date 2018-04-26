@@ -10,10 +10,10 @@ catkin build
   ``--packages-up-to PKGNAME1 ... PKGNAMEn``
 
 ``--no-deps``
-  ``--package-whitelist PKGNAME1 ... PKGNAMEn``
+  ``--packages-select PKGNAME1 ... PKGNAMEn``
 
 ``--start-with PKGNAME``
-  ``--package-start PKGNAME``
+  ``--packages-start PKGNAME``
 
 ``--force-cmake``
   ``--cmake-force-configure``
