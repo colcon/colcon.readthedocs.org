@@ -16,7 +16,7 @@ ament build | test
   ``--install-base PATH``
 
 ``--build-tests``
-  ``--cmake-args \ -DBUILD_TESTING=1``
+  ``--cmake-args " -DBUILD_TESTING=1"``
 
 ``-s``, ``--symlink-install``
   ``--symlink-install``
@@ -46,16 +46,17 @@ ament build
 ``colcon build ...``
 
 ``--cmake-args -D... --``
-  ``--cmake-args \ -D...``, ``--cmake-args " -D..."``
+  ``--cmake-args " -D..."``
   Any CMake arguments which start with a dash need to be prefixed with a space.
-  This can either be done using an escaped space or by quoting the argument with a leading space.
+  This can be done by quoting each argument with a leading space.
   The closing double dash is not necessary anymore.
 
 ``--force-cmake-configure``
   ``--cmake-force-configure``
 
 ``--use-ninja``
-  ``--cmake-args \ -G Ninja``
+  ``--cmake-args " -G" Ninja``
+  See ``--cmake-args`` for the reason for the quoting and prefixed space.
 
 ament test
 ----------

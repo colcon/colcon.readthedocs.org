@@ -19,9 +19,9 @@ catkin build
   ``--cmake-force-configure``
 
 ``--cmake-args ... --``
-  ``--cmake-args \ -D...``, ``--cmake-args " -D..."``
+  ``--cmake-args " -D..."``
   Any CMake arguments which start with a dash need to be prefixed with a space.
-  This can either be done using an escaped space or by quoting the argument with a leading space.
+  This can be done by quoting each argument with a leading space.
   The closing double dash is not necessary anymore.
 
 ``-v``, ``--verbose``
