@@ -39,3 +39,14 @@ New packages / extensions
 Using Python entry points it is easy to contribute extensions in separate packages.
 To ease discoverability and ensure long term maintenance if individual maintainers move on it is encouraged to host the code in a repository under the `colcon` organization unit on GitHub.
 Please open a ticket to either ask for the creation of a repository which you will have `admin` level access to or for moving an existing repository to this organization unit.
+
+Use keyword in package metadata
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When creating a package containing ``colcon`` extensions please consider declaring a keyword to help discovering extensions through e.g. PyPI.
+When using a ``setup.cfg`` file for the metadata of the package it is as simple as including these lines:
+
+.. code-block:: ini
+
+    [metadata]
+    keywords = colcon
