@@ -59,7 +59,7 @@ On Windows
     Depending on your platform you might not want to use all cloned packages.
     On Windows you must skip or remove ``colcon-argcomplete``, and may want to skip ``colcon-bash`` too.
     If you don't use PowerShell you might want to remove / skip the package ``colcon-powershell``.
-    To skip a package add an empty file named COLCON_IGORE to the folder.
+    To skip a package add an empty file named COLCON_IGNORE to the folder.
 
 Skip ``colcon-argcomplete`` and ``colcon-bash`` on windows.
 
