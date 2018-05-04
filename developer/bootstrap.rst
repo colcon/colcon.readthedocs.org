@@ -36,6 +36,8 @@ You might want to make sure that the venv is using up-to-date versions of the so
 Fetch the sources
 -----------------
 
+On Linux or OSX
+
 .. code-block:: bash
 
     $ mkdir /tmp/colcon-from-source && cd /tmp/colcon-from-source
@@ -43,11 +45,29 @@ Fetch the sources
     $ mkdir src
     $ vcs import src < colcon.repos
 
+On Windows
+
+.. code-block:: dosbatch
+
+    > mkdir colcon-from-source && cd colcon-from-source
+    > curl --output colcon.repos https://raw.githubusercontent.com/colcon/colcon.readthedocs.org/master/colcon.repos
+    > mkdir src
+    > vcs import src < colcon.repos
+
 .. note::
 
     Depending on your platform you might not want to use all cloned packages.
-    E.g. on Windows you might want to remove / skip the packages ``colcon-bash`` and ``colcon-argcomplete``.
+    On Windows you must skip or remove ``colcon-argcomplete``, and may want to skip ``colcon-bash`` too.
     If you don't use PowerShell you might want to remove / skip the package ``colcon-powershell``.
+    To skip a package add an empty file named COLCON_IGORE to the folder.
+
+Skip ``colcon-argcomplete`` and ``colcon-bash`` on windows.
+
+.. code-block:: dosbatch
+
+    > type nul > src\colcon-argcomplete\COLCON_IGNORE
+    > type nul > src\colcon-bash\COLCON_IGNORE
+
 
 Build the sources - first time
 ------------------------------
