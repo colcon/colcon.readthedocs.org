@@ -23,6 +23,10 @@ While not strictly necessary it is recommended to use a virtual environment for 
     $ python3 -m venv /tmp/colcon-venv
     $ . /tmp/colcon-venv/bin/activate
 
+.. note::
+
+    On Windows the executable is likely name ``python`` and the script is located in ``/tmp/colcon-venv/Scripts/activate``.
+
 You might want to make sure that the venv is using up-to-date versions of the some foundational packages.
 
 .. code-block:: bash
@@ -66,6 +70,11 @@ Build the sources - second time
 
     $ . install/local_setup.sh
     $ colcon build
+
+.. note::
+
+    On Windows the ``colcon`` executable can't be invoked directly here since while it is being used it can't be overwritten by the build.
+    Instead invoke the following command: ``python install\colcon-core\Scripts\colcon-script.py build``.
 
 .. note::
 
