@@ -58,6 +58,16 @@ Ignore ``colcon-argcomplete`` and ``colcon-bash`` on Windows.
     > type nul > src\colcon-bash\COLCON_IGNORE
 
 
+Dependencies
+------------
+
+Make sure the required dependencies are available:
+
+.. code-block:: bash
+
+    $ pip install -U EmPy
+
+
 Build the sources - first time
 ------------------------------
 
