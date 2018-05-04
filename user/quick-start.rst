@@ -17,7 +17,7 @@ The following is an example workflow and sequence of commands using default sett
     $ colcon build                    # Build all packages in the workspace
     $ catkin test                     # Test all packages in the workspace
     $ catkin test-result --all        # Enumerate all test results
-    $ . install/prefix.bash           # Setup the environment to use the built packages
+    $ . install/local_setup.bash      # Setup the environment to use the built packages
     $ <...>                           # Use the built packages
 
 The most commonly used arguments for the ``build`` and ``test`` verbs are to only process a specific package or a specific package including all the recursive dependencies it needs.
@@ -47,7 +47,7 @@ Instead of invoking ``ament build`` you can invoke ``colcon``.
 
     $ colcon build
 
-In order to use the built packages you need to source the ``install/prefix.<ext>`` rather than the ``local_setup.<ext>`` script mentioned in the instructions.
+In order to use the built packages you need to source the ``install/local_setup.<ext>`` script mentioned in the instructions.
 
 For detailed information how command line arguments of ``ament_tools`` are mapped to ``colcon`` please see the :doc:`ament_tools migration guide <../migration/ament_tools>`.
 
@@ -68,7 +68,7 @@ Instead of invoking ``catkin_make_isolated --install`` you can invoke ``colcon``
     ``colcon`` does by design not support the concept of a "devel space" as it exists in ROS 1.
     Instead it requires each package to be installed so each package must declare an install step in order to work with ``colcon``.
 
-In order to use the built packages you need to source the ``install/prefix.<ext>`` rather than the ``setup.<ext>`` script mentioned in the instructions.
+In order to use the built packages you need to source the ``install/local_setup.<ext>`` rather than the ``setup.<ext>`` script mentioned in the instructions.
 
 For detailed information how command line arguments of ``catkin_make_isolated`` are mapped to ``colcon`` please see the :doc:`catkin_make_isolated migration guide <../migration/catkin_make_isolated>`.
 For detailed information how command line arguments of ``catkin_tools`` are mapped to ``colcon`` please see the :doc:`catkin_tools migration guide <../migration/catkin_tools>`.
@@ -107,5 +107,5 @@ Using the additional metadata the source script will also automatically source t
 
 .. code-block:: bash
 
-    $ . install/prefix.bash
+    $ . install/local_setup.bash
     $ gazebo

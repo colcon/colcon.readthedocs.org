@@ -55,7 +55,7 @@ In the first build we will use the minimal features provided by ``colcon-core`` 
     $ ./src/colcon-core/bin/colcon build --paths src/*
 
 The build of the packages will run sequentially and for each package the output will be printed directly to the console.
-The install directory will contain a ``prefix.sh`` (or ``.bat`` on Windows).
+The install directory will contain a ``local_setup.sh`` (or ``.bat`` on Windows).
 
 In order to generate scripts for additional shells the set of packages have to be built a second time but this time using all extension provided by the various cloned packages.
 
@@ -64,7 +64,7 @@ Build the sources - second time
 
 .. code-block:: bash
 
-    $ . install/prefix.sh
+    $ . install/local_setup.sh
     $ colcon build
 
 .. note::
@@ -77,7 +77,7 @@ To use the full functionality you can source the generated script for your shell
 
 .. code-block:: bash
 
-    $ . install/prefix.bash
+    $ . install/local_setup.bash
 
 .. note::
 
