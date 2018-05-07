@@ -19,9 +19,9 @@ While not strictly necessary it is recommended to use a virtual environment for 
 
 .. code-block:: bash
 
-    $ mkdir /tmp/colcon-venv
-    $ python3 -m venv /tmp/colcon-venv
-    $ . /tmp/colcon-venv/bin/activate
+    $ mkdir colcon-venv
+    $ python3 -m venv colcon-venv
+    $ . colcon-venv/bin/activate
 
 .. note::
 
