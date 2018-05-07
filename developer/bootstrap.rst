@@ -25,7 +25,7 @@ While not strictly necessary it is recommended to use a virtual environment for 
 
 .. note::
 
-    On Windows the python 3 executable is likely named ``python`` and the activation script is invoked with ``call colcon-venv/Scripts/activate``
+    On Windows the python 3 executable is likely named ``python`` and the activation script is invoked with ``call colcon-venv\Scripts\activate``
 
 You might want to make sure that the venv is using up-to-date versions of the some foundational packages.
 
