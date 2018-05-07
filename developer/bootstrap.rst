@@ -36,23 +36,12 @@ You might want to make sure that the venv is using up-to-date versions of the so
 Fetch the sources
 -----------------
 
-On Linux or OSX
-
 .. code-block:: bash
 
-    $ mkdir /tmp/colcon-from-source && cd /tmp/colcon-from-source
-    $ wget https://raw.githubusercontent.com/colcon/colcon.readthedocs.org/master/colcon.repos
+    $ mkdir colcon-from-source && cd colcon-from-source
+    $ curl --output colcon.repos https://raw.githubusercontent.com/colcon/colcon.readthedocs.org/master/colcon.repos
     $ mkdir src
     $ vcs import src < colcon.repos
-
-On Windows
-
-.. code-block:: dosbatch
-
-    > mkdir colcon-from-source && cd colcon-from-source
-    > curl --output colcon.repos https://raw.githubusercontent.com/colcon/colcon.readthedocs.org/master/colcon.repos
-    > mkdir src
-    > vcs import src < colcon.repos
 
 .. note::
 
