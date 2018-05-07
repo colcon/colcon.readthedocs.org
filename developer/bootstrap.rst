@@ -25,7 +25,7 @@ While not strictly necessary it is recommended to use a virtual environment for 
 
 .. note::
 
-    On Windows the python 3 executable is likely named ``python`` and the activation script is invoked with ``call colcon-venv\Scripts\activate``
+    On Windows the Python 3 executable is likely named ``python`` and the activation script is invoked with ``call colcon-venv\Scripts\activate``
 
 You might want to make sure that the venv is using up-to-date versions of the some foundational packages.
 
@@ -99,5 +99,5 @@ To use the full functionality you can source the generated script for your shell
 
 .. note::
 
-    With bash you should now also have completion for all arguments.
+    With bash you should now also have completion for all arguments if you have the Python package `argcomplete <https://pypi.org/project/argcomplete/>`_ installed.
     Try typing ``colcon <tab>`` to see the completion of global options and verbs.
