@@ -82,7 +82,8 @@ Build the sources - second time
 
 .. note::
 
-    On Windows the ``colcon`` executable can't be invoked directly here since while it is being used it can't be overwritten by the build.
+    On Windows the setup file ends with ``.bat`` and is just being called.
+    Also the ``colcon`` executable can't be invoked directly here since while it is being used it can't be overwritten by the build.
     Instead invoke the following command: ``python install\colcon-core\Scripts\colcon-script.py build``.
 
 .. note::
