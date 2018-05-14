@@ -1,4 +1,12 @@
+argcomplete; sys_platform != 'win32'
 catkin_pkg
+coloredlogs; sys_platform == 'win32'
 EmPy
+notify2; sys_platform == 'linux'
+pypiwin32; sys_platform == 'win32'
 pytest
+pytest-cov
+pytest-repeat
+pytest-rerunfailures
 PyYAML
+setuptools
