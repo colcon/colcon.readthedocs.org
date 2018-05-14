@@ -61,11 +61,12 @@ Ignore ``colcon-argcomplete`` and ``colcon-bash`` on Windows.
 Dependencies
 ------------
 
-Make sure the required dependencies are available:
+Make sure the dependencies are available:
 
 .. code-block:: bash
 
-    $ pip install -U EmPy
+    $ curl --output requirements.txt https://raw.githubusercontent.com/colcon/colcon.readthedocs.org/master/requirements.txt
+    $ pip install -r requirements.txt
 
 
 Build the sources - first time
