@@ -68,7 +68,7 @@ In order to use the latest state of any of the above packages you can invoke ``p
 
 .. code-block:: bash
 
-    $ pip install -U git+https://github.com/colcon/colcon-core.git
+    $ pip install -U git+https://github.com/colcon/colcon-common-extensions.git
 
 Building from source
 --------------------
