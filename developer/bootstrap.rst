@@ -78,6 +78,10 @@ In the first build we will use the minimal features provided by ``colcon-core`` 
 
     $ ./src/colcon-core/bin/colcon build --paths src/*
 
+.. note::
+
+    On Windows the command needs to be prefixed with ``python``.
+
 The build of the packages will run sequentially and for each package the output will be printed directly to the console.
 The install directory will contain a ``local_setup.sh`` (or ``.bat`` on Windows).
 
