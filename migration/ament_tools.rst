@@ -94,4 +94,4 @@ Behavioral changes
 With ``ament_tools`` the entire test suite of a package was run up to N times.
 As a consequence ``colcon`` provides a more accurate result since each test which passed has actually ran N times.
 
-The location of JUnit test results file for ``ament_python`` packages tested with ``colcon`` is in ``<buildspace>/pytest.xml``, whereas with ``ament_tools`` it is in ``<buildspace>/test_results/<pkgname>/pytest.xunit.xml``.
+The location of JUnit test results file for ``ament_python`` packages tested with ``colcon`` is in ``<pkg-build>/pytest.xml``, whereas with ``ament_tools`` it is in ``<pkg-build>/test_results/<pkgname>/pytest.xunit.xml``.
