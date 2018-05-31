@@ -92,4 +92,4 @@ Behavioral changes
 
 ``--retest-until-fail`` with ``colcon`` runs individual tests of a package N times each (the first test N times, the second test N times, etc), whereas with ``ament_tools`` it runs the entire test suite of a package, N times.
 
-The location of junit test results file for ``ament_python`` packages tested with ``colcon`` is in ``<buildspace>/pytest.xml``, whereas with ``ament_tools`` it is in ``<buildspace>/test_results/<pkgname>/pytest.xunit.xml``.
+The location of JUnit test results file for ``ament_python`` packages tested with ``colcon`` is in ``<buildspace>/pytest.xml``, whereas with ``ament_tools`` it is in ``<buildspace>/test_results/<pkgname>/pytest.xunit.xml``.
