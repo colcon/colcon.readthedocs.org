@@ -86,3 +86,8 @@ ament test_results
 
 ``--verbose``
   ``--all``
+
+Behavioral changes
+------------------
+
+``--retest-until-fail`` with ``colcon`` runs individual tests of a package N times each (the first test N times, the second test N times, etc), whereas with ``ament_tools`` it runs the entire test suite of a package, N times.
