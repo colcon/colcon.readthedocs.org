@@ -7,6 +7,7 @@ CTest
 devel
 discoverability
 internet
+JUnit
 linters
 macOS
 metadata
