@@ -54,8 +54,12 @@ For detailed information how command line arguments of ``ament_tools`` are mappe
 Build ROS 1 packages
 --------------------
 
-The process of building `ROS 1 <http://www.ros.org/>`_ packages is described in the `distro specific <http://wiki.ros.org/kinetic/Installation/Source>`_ building from source instructions.
+The process of building `ROS 1 <http://www.ros.org/>`_ packages is described in the `distro specific <http://wiki.ros.org/melodic/Installation/Source>`_ building from source instructions.
 Using ``colcon`` instead of the recommended tool ``catkin_make_isolated`` only changes a couple of the steps.
+
+.. note::
+
+    ``colcon-ros`` requires at least version 0.7.13 of ``catkin`` which provides a new CMake option the tool uses.
 
 Instead of invoking ``catkin_make_isolated --install`` you can invoke ``colcon``.
 
