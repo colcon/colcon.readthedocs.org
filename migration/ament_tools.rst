@@ -16,8 +16,8 @@ ament build | test
   ``--install-base PATH``
 
 ``--build-tests``
-  colcon builds tests by default.
-  To not build the tests, use ``--cmake-args " -DBUILD_TESTING=OFF"``
+  CMake configures tests by default.
+  To skip configuring tests use ``--cmake-args -DBUILD_TESTING=OFF``.
 
 ``-s``, ``--symlink-install``
   ``--symlink-install``
