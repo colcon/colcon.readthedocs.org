@@ -16,7 +16,8 @@ ament build | test
   ``--install-base PATH``
 
 ``--build-tests``
-  ``--cmake-args " -DBUILD_TESTING=1"``
+  colcon builds tests by default.
+  To not build the tests, use ``--cmake-args " -DBUILD_TESTING=OFF"``
 
 ``-s``, ``--symlink-install``
   ``--symlink-install``
