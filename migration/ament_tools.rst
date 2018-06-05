@@ -16,7 +16,8 @@ ament build | test
   ``--install-base PATH``
 
 ``--build-tests``
-  ``--cmake-args " -DBUILD_TESTING=1"``
+  CMake configures tests by default.
+  To skip configuring tests use ``--cmake-args -DBUILD_TESTING=OFF``.
 
 ``-s``, ``--symlink-install``
   ``--symlink-install``
