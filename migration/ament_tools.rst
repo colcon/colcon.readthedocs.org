@@ -91,8 +91,10 @@ ament test_results
 Behavioral changes
 ------------------
 
-``--retest-until-fail`` with ``colcon`` uses `pytest-repeat <https://github.com/pytest-dev/pytest-repeat>`_ which runs individual tests of a package N times each (the first test N times, then the second test N times, etc).
-With ``ament_tools`` the entire test suite of a package was run up to N times.
+``--retest-until-fail`` with ``colcon`` uses `pytest-repeat <https://github.com/pytest-dev/pytest-repeat>`_ which runs individual tests of a package N+1 times each (the first test N+1 times, then the second test N+1 times, etc).
+With ``ament_tools`` the entire test suite of a package was run up to N+1 times.
 As a consequence ``colcon`` provides a more accurate result since each test that passed has actually run N times.
+Note that with ``pytest-repeat``, ``pytest`` tests are repeated N times regardless of the result of the previous runs; if a test fails it will be repeated N times anyway.
+This is different from the behavior of a `CTest <https://cmake.org/cmake/help/v3.5/manual/ctest.1.html>`_ test that will stop being repeated as soon as it fails once.
 
 The location of JUnit test results file for ``ament_python`` packages tested with ``colcon`` is in ``<pkg-build>/pytest.xml``, whereas with ``ament_tools`` it is in ``<pkg-build>/test_results/<pkgname>/pytest.xunit.xml``.
