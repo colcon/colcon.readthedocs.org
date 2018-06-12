@@ -46,6 +46,14 @@ For convenience you might want to add that invocation to your shell configuratio
 
     $ register-python-argcomplete colcon
 
+.. note::
+
+    When using the Debian package `python3-argcomplete` the function might have the suffix ``3``:
+
+    .. code-block:: bash
+
+        $ register-python-argcomplete3 colcon
+
 PowerShell
 ^^^^^^^^^^
 
