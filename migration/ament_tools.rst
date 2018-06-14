@@ -91,7 +91,9 @@ ament test_results
 Behavioral changes
 ------------------
 
-The colcon ``test`` verb performs only the action of running tests. It does not configure, build or install targets.
+The colcon ``test`` verb performs only the action of running tests.
+It does not configure, build or install targets.
+
 ``--retest-until-fail`` with ``colcon`` uses `pytest-repeat <https://github.com/pytest-dev/pytest-repeat>`_ which runs individual tests of a package N+1 times each (the first test N+1 times, then the second test N+1 times, etc).
 With ``ament_tools`` the entire test suite of a package was run up to N+1 times.
 As a consequence ``colcon`` provides a more accurate result since each test that passed has actually run N times.
