@@ -24,7 +24,7 @@ Build only a single package (or selected packages)
 
 .. note::
 
-    This assumes that you have built dependencies of the single package within the workspace before.
+    This assumes that you have built dependencies of the selected packages within the workspace before.
 
 Build selected packages including their dependencies
 ----------------------------------------------------
@@ -32,6 +32,32 @@ Build selected packages including their dependencies
 .. code-block:: bash
 
     $ colcon build --packages-up-to <name-of-pkg>
+
+Rebuild packages which depend on a specific package
+---------------------------------------------------
+
+Assuming you have build the whole workspace before and then made changes to one package.
+In order to rebuild this package as well as all packages which (recursively) depend on this package invoke:
+
+.. code-block:: bash
+
+    $ colcon build --packages-above <name-of-pkg>
+
+Test selected packages as well as their dependents
+--------------------------------------------------
+
+If you have build the relevant packages before you can tnu the tests the same way as described in the previous section:
+
+.. code-block:: bash
+
+    $ colcon test --packages-above <name-of-pkg>
+
+If you haven't build the relevant packages before you can do that by using one invocation to determine all dependents and a second invocation to invoke the actual build:
+
+.. code-block:: bash
+
+    $ colcon list -n --packages-above <name-of-pkg>
+    $ colcon build --packages-up-to <copy-n-paste-output-previous-command>
 
 Run specific tests
 ------------------
