@@ -12,8 +12,10 @@ linters
 macOS
 metadata
 online
+pytest
 refactored
 symlink
+symlinks
 venv
 workflow
 yaml
