@@ -33,6 +33,7 @@ Information about development is also available:
    user/installation
    user/quick-start
    user/configuration
+   user/how-to
 
 .. _developer-docs:
 
