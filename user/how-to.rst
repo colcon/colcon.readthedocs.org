@@ -122,7 +122,7 @@ For CMake packages which use the CMake option ``BUILD_TESTING`` (which is the st
     $ colcon build --cmake-args -DBUILD_TESTING=OFF
 
 Enable additional output for debugging
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------------
 
 Beside the output of the actually invoked commands to build or test packages the tool by default only outputs warning or error messages.
 For debugging purposes you can enable logging messages with other levels (e.g. ``info``, ``debug``).
