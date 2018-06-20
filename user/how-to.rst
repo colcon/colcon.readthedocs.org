@@ -46,7 +46,7 @@ In order to rebuild this package as well as all packages which (recursively) dep
 Test selected packages as well as their dependents
 --------------------------------------------------
 
-If you have built the relevant packages before you can tnu the tests the same way as described in the previous section:
+If you have built the relevant packages before you can run the tests the same way as described in the previous section:
 
 .. code-block:: bash
 
