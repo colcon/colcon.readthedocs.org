@@ -36,7 +36,7 @@ Build selected packages including their dependencies
 Rebuild packages which depend on a specific package
 ---------------------------------------------------
 
-Assuming you have build the whole workspace before and then made changes to one package.
+Assuming you have built the whole workspace before and then made changes to one package.
 In order to rebuild this package as well as all packages which (recursively) depend on this package invoke:
 
 .. code-block:: bash
@@ -46,13 +46,13 @@ In order to rebuild this package as well as all packages which (recursively) dep
 Test selected packages as well as their dependents
 --------------------------------------------------
 
-If you have build the relevant packages before you can tnu the tests the same way as described in the previous section:
+If you have built the relevant packages before you can tnu the tests the same way as described in the previous section:
 
 .. code-block:: bash
 
     $ colcon test --packages-above <name-of-pkg>
 
-If you haven't build the relevant packages before you can do that by using one invocation to determine all dependents and a second invocation to invoke the actual build:
+If you haven't built the relevant packages before you can do that by using one invocation to determine all dependents and a second invocation to invoke the actual build:
 
 .. code-block:: bash
 
