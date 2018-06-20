@@ -113,6 +113,14 @@ CTest provides multiple ways to select individual tests:
 
 For more information see the `CTest documentation <https://cmake.org/cmake/help/latest/manual/ctest.1.html#options>`_.
 
+Build CMake packages without configuring tests
+----------------------------------------------
+
+For CMake packages which use the CMake option ``BUILD_TESTING`` (which is the standard in the `CTest module <https://cmake.org/cmake/help/v3.0/module/CTest.html>`_) you can skip configuring and building tests to improve the build time:
+.. code-block:: bash
+
+    $ colcon build --cmake-args -DBUILD_TESTING=OFF
+
 Enable additional output for debugging
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
