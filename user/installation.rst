@@ -87,5 +87,5 @@ For convenience you might want to source the one matching your shell in the user
 Depending on which instructions you followed to install the packages the location will vary:
 
 * Debian package: ``/usr/share/colcon-argcomplete/hook``
-* PIP - user specific: ``.local/share/colcon-argcomplete/hook``
+* PIP - user specific: ``$HOME/.local/share/colcon-argcomplete/hook``
 * PIP - global: ``/usr/local/share/colcon-argcomplete/hook``
