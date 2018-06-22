@@ -4,13 +4,41 @@ Installation
 The functionality of ``colcon`` is split over multiple Python packages.
 The package ``colcon-core`` provides the command line tool ``colcon`` itself as well as few fundamental extensions.
 Additional functionality is provided by separate packages, e.g. ``colcon-cmake`` adds support for packages which use `CMake <https://cmake.org/>`_.
-In the following a set of common ``colcon`` packages is being installed.
+The following instructions install a set of common ``colcon`` packages.
 
-The most common way of installation for users is to the Python package manager ``pip``.
+Using Debian packages
+---------------------
+
+On platforms which support Debian packages using those is preferred since they will be updated using ``apt`` together with other system packages.
+
+The Debian packages are currently hosted in apt repositories from the ROS project.
+You can choose either of the two following apt repositories.
+
+* `ROS 1 repository <http://wiki.ros.org/Installation/Ubuntu#Installation.2BAC8-Ubuntu.2BAC8-Sources-4.Setup_your_sources.list>`_
+
+  .. code-block:: bash
+
+      $ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu `lsb_release -cs` main" > /etc/apt/sources.list.d/ros-latest.list'
+      $ sudo apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 421C365BD9FF1F717815A3895523BAEEB01FA116
+
+* `ROS 2 repository <https://github.com/ros2/ros2/wiki/Linux-Install-Debians#setup-sources>`_
+
+  .. code-block:: bash
+
+      $ sudo sh -c 'echo "deb [arch=amd64,arm64] http://repo.ros2.org/ubuntu/main `lsb_release -cs` main" > /etc/apt/sources.list.d/ros2-latest.list'
+      $ curl http://repo.ros2.org/repos.key | sudo apt-key add -
+
+After that you can install the Debian package which depends on ``colcon-core`` as well as commonly used extension packages (see `setup.cfg <https://github.com/colcon/colcon-common-extensions/blob/master/setup.cfg>`_).
+
+.. code-block:: bash
+
+    $ sudo apt update
+    $ sudo apt install python3-colcon-common-extensions
 
 Using pip on any platform
 -------------------------
 
+On all non-Debian platforms the most common way of installation is the Python package manager ``pip``.
 The following assumes that you are using a virtual environment with Python 3.5 or higher.
 If you want to install the packages globally it might be necessary to invoke ``pip3`` instead of ``pip`` and require ``sudo``.
 
@@ -25,44 +53,6 @@ If you want to install the packages globally it might be necessary to invoke ``p
 .. note::
 
     You can find a list of released packages on `PyPI <https://pypi.org/search/?q=colcon>`_ using the keyword ``colcon``.
-
-Shell specific packages:
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Bash
-^^^^
-
-On Linux / macOS you might want to install support for ``bash`` as well as completion within that shell.
-When using the previously mentioned ``colcon-common-extensions`` that happens automatically on non-Windows platforms.
-
-.. code-block:: bash
-
-    $ pip install -U colcon-bash colcon-argcomplete
-
-For the completion to work you must run the following command.
-For convenience you might want to add that invocation to your shell configuration, e.g. ``~/.bashrc``:
-
-.. code-block:: bash
-
-    $ register-python-argcomplete colcon
-
-.. note::
-
-    When using the Debian package `python3-argcomplete` the function might have the suffix ``3``:
-
-    .. code-block:: bash
-
-        $ register-python-argcomplete3 colcon
-
-PowerShell
-^^^^^^^^^^
-
-On Windows (or if you are using ``PowerShell`` on your platform) you might want to install support for it.
-When using the previously mentioned ``colcon-common-extensions`` that happens automatically on Windows.
-
-.. code-block:: bash
-
-    $ pip install -U colcon-powershell
 
 Installing from source
 ----------------------
@@ -82,3 +72,20 @@ Building from source
 --------------------
 
 Since this is not a common use case for users you will find the documentation in the :doc:`developer section <../developer/bootstrap>`.
+
+Enable completion
+-----------------
+
+Bash / zsh
+~~~~~~~~~~
+
+On Linux / macOS the above instructions install the package ``colcon-argcomplete`` which offers command completion for bash and bash-like shells.
+To enable this feature you need to source the shell-specific script provided by that package.
+These scripts are named ``colcon-argcomplete.bash`` / ``colcon-argcomplete.zsh``.
+For convenience you might want to source the one matching your shell in the user configuration, e.g. ``~/.bashrc``:
+
+Depending on which instructions you followed to install the packages the location will vary:
+
+* Debian package: ``/usr/share/colcon-argcomplete/hook``
+* PIP - user specific: ``$HOME/.local/share/colcon-argcomplete/hook``
+* PIP - global: ``/usr/local/share/colcon-argcomplete/hook``

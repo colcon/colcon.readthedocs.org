@@ -19,3 +19,4 @@ symlinks
 venv
 workflow
 yaml
+zsh
