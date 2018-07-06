@@ -51,6 +51,10 @@ repositories:
     type: git
     url: https://github.com/colcon/colcon-parallel-executor.git
     version: master
+  colcon-pkg-config:
+    type: git
+    url: https://github.com/colcon/colcon-pkg-config.git
+    version: master
   colcon-powershell:
     type: git
     url: https://github.com/colcon/colcon-powershell.git
