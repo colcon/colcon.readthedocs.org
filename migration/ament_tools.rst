@@ -47,17 +47,16 @@ ament build
 ``colcon build ...``
 
 ``--cmake-args -D... --``
-  ``--cmake-args " -D..."``
-  Any CMake arguments which start with a dash need to be prefixed with a space.
-  This can be done by quoting each argument with a leading space.
+  ``--cmake-args -D...``
   The closing double dash is not necessary anymore.
+  Any CMake arguments which match colcon arguments need to be prefixed with a space.
+  This can be done by quoting each argument with a leading space.
 
 ``--force-cmake-configure``
   ``--cmake-force-configure``
 
 ``--use-ninja``
-  ``--cmake-args " -G" Ninja``
-  See ``--cmake-args`` for the reason for the quoting and prefixed space.
+  ``--cmake-args -G Ninja``
 
 ament test
 ----------

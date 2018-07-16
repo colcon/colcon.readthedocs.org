@@ -20,22 +20,20 @@ The following describes the mapping of some ``catkin_make_isolated`` options and
   ``--merge-install``
 
 ``--use-ninja``
-  ``--cmake-args " -G" Ninja``
-  See ``--cmake-args`` for the reason for the quoting and prefixed space.
+  ``--cmake-args -G Ninja``
 
 ``--use-nmake``
-  ``--cmake-args " -G" "NMake Makefiles"``
-  See ``--cmake-args`` for the reason for the quoting and prefixed space.
+  ``--cmake-args -G "NMake Makefiles"``
 
 ``--install``
   colcon always performs an installation.
   It doesn't support the concept of a "devel" space.
 
 ``--cmake-args ...``
-  ``--cmake-args " -D..."``
-  Any CMake arguments which start with a dash need to be prefixed with a space.
-  This can be done by quoting each argument with a leading space.
+  ``--cmake-args ...``
   The closing double dash is not necessary anymore.
+  Any CMake arguments which match colcon arguments need to be prefixed with a space.
+  This can be done by quoting each argument with a leading space.
 
 ``--force-cmake``
   ``--cmake-force-configure``
