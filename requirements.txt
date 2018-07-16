@@ -8,5 +8,6 @@ pytest
 pytest-cov
 pytest-repeat
 pytest-rerunfailures
+pytest-runner
 PyYAML
 setuptools
