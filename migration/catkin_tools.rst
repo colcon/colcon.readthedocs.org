@@ -19,10 +19,10 @@ catkin build
   ``--cmake-force-configure``
 
 ``--cmake-args ... --``
-  ``--cmake-args " -D..."``
-  Any CMake arguments which start with a dash need to be prefixed with a space.
-  This can be done by quoting each argument with a leading space.
+  ``--cmake-args ...``
   The closing double dash is not necessary anymore.
+  Any CMake arguments which match colcon arguments need to be prefixed with a space.
+  This can be done by quoting each argument with a leading space.
 
 ``-v``, ``--verbose``
   ``--event-handler console_cohesion+``
