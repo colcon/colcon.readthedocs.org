@@ -77,6 +77,15 @@ In order to use the built packages you need to source the ``install/local_setup.
 For detailed information how command line arguments of ``catkin_make_isolated`` are mapped to ``colcon`` please see the :doc:`catkin_make_isolated migration guide <../migration/catkin_make_isolated>`.
 For detailed information how command line arguments of ``catkin_tools`` are mapped to ``colcon`` please see the :doc:`catkin_tools migration guide <../migration/catkin_tools>`.
 
+Test ROS 1 packages
+~~~~~~~~~~~~~~~~~~~
+
+Before you can run tests for ROS 1 packages, you must also build the custom ``tests`` target:
+
+.. code-block:: bash
+
+    $ colcon build --cmake-target tests
+
 Build Gazebo and the ignition packages
 --------------------------------------
 
