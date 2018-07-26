@@ -51,7 +51,7 @@ In order to use the built packages you need to source the ``install/local_setup.
 
 For detailed information how command line arguments of ``ament_tools`` are mapped to ``colcon`` please see the :doc:`ament_tools migration guide <../migration/ament_tools>`.
 
-Build and Test ROS 1 packages
+Build ROS 1 packages
 --------------------
 
 The process of building `ROS 1 <http://www.ros.org/>`_ packages is described in the `distro specific <http://wiki.ros.org/melodic/Installation/Source>`_ building from source instructions.
