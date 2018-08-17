@@ -8,11 +8,22 @@ Show all output immediately on the console
 
 .. code-block:: bash
 
-    $ colcon <verb> --event-handler console_direct+
+    $ colcon <verb> --event-handlers console_direct+
 
 .. note::
 
     If you use the parallel executor (which is the default when that extension is installed) the output of packages processed in parallel will be interleaved.
+
+Show all output on the console after a package has finished
+-----------------------------------------------------------
+
+.. code-block:: bash
+
+    $ colcon <verb> --event-handlers console_cohesion+
+
+.. note::
+
+    While this delays the output until a package has finished, it avoids interleaving the output when using the parallel executor.
 
 Build only a single package (or selected packages)
 --------------------------------------------------
