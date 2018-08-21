@@ -15,8 +15,8 @@ The following is an example workflow and sequence of commands using default sett
     $ <...>                           # Populate the `src` directory with packages
     $ colcon list -g                  # List all packages in the workspace and their dependencies
     $ colcon build                    # Build all packages in the workspace
-    $ catkin test                     # Test all packages in the workspace
-    $ catkin test-result --all        # Enumerate all test results
+    $ colcon test                     # Test all packages in the workspace
+    $ colcon test-result --all        # Enumerate all test results
     $ . install/local_setup.bash      # Setup the environment to use the built packages
     $ <...>                           # Use the built packages
 
