@@ -33,7 +33,7 @@ The most commonly used arguments for the ``build`` and ``test`` verbs are to onl
 
 .. note::
 
-    If you want to see the output of each package after it finished you can pass the argument ``--event-handler console_cohesion+``.
+    If you want to see the output of each package after it finished you can pass the argument ``--event-handlers console_cohesion+``.
 
 Build ROS 2 packages
 --------------------
