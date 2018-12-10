@@ -25,16 +25,16 @@ catkin build
   This can be done by quoting each argument with a leading space.
 
 ``-v``, ``--verbose``
-  ``--event-handler console_cohesion+``
+  ``--event-handlers console_cohesion+``
 
 ``-i``, ``--interleave-output``
-  ``--event-handler console_direct+``
+  ``--event-handlers console_direct+``
 
 ``--no-status``
-  ``--event-handler status-``
+  ``--event-handlers status-``
 
 ``--no-summarize``, ``--no-summary``
-  ``--event-handler summary-``
+  ``--event-handlers summary-``
 
 ``--no-notify``
-  ``--event-handler desktop_notification-``
+  ``--event-handlers desktop_notification-``
