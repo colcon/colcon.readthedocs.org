@@ -54,6 +54,29 @@ In order to rebuild this package as well as all packages which (recursively) dep
 
     $ colcon build --packages-above <name-of-pkg>
 
+Build packages that create a Python C/C++ Extension
+---------------------------------------------------
+
+To be able to build a C/C++ extension using Colcon, you must include the following lines in your package's `setup.py`:
+
+.. code-block:: python
+    :emphasize-lines: 1,2,8
+
+    sources = ['one.cpp', 'two.cpp'] # This will contain all C/C++ source files
+    headers = ['a.h', 'b.hpp', 'c.h'] # Any included header files must be listed here
+
+    setup(
+        name='pkg_name',
+        version='1.0',
+        ...,
+        data_files=[('.', sources + headers)] # Assuming that your source and header files are on
+                                              # the same level as setup.py, this will copy
+                                              # all required files to the colcon build folder
+    )
+
+Finally, run ``colcon build --symlink-install`` as normal.
+
+
 Test selected packages as well as their dependents
 --------------------------------------------------
 
