@@ -11,4 +11,4 @@ pytest-repeat
 pytest-rerunfailures
 pytest-runner
 PyYAML
-setuptools
+setuptools>=40.5.0
