@@ -80,7 +80,9 @@ For detailed information how command line arguments of ``catkin_tools`` are mapp
 Test ROS 1 packages
 ~~~~~~~~~~~~~~~~~~~
 
-Before you can run tests for ROS 1 packages, you must also build the custom ``tests`` target:
+As of ``colcon-ros`` version 0.3.6 the ``build`` verb builds the test targets for ROS 1 packages implicitly (when available).
+
+In earlier versions you must build the custom ``tests`` target explicitly:
 
 .. code-block:: bash
 
