@@ -3,7 +3,7 @@ Contributions
 
 There are already many great contribution guidelines available online.
 Therefore only a few important bullets are enumerated here.
-Please read for example the Open Source Guide [How to contribute](https://opensource.guide/how-to-contribute/) for more detailed information which was created and is curated by GitHub.
+Please read for example the Open Source Guide `How to contribute <https://opensource.guide/how-to-contribute/>`_ for more detailed information which was created and is curated by GitHub.
 
 Bug reports
 -----------
@@ -21,7 +21,7 @@ Bug reports
 
   * Describe the expected as well as the actual behavior.
   * Give enough context (e.g. platform, versions, environment).
-  * Provide easily reproducible steps and/or a [SSCCE](http://sscce.org/).
+  * Provide easily reproducible steps and/or a `SSCCE <http://sscce.org/>`_.
 
 Pull requests
 -------------
