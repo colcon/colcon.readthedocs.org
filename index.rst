@@ -44,6 +44,7 @@ Information about development is also available:
    developer/design
    developer/bootstrap
    developer/contribution
+   developer/changelog
 
 .. _migration-docs:
 
