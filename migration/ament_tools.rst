@@ -55,6 +55,10 @@ ament build
 ``--force-cmake-configure``
   ``--cmake-force-configure``
 
+``--make-flags``
+  When using this option to pass a target name the substitution is: ``--cmake-target TARGET``.
+  When using this option to control the parallel execution with arguments like ``-jN`` the substitution is to use the environment variable ``MAKEFLAGS``.
+
 ``--use-ninja``
   ``--cmake-args -G Ninja``
 
