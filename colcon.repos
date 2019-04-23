@@ -32,6 +32,7 @@ repositories:
     url: https://github.com/colcon/colcon-metadata.git
     version: master
   colcon-mixin:
+    type: git
     url: https://github.com/colcon/colcon-mixin.git
     version: master
   colcon-notification:
