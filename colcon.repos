@@ -31,6 +31,10 @@ repositories:
     type: git
     url: https://github.com/colcon/colcon-metadata.git
     version: master
+  colcon-mixin:
+    type: git
+    url: https://github.com/colcon/colcon-mixin.git
+    version: master
   colcon-notification:
     type: git
     url: https://github.com/colcon/colcon-notification.git
@@ -74,4 +78,8 @@ repositories:
   colcon-test-result:
     type: git
     url: https://github.com/colcon/colcon-test-result.git
+    version: master
+  colcon-zsh:
+    type: git
+    url: https://github.com/colcon/colcon-zsh.git
     version: master
