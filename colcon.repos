@@ -79,3 +79,7 @@ repositories:
     type: git
     url: https://github.com/colcon/colcon-test-result.git
     version: master
+  colcon-zsh:
+    type: git
+    url: https://github.com/colcon/colcon-zsh.git
+    version: master
