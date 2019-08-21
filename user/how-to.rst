@@ -147,7 +147,7 @@ Build CMake packages without configuring tests
 ----------------------------------------------
 
 For CMake packages which use the CMake option ``BUILD_TESTING`` (which is the standard in the `CTest module <https://cmake.org/cmake/help/v3.0/module/CTest.html>`_) you can skip configuring and building tests to improve the build time:
-.. code-block:: bash
+  .. code-block:: bash
 
     $ colcon build --cmake-args -DBUILD_TESTING=OFF
 
