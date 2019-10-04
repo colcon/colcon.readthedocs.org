@@ -72,7 +72,10 @@ Instead of invoking ``catkin_make_isolated --install`` you can invoke ``colcon``
     ``colcon`` does by design not support the concept of a "devel space" as it exists in ROS 1.
     Instead it requires each package to be installed so each package must declare an install step in order to work with ``colcon``.
 
-In order to use the built packages you need to source the ``install/local_setup.<ext>`` rather than the ``setup.<ext>`` script mentioned in the instructions.
+In order to use the built packages you need to source the ``install/local_setup.<ext>`` rather than the ``setup.<ext>`` script mentioned in the instructions. For bash the command would be:
+.. code-block:: bash
+
+    $ source install/local_setup.bash
 
 For detailed information how command line arguments of ``catkin_make_isolated`` are mapped to ``colcon`` please see the :doc:`catkin_make_isolated migration guide <../migration/catkin_make_isolated>`.
 For detailed information how command line arguments of ``catkin_tools`` are mapped to ``colcon`` please see the :doc:`catkin_tools migration guide <../migration/catkin_tools>`.
