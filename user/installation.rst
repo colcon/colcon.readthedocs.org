@@ -73,6 +73,25 @@ Building from source
 
 Since this is not a common use case for users you will find the documentation in the :doc:`developer section <../developer/bootstrap>`.
 
+Quick directory changes
+-----------------------
+
+Sh (and compatible shells)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On Linux / macOS the above instructions install the package ``colcon-cd`` which offers a command to change to the directory a package specified by its name is in.
+To enable this feature you need to source the shell script provided by that package.
+The script is named ``colcon_cd.sh``.
+For convenience you might want to source it in the user configuration, e.g. ``~/.bashrc``:
+
+Depending on which instructions you followed to install the packages the location will vary:
+
+* Debian package: ``/usr/share/colcon_cd/function``
+* PIP - user specific: ``$HOME/.local/share/colcon_cd/function``
+* PIP - global: ``/usr/local/share/colcon_cd/function``
+
+When building ``colcon`` from source the generated setup files will automatically include this hook.
+
 Enable completion
 -----------------
 
@@ -90,4 +109,4 @@ Depending on which instructions you followed to install the packages the locatio
 * PIP - user specific: ``$HOME/.local/share/colcon_argcomplete/hook``
 * PIP - global: ``/usr/local/share/colcon_argcomplete/hook``
 
-When building ``colcon`` from source the generated setup files will automatically include these hooks.
+When building ``colcon`` from source the generated setup files will automatically include this hook.
