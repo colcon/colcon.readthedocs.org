@@ -7,6 +7,10 @@ repositories:
     type: git
     url: https://github.com/colcon/colcon-bash.git
     version: master
+  colcon-cd:
+    type: git
+    url: https://github.com/colcon/colcon-cd.git
+    version: master
   colcon-cmake:
     type: git
     url: https://github.com/colcon/colcon-cmake.git
