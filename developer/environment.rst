@@ -43,7 +43,7 @@ These script files update the environment with information specific to this pack
 Workspace-level
 ~~~~~~~~~~~~~~~
 
-In the root of the install prefix path, ``colcon`` generates two kinds of scripts :
+In the root of the install prefix path, ``colcon`` generates two kinds of scripts:
 
 * ``local_setup.<ext>``: updates the environment with information from all packages installed under this prefix path.
   Since package-level scripts rely on information from their dependencies the package-level scripts must be invoked in topological order.
@@ -124,7 +124,7 @@ Implementing the logic to determine the topological order of packages in every p
 Also parsing and interpreting ``.dsv`` files would likely not be much faster than invoking the native scripts.
 
 Therefore both parts are implemented in a Python script located in the root of the install prefix: ``_local_setup_util_<ext>.py``.
-The Python script itself can't change the environment. 
+The Python script itself can't change the environment.
 However, it is able to efficiently interpret the operations described by the ``.dsv`` files and generate the shell specific commands necessary to update the environment.
 The Python file is templated with information specific to the primary shell it's used from, hence the ``<ext>`` in the filename.
 
