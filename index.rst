@@ -43,6 +43,7 @@ Information about development is also available:
 
    developer/design
    developer/bootstrap
+   developer/environment
    developer/contribution
    developer/changelog
 
