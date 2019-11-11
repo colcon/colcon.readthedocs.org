@@ -1,7 +1,7 @@
 Extension points
 ================
 
-The following describes some of the extension points and how they are being used.
+The following describes some of the extension points and how they are used.
 
 VerbExtensionPoint
 ------------------
@@ -28,9 +28,9 @@ This extension point is used by package discovery extensions.
 A package identification extension determines if a given path contains a package and returns the tuple path, name, and type.
 
 Package identification extensions are grouped by their priority.
-The extensions are being invoked in order of their priority and the first extension successfully identifying a package stops further extensions from being considered.
+The extensions are invoked in order of their priority and the first extension successfully identifying a package stops further extensions from being considered.
 
-If multiple extensions have the same priority they are all being invoked.
+If multiple extensions have the same priority they are all invoked.
 If more than one extension within the priority group identifies the package in the given path the result must be identical or a warning is printed and the path is skipped.
 
 PackageAugmentationExtensionPoint
@@ -80,6 +80,6 @@ Each extension creates environment hooks for a specific environment variable and
 EventHandlerExtensionPoint
 --------------------------
 
-This extension point defines how events are being handled.
-An event can be any kind of object, like a line of output, a job being started, progressing or ended, a command being executed.
-Every event is being dispatched to all extensions in order of their priority.
+This extension point defines how events are handled.
+An event can be any kind of object, like a line of output, a job starting, progressing or ending, or a command executing.
+Every event is dispatched to all extensions in order of their priority.
