@@ -13,7 +13,7 @@ The code is open source, and `available on GitHub`_.
 The documentation exists in two version:
 
 * `released <http://colcon.readthedocs.io/en/released/>`_: matching the latest released version of all packages
-* `latest <http://colcon.readthedocs.io/en/latest/>`_: matching the latest state on the default branch of all packages
+* `latest <http://colcon.readthedocs.io/en/master/>`_: matching the latest state on the default branch of all packages
 
 The documentation is organized into a few sections:
 
