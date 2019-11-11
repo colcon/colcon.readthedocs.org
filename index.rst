@@ -45,6 +45,7 @@ Information about development is also available:
    developer/bootstrap
    developer/environment
    developer/program-flow
+   developer/extension-point
    developer/contribution
    developer/changelog
 

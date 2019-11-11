@@ -18,9 +18,11 @@ prepend
 prepended
 pytest
 refactored
+subparser
 symlink
 symlinks
 templated
+unselect
 venv
 workflow
 yaml
