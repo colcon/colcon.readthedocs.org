@@ -37,6 +37,18 @@ Additionally the following specific command line arguments can be used.
   Use the ``--install-base`` as the install prefix for all packages instead of
   a package specific subdirectory in the install base.
 
+  Without this option each package will contribute its own paths to environment
+  variables which leads to very long environment variable values.
+  With this option most of the paths added to environment variables will be the
+  same and need to be added only once resulting in shorter environment variable
+  values.
+
+  The disadvantage of using this option is that it doesn't provide proper
+  isolation between packages.
+  For example declaring a dependency on one package allows to also access
+  resources from other packages installed in the same install prefix (without
+  requiring a declared dependency).
+
   Note: on Windows using ``cmd`` this argument should be used for workspaces
   with many packages otherwise the environment variables might exceed the
   supported maximum length.
