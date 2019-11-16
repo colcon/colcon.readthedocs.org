@@ -35,6 +35,27 @@ Information about development is also available:
    user/configuration
    user/how-to
 
+.. _reference-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Reference
+
+   reference/verb/build
+   reference/verb/graph
+   reference/verb/info
+   reference/verb/list
+   reference/verb/metadata
+   reference/verb/mixin
+   reference/verb/test
+   reference/verb/test-result
+   reference/global-arguments
+   reference/executor-arguments
+   reference/event-handler-arguments
+   reference/discovery-arguments
+   reference/package-selection-arguments
+   reference/mixin-arguments
+
 .. _developer-docs:
 
 .. toctree::
