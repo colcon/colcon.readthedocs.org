@@ -9,7 +9,7 @@ Additionally the package type, name, build/run/test dependencies and metadata
 like the package version are enumerated.
 
 By default the information for all packages is shown.
-Optionally a single or multiple package names can be passed to only show their
+Optionally, single or multiple package names can be passed to only show their
 information.
 
 Command line arguments
@@ -21,7 +21,7 @@ These common arguments can be used:
 * :doc:`package selection <../package-selection-arguments>` arguments
 * :doc:`mixin <../mixin-arguments>` arguments
 
-Additionally the following specific command line arguments can be used.
+Additionally, the following specific command line arguments can be used:
 
 .. _info-verb_package-names_arg:
 

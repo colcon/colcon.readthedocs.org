@@ -8,7 +8,7 @@ metadata ``add``
 ----------------
 
 Add the URL of a metadata repository.
-Afterwards the metadata information need to be fetched at least once by
+Afterwards, the metadata information needs to be fetched at least once by
 invoking ``colcon metadata update <name>``.
 
 name

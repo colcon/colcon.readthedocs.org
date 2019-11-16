@@ -1,4 +1,4 @@
-Global Arguments
+Global arguments
 ================
 
 Command line arguments
@@ -12,16 +12,16 @@ For each argument the name in brackets indicates which package contributes it.
 \\--log-base LOG_BASE [``colcon-core``]
   The base path for all log directories.
   The default value is ``./log``.
-  To completely disable logging pass ``/dev/null`` (on POSIX) / ``nul`` (on
+  To completely disable logging, pass ``/dev/null`` (on POSIX) / ``nul`` (on
   Windows).
 
   Within the base path all log files from a specific invocation are places in a
   subdirectory named ``<verb>_<timestamp>`` (in the following named
   ``log-dir``).
-  If the system supports creating symlinks shortcuts with the names
+  If the system supports creating symlinks, shortcuts with the names
   ``latest_<verb>`` and ``latest`` are created (overwriting previous symlinks).
 
-  Within the ``log-dir`` the following files are being generated:
+  Within the ``log-dir`` the following files are generated:
 
   * ``events.log`` [``colcon-output``]: All generated events - only used for
     debugging.
@@ -81,13 +81,13 @@ COLCON_ALL_SHELLS [``colcon-core``]
 COLCON_ANIMATION_PROGRESS [``colcon-graphviz-anim``]
   Flag to generate an animation of the task progress.
   If the environment variable is set and not empty the file
-  ``./graphviz_anim_build.gif`` is being generated.
+  ``./graphviz_anim_build.gif`` is generated.
 
 .. _colcon-argcomplete_colcon-completion-logfile_env:
 
 COLCON_COMPLETION_LOGFILE [``colcon-argcomplete``]
   Set the path of a logfile to append the completion time to.
-  If the environment variable is set and not empty a line is being appended to
+  If the environment variable is set and not empty a line is appended to
   the specified file.
   The line contains the duration it took to compute the completion choices as
   well as the value of the environment variable ``COMP_LINE`` which was passed
@@ -103,7 +103,7 @@ COLCON_DEFAULTS_FILE [``colcon-defaults``]
 
 COLCON_DEFAULT_EXECUTOR [``colcon-core``]
   Select the default executor extension for verbs which support it.
-  By default the executor with the highest priority is being used.
+  By default the executor with the highest priority is used.
   The executor can also be chosen using the ``--executor`` argument.
 
 .. _colcon-core_colcon-extension-blacklist_env:
@@ -125,8 +125,8 @@ COLCON_LOG_LEVEL [``colcon-core``]
   Set the log level for the console output.
   See the :ref:`--log-level <colcon_log-level_arg>` arguments for details
   about the possible values.
-  Using the environment variable instead of the command line argument allows to
-  set the log level *before* the argument parsing has been performed.
+  Using the environment variable instead of the command line argument allows
+  setting the log level *before* the argument parsing has been performed.
 
 .. _colcon-core_colcon-warnings_env:
 
@@ -139,11 +139,11 @@ COLCON_WARNINGS [``colcon-core``]
 
 CTEST_COMMAND [``colcon-cmake``]
   The full path to the CTest executable.
-  By default the executable ``ctest`` is being searched for on the ``PATH``.
+  By default the executable ``ctest`` is searched for on the ``PATH``.
 
 .. _colcon-powershell_powershell-command_env:
 
 POWERSHELL_COMMAND [``colcon-powershell``]
   The full path to the PowerShell executable.
   By default the executable ``PowerShell`` (on Windows) / ``pwsh`` (on
-  non-Windows) is being searched for on the ``PATH``.
+  non-Windows) is searched for on the ``PATH``.

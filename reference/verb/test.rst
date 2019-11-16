@@ -15,7 +15,7 @@ These common arguments can be used:
 * :doc:`package selection <../package-selection-arguments>` arguments
 * :doc:`mixin <../mixin-arguments>` arguments
 
-Additionally the following specific command line arguments can be used.
+Additionally, the following specific command line arguments can be used:
 
 .. _test-verb_build-base_arg:
 

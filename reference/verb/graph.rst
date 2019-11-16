@@ -5,8 +5,8 @@ The ``graph`` verb is generating a visual representation of the package
 dependency graph.
 It is provided by the ``colcon-package-information`` package.
 
-For each package the path, name and type is being shown.
-By default it outputs an topologically ordered list of packages using ASCII art
+For each package, the path, name and type is shown.
+By default it outputs a topologically ordered list of packages using ASCII art
 to indicate direct as well as transitive dependencies.
 
 Optionally the verb can generate
@@ -22,7 +22,7 @@ These common arguments can be used:
 * :doc:`package selection <../package-selection-arguments>` arguments
 * :doc:`mixin <../mixin-arguments>` arguments
 
-Additionally the following specific command line arguments can be used.
+Additionally, the following specific command line arguments can be used:
 
 .. _graph-verb_density_arg:
 
@@ -40,9 +40,9 @@ Additionally the following specific command line arguments can be used.
 \\--dot
   Output topological graph in DOT.
   Commonly the output should be piped to ``dot``, e.g.
-  `` | dot -Tpng -o graph.png``.
+  ``| dot -Tpng -o graph.png``.
 
-  The differently colored edges are representing the dependency types:
+  The differently colored edges represent the dependency types:
   blue=build, red=run, tan=test.
   Dashed edges are indirect dependencies which only appear if some packages are
   being skipped.

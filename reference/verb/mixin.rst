@@ -8,7 +8,7 @@ mixin ``add``
 ----------------
 
 Add the URL of a mixin repository.
-Afterwards the mixin information need to be fetched at least once by invoking
+Afterwards the mixin information needs to be fetched at least once by invoking
 ``colcon mixin update <name>``.
 
 name
@@ -21,7 +21,7 @@ url
 mixin ``list``
 -----------------
 
-Enumerate the name and URL of the registered mixin repositories as well as.
+Enumerate the name and URL of the registered mixin repositories as well as
 their mixin files.
 
 [name]

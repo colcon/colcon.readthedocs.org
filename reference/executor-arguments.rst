@@ -30,5 +30,5 @@ For each argument the name in brackets indicates which package contributes it.
 
 \\--parallel-workers NUMBER [``colcon-parallel-executor``]
   The maximum number of jobs to process in parallel.
-  The default value is based on the number CPU cores.
+  The default value is based on the number of CPU cores.
   This option only affects ``--executor parallel``.

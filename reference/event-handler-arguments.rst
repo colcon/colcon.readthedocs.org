@@ -56,7 +56,7 @@ For each argument the name in brackets indicates which package contributes it.
     Output job specific log files containing all the output of invoked
     commands.
     See :ref:`here <colcon_log-base_arg>` for more information about the
-    location of these log file.
+    location of these log files.
 
   * ``log_command`` [``colcon-colcon``]:
 

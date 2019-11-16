@@ -4,10 +4,10 @@
 The ``list`` verb is enumerating a set of packages.
 It is provided by the ``colcon-package-information`` package.
 
-For each package a lines is shown containing the path, name and type separated
+For each package a line is shown containing the path, name and type separated
 by tabs.
 By default the list is ordered alphabetically by the package name.
-Optionally in can order the packages topologically based on their dependencies.
+Optionally, it can order the packages topologically based on their dependencies.
 
 Command line arguments
 ----------------------
@@ -19,7 +19,7 @@ These common arguments can be used:
 * :doc:`package selection <../package-selection-arguments>` arguments
 * :doc:`mixin <../mixin-arguments>` arguments
 
-Additionally the following specific command line arguments can be used.
+Additionally, the following specific command line arguments can be used:
 
 .. _list-verb_topological-order_arg:
 

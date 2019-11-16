@@ -4,7 +4,7 @@ Mixin arguments
 Mixins can be used by several verbs to contribute command line arguments
 defined in external files.
 
-The following arguments are provided by the ``colcon-mixin`` package.
+The following arguments are provided by the ``colcon-mixin`` package:
 
 .. _mixin-args_mixin-files_arg:
 

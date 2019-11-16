@@ -98,12 +98,12 @@ For each argument the name in brackets indicates which package contributes it.
 
 \\--packages-start PKG_NAME
   Skip packages before the given package name in flat topological ordering.
-  This option only make sense when using the
+  This option only makes sense when using the
   :ref:`sequential executor <executor-args_executor_arg_sequential>`.
 
 .. _package-selection-args_packages-end_arg:
 
 \\--packages-end PKG_NAME
   Skip packages after the given package name in flat topological ordering.
-  This option only make sense when using the
+  This option only makes sense when using the
   :ref:`sequential executor <executor-args_executor_arg_sequential>`.

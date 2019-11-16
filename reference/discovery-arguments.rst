@@ -19,7 +19,7 @@ For each argument the name in brackets indicates which package contributes it.
   The default value is ``.``.
   In a workspace root the subdirectories other than ``src`` (commonly
   ``build``, ``install``, ``log``) contain a ``COLCON_IGNORE`` marker file
-  which makes them being ignored.
+  which causes them to be ignored.
 
 .. _discovery-args_metas_arg:
 
@@ -39,7 +39,7 @@ For each argument the name in brackets indicates which package contributes it.
 \\--packages-ignore [PKG_NAME [PKG_NAME ...]] [``colcon-package-selection``]
   Ignore packages by name as if they were not discovered.
   In contrast to being skipped using
-  :doc:`package selection <package-selection-arguments>` arguments ignored
+  :doc:`package selection <package-selection-arguments>` arguments, ignored
   packages aren't considered in the dependency graph.
 
 .. _discovery-args_packages-ignore-regex_arg:
@@ -47,5 +47,5 @@ For each argument the name in brackets indicates which package contributes it.
 \\--packages-ignore-regex [PATTERN [PATTERN ...]] [``colcon-package-selection``]
   Ignore packages where any of the patterns match the package name.
   In contrast to being skipped using
-  :doc:`package selection <package-selection-arguments>` arguments ignored
+  :doc:`package selection <package-selection-arguments>` arguments, ignored
   packages aren't considered in the dependency graph.

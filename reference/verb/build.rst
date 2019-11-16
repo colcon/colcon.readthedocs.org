@@ -15,7 +15,7 @@ These common arguments can be used:
 * :doc:`package selection <../package-selection-arguments>` arguments
 * :doc:`mixin <../mixin-arguments>` arguments
 
-Additionally the following specific command line arguments can be used.
+Additionally, the following specific command line arguments can be used:
 
 .. _build-verb_build-base_arg:
 
@@ -39,13 +39,14 @@ Additionally the following specific command line arguments can be used.
 
   Without this option each package will contribute its own paths to environment
   variables which leads to very long environment variable values.
+  
   With this option most of the paths added to environment variables will be the
-  same and need to be added only once resulting in shorter environment variable
+  same, resulting in shorter environment variable
   values.
 
   The disadvantage of using this option is that it doesn't provide proper
   isolation between packages.
-  For example declaring a dependency on one package allows to also access
+  For example declaring a dependency on one package also allows access to
   resources from other packages installed in the same install prefix (without
   requiring a declared dependency).
 
@@ -70,13 +71,13 @@ Additionally the following specific command line arguments can be used.
 .. _build-verb_continue-on-error_arg:
 
 \\--continue-on-error
-   Continue other packages when a package fails to build.
+   Continue building other packages when a package fails to build.
    Packages recursively depending on the failed package are skipped.
 
 CMake specific arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following arguments are provided by the ``colcon-cmake`` package.
+The following arguments are provided by the ``colcon-cmake`` package:
 
 .. _build-verb_cmake-args_arg:
 
@@ -89,7 +90,7 @@ The following arguments are provided by the ``colcon-cmake`` package.
 
 \\--cmake-target CMAKE_TARGET
   Build a specific target instead of the default target.
-  To avoid packages which don't have that target to fail the build also pass
+  To avoid packages which don't have that target causing the build to fail, also pass
   :ref:`--cmake-target-skip-unavailable
   <build-verb_cmake-target-skip-unavailable_arg>`.
 
@@ -121,7 +122,7 @@ The following arguments are provided by the ``colcon-cmake`` package.
 ROS ``ament_cmake`` specific arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following arguments are provided by the ``colcon-ros`` package.
+The following arguments are provided by the ``colcon-ros`` package:
 
 .. _build-verb_ament-cmake-args_arg:
 
@@ -133,7 +134,7 @@ The following arguments are provided by the ``colcon-ros`` package.
 ROS ``catkin`` specific arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following arguments are provided by the ``colcon-ros`` package.
+The following arguments are provided by the ``colcon-ros`` package:
 
 .. _build-verb_catkin-cmake-args_arg:
 

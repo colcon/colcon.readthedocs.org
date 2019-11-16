@@ -11,7 +11,7 @@ These common arguments can be used:
 
 * :doc:`mixin <../mixin-arguments>` arguments
 
-Additionally the following specific command line arguments can be used.
+Additionally, the following specific command line arguments can be used:
 
 .. _test-result-verb_test-result-base_arg:
 
