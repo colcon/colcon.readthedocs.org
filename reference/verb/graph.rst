@@ -46,9 +46,6 @@ Additionally, the following specific command line arguments can be used:
   blue=build, red=run, tan=test.
   Dashed edges are indirect dependencies which only appear if some packages are
   being skipped.
-  `Skipped but included packages
-  <colcon-package-information_graph_dot-include-skipped_arg>`_ are rendered in
-  gray.
 
 .. _graph-verb_dot-cluster_arg:
 
