@@ -1,7 +1,7 @@
 ``list`` - List Packages
 ========================
 
-The ``list`` verb is enumerating a set of packages.
+The ``list`` verb enumerates a set of packages.
 It is provided by the ``colcon-package-information`` package.
 
 For each package a line is shown containing the path, name and type separated

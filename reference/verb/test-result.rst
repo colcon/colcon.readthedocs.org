@@ -1,7 +1,7 @@
 ``test-result`` - Summarize Test Results
 ========================================
 
-The ``test-result`` verb is summarizing the results of previous run tests.
+The ``test-result`` verb summarizes the results of previous run tests.
 It is provided by the ``colcon-test-result`` package.
 
 Command line arguments

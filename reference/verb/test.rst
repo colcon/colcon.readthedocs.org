@@ -1,7 +1,7 @@
 ``test`` - Test Packages
 ========================
 
-The ``test`` verb is running the tests for a set of packages.
+The ``test`` verb runs the tests for a set of packages.
 It is provided by the ``colcon-core`` package.
 
 Command line arguments

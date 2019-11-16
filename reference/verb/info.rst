@@ -1,7 +1,7 @@
 ``info`` - Show Package Information
 ===================================
 
-The ``info`` verb is showing detailed information about packages.
+The ``info`` verb shows detailed information about packages.
 It is provided by the ``colcon-package-information`` package.
 
 For each package a set of lines is shown starting with the path of the package.

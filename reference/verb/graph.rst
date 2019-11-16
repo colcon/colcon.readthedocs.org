@@ -1,7 +1,7 @@
 ``graph`` - Visualize Dependencies
 ==================================
 
-The ``graph`` verb is generating a visual representation of the package
+The ``graph`` verb generates a visual representation of the package
 dependency graph.
 It is provided by the ``colcon-package-information`` package.
 
