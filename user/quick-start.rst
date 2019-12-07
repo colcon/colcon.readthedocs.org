@@ -13,7 +13,7 @@ The following is an example workflow and sequence of commands using default sett
     $ mkdir -p /tmp/workspace/src     # Make a workspace directory with a src subdirectory
     $ cd /tmp/workspace               # Change directory to the workspace root
     $ <...>                           # Populate the `src` directory with packages
-    $ colcon list -g                  # List all packages in the workspace and their dependencies
+    $ colcon graph                    # List all packages in the workspace and their dependencies
     $ colcon build                    # Build all packages in the workspace
     $ colcon test                     # Test all packages in the workspace
     $ colcon test-result --all        # Enumerate all test results
