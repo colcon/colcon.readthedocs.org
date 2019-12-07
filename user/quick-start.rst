@@ -14,7 +14,8 @@ The following is an example workflow and sequence of commands using default sett
     $ cd /tmp/workspace               # Change directory to the workspace root
     $ <...>                           # Populate the `src` directory with packages
     $ colcon list                     # List all packages in the workspace
-    $ colcon graph                    # List all packages in the workspace in topological order and visualize their dependencies
+    $ colcon graph                    # List all packages in the workspace in topological order
+                                      # and visualize their dependencies
     $ colcon build                    # Build all packages in the workspace
     $ colcon test                     # Test all packages in the workspace
     $ colcon test-result --all        # Enumerate all test results
