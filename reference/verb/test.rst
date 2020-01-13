@@ -102,5 +102,5 @@ Python specific arguments
 
 \\--pytest-with-coverage
   Generate coverage information in the package specific build directory.
-  By default coverage information is only generated for Python packages which
+  By default, coverage information is only generated for Python packages that
   declare a test dependency on ``pytest-cov``.
