@@ -97,3 +97,10 @@ Python specific arguments
   Pass arbitrary arguments to Python packages using ``pytest``.
   Arguments matching other options must be prefixed by a space, e.g.
   ``--pytest-args " --help"``.
+
+.. _test-verb_pytest-with-coverage_arg:
+
+\\--pytest-with-coverage
+  Generate coverage information in the package specific build directory.
+  By default coverage information is only generated for Python packages which
+  declare a test dependency on ``pytest-cov``.
