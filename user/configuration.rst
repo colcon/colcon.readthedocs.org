@@ -100,6 +100,7 @@ The location can also be modified using the environment variable ``COLCON_DEFAUL
 The first level of the configuration file is a dictionary.
 The key is the ``verb`` name.
 In the case of more than one nested verbs the key is the names separated by dots.
+To specify configuration options *before* the first verb use an empty string key.
 The value is another dictionary containing the verb specific configuration.
 
 Verb specific configuration
