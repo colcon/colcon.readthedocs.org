@@ -44,6 +44,7 @@ An example declaring an environment hook which should be sourced for a package:
 
 The first level of the configuration file is a dictionary.
 The only two supported keys are:
+
 * ``names`` to provide settings based on the package name.
 * ``paths`` to provide settings based on the package path.
 
@@ -59,7 +60,7 @@ The value under the ``names`` key is again a dictionary.
 
 The key is the name of the package.
 The value can contain the same package specific settings as described in the `colcon.pkg files`_ section above.
-The only except is that specifying a package name is not supported.
+The only exception is that specifying a package name is not supported.
 
 By package path
 ~~~~~~~~~~~~~~~
@@ -98,6 +99,7 @@ The location can also be modified using the environment variable ``COLCON_DEFAUL
 
 The first level of the configuration file is a dictionary.
 The key is the ``verb`` name.
+In the case of more than one nested verbs the key is the names separated by dots.
 The value is another dictionary containing the verb specific configuration.
 
 Verb specific configuration
