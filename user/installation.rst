@@ -68,6 +68,20 @@ In order to use the latest state of any of the above packages you can invoke ``p
 
     $ pip install -U git+https://github.com/colcon/colcon-common-extensions.git
 
+Installing custom branches from source
+--------------------------------------
+
+To try a patch proposed in a pull request you can install the sources of that specific branch by appending the branch name to the URL:
+
+.. code-block:: bash
+
+    $ pip install -U git+https://github.com/colcon/colcon-core.git@branch_name
+
+.. note::
+
+    Make sure to uninstall that custom version again using ``pip uninstall <name>`` to revert back to the previously used version.
+    Otherwise if you use the Debian packages this pip installed package will overlay even newer Debian packages.
+
 Building from source
 --------------------
 
