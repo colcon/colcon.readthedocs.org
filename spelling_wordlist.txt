@@ -33,6 +33,7 @@ symlink
 symlinks
 templated
 Tpng
+uninstall
 unselect
 url
 venv
