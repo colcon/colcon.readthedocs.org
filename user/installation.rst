@@ -79,7 +79,7 @@ To try a patch proposed in a pull request you can install the sources of that sp
 
 .. note::
 
-    Make sure to uninstall that custom version again using `pip` uninstall <name>`` to revert back to the previously used version.
+    Make sure to uninstall that custom version again using ``pip uninstall <name>`` to revert back to the previously used version.
     Otherwise if you use the Debian packages this pip installed package will overlay even newer Debian packages.
 
 Building from source
