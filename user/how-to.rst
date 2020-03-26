@@ -152,6 +152,17 @@ For CMake packages which use the CMake option ``BUILD_TESTING`` (which is the st
 
     $ colcon build --cmake-args -DBUILD_TESTING=OFF
 
+CMake packages generating compile_commands.json
+-----------------------------------------------
+
+When the CMake option `CMAKE_EXPORT_COMPILE_COMMANDS <https://cmake.org/cmake/help/latest/variable/CMAKE_EXPORT_COMPILE_COMMANDS.html>`_ is enabled a ``compile_commands.json`` file is generated in the package specific build directory containing the exact compiler calls for all translation units of the project in machine-readable form:
+
+.. code-block:: bash
+
+    $ colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+``colcon-cmake`` will additionally generate a workspace-level ``compile_commands.json`` in the build directory which aggregates the information from all package specific json files.
+
 Enable additional output for debugging
 --------------------------------------
 
