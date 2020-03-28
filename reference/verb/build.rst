@@ -131,6 +131,11 @@ The following arguments are provided by the ``colcon-ros`` package:
   Arguments matching other options must be prefixed by a space, e.g.
   ``--ament-cmake-args " --help"``.
 
+.. _test-verb_ament-cmake-pytest-with-coverage_arg:
+
+\\--ament-cmake-pytest-with-coverage
+  Generate coverage information for Python tests in the package specific build directory.
+
 ROS ``catkin`` specific arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

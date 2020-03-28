@@ -77,11 +77,6 @@ CMake specific arguments
   Arguments matching other options must be prefixed by a space, e.g.
   ``--ctest-args " --help"``.
 
-.. _test-verb_ctest-pytest-with-coverage_arg:
-
-\\--ctest-pytest-with-coverage
-  Generate coverage information for Python tests in the package specific build directory.
-
 Python specific arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
