@@ -55,6 +55,7 @@ Information about development is also available:
    :caption: Reference
 
    reference/verb/build
+   reference/verb/edit
    reference/verb/graph
    reference/verb/info
    reference/verb/list
