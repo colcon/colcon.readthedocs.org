@@ -25,6 +25,12 @@ For each argument the name in brackets indicates which package contributes it.
   Select the packages with the passed names as well as their recursive
   dependencies.
 
+.. _package-selection-args_packages-up-to-regex_arg:
+
+\\--packages-up-to-regex [PATTERN [PATTERN ...]]
+  Select the packages that match any of the passed patterns as well as their
+  recursive dependencies.
+
 .. _package-selection-args_packages-above_arg:
 
 \\--packages-above [PKG_NAME [PKG_NAME ...]]
