@@ -1,0 +1,36 @@
+name: colcon.readthedocs.org
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        sudo apt update && sudo apt install -y enchant
+        python -m pip install --upgrade setuptools
+        python -m pip install --upgrade doc8 pyenchant sphinx-rtd-theme sphinxcontrib-spelling
+    - name: Check spelling
+      # show list of misspelled words
+      run: |
+        make spelling
+        cat "_build/spelling/output.txt"
+    - name: Build documentation
+      run: |
+        make html
+    - name: Lint generated documentation
+      run: |
+        doc8 --max-line-length 999 index.rst developer/ migration/ user/ -v
+    - name: Spelling errors fail the build
+      # fail the build in case of any misspelled words
+      run: |
+        cat "_build/spelling/output.txt"
+        if [[ -s "_build/spelling/output.txt" ]]; then false; fi
