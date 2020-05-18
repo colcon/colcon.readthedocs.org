@@ -33,7 +33,20 @@ Information about development is also available:
    user/installation
    user/quick-start
    user/configuration
+   user/available-extensions
    user/how-to
+
+.. _verb-details:
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Verb Details
+
+   verb/build
+   verb/info
+   verb/list
+   verb/test
+   verb/test-result
 
 .. _reference-docs:
 

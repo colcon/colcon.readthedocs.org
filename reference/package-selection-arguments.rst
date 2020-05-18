@@ -31,6 +31,12 @@ For each argument the name in brackets indicates which package contributes it.
   Select the packages with the passed names as well as packages which
   recursively depend on them.
 
+.. _package-selection-args_packages-above-and-dependencies_arg:
+
+\\--packages-above-and-dependencies [PKG_NAME [PKG_NAME ...]]
+  Select the packages with the passed names, packages which
+  recursively depend on them as well as their recursive dependencies.
+
 .. _package-selection-args_packages-above-depth_arg:
 
 \\--packages-above-depth DEPTH [PKG_NAME ...]
