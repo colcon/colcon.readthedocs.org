@@ -1,5 +1,6 @@
 ament
 args
+boolean
 changelog
 cmake
 CMake
@@ -10,7 +11,10 @@ dep
 devel
 discoverability
 dsv
+executables
+extensibility
 internet
+invocable
 json
 JUnit
 linters
@@ -20,6 +24,7 @@ metadata
 metas
 mixin
 mixins
+modularity
 online
 png
 prepend
@@ -28,8 +33,11 @@ pytest
 refactored
 regex
 setuppy
+subdirectories
+subdirectory
 subparser
 subverbs
+superset
 symlink
 symlinks
 templated
@@ -40,5 +48,6 @@ url
 venv
 wildcards
 workflow
+workspaces
 yaml
 zsh
