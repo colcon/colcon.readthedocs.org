@@ -76,18 +76,17 @@ Finally, run ``colcon build --symlink-install`` as usual.
 Test selected packages as well as their dependents
 --------------------------------------------------
 
-If you have built the relevant packages before you can run the tests the same way as described in the previous section:
+If you have built the relevant packages before you can run the tests the same way as described in the :ref:`previous section <Rebuild packages which depend on a specific package>`:
 
 .. code-block:: bash
 
     $ colcon test --packages-above <name-of-pkg>
 
-If you haven't built the relevant packages before you can do that by using one invocation to determine all dependents and a second invocation to invoke the actual build:
+If you haven't built the relevant packages before you can build the to-be-tested packages as well as their recursive dependencies with:
 
 .. code-block:: bash
 
-    $ colcon list -n --packages-above <name-of-pkg>
-    $ colcon build --packages-up-to <copy-n-paste-output-previous-command>
+    $ colcon build --packages-above-and-dependencies <name-of-pkg>
 
 Run specific tests
 ------------------
