@@ -16,13 +16,14 @@ file with an editor.
     To enable auto-complete, check out the 
     :doc:`installation guide <../../user/installation>`.
 
-Hidden files and ``.pyc`` files are ignored. If multiple files under 
-the same name are present, they will all be listed and you can type in 
-the index number to select which file to edit.
+Hidden files and ``.pyc`` files are ignored. 
+If multiple files under the same name are present, they will all be listed 
+and you can type in the index number to select which file to edit.
 
 By default, ``vim`` is the editor that will be used, but you can also use 
 other editors by specifying ``$EDITOR`` environment variable to the ones
-preferred. For example, to use **Visual Studio Code**, simply run
+preferred. 
+For example, to use **Visual Studio Code**, simply run
 
 .. code-block:: bash
 
