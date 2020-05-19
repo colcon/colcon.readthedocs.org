@@ -33,6 +33,13 @@ Pull requests
 * Make sure that the code changes pass the existing tests including the linters.
 * And as a last step create a pull request.
 
+Documentation
+-------------
+
+Since documentation is stored in a git repository any changes are made through pull requests and therefore the above bullets for pull requests apply.
+
+The documentation follows the one-sentence-per-line style to minimize the diff (preventing reflow in a paragraph on changes).
+
 New packages / extensions
 -------------------------
 
