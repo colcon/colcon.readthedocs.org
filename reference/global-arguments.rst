@@ -43,6 +43,8 @@ For each argument the name in brackets indicates which package contributes it.
       deterministic.
     * ``streams.log`` [``colcon-output``]: A combination of the command log as
       well as both output logs.
+      Each line is being prefixed with the elapsed time since the package
+      started being processed.
 
 .. _colcon_log-level_arg:
 
