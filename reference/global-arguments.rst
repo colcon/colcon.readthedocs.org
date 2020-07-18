@@ -108,10 +108,10 @@ COLCON_DEFAULT_EXECUTOR [``colcon-core``]
   By default the executor with the highest priority is used.
   The executor can also be chosen using the ``--executor`` argument.
 
-.. _colcon-core_colcon-extension-blacklist_env:
+.. _colcon-core_colcon-extension-blocklist_env:
 
-COLCON_EXTENSION_BLACKLIST [``colcon-core``]
-  Blacklist extensions which should not be used.
+COLCON_EXTENSION_BLOCKLIST [``colcon-core``]
+  Block extensions which should not be used.
   The value uses a path separator to enumerate entry point group names or full
   entry point names.
 
