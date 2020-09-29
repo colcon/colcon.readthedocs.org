@@ -69,6 +69,7 @@ Information about development is also available:
    developer/program-flow
    developer/extension-point
    developer/contribution
+   developer/release
    developer/changelog
 
 .. _migration-docs:
