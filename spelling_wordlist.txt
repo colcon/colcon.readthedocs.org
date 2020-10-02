@@ -15,6 +15,7 @@ executables
 extensibility
 internet
 invocable
+io
 json
 JUnit
 linters
@@ -26,6 +27,7 @@ mixin
 mixins
 modularity
 online
+packagecloud
 png
 prepend
 prepended
