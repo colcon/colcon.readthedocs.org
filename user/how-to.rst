@@ -44,6 +44,8 @@ Build selected packages including their dependencies
 
     $ colcon build --packages-up-to <name-of-pkg>
 
+.. _rebuild_packages:
+
 Rebuild packages which depend on a specific package
 ---------------------------------------------------
 
@@ -76,7 +78,7 @@ Finally, run ``colcon build --symlink-install`` as usual.
 Test selected packages as well as their dependents
 --------------------------------------------------
 
-If you have built the relevant packages before you can run the tests the same way as described in the :ref:`previous section <Rebuild packages which depend on a specific package>`:
+If you have built the relevant packages before you can run the tests the same way as described in the :ref:`previous section <rebuild_packages>`:
 
 .. code-block:: bash
 
