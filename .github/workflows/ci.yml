@@ -15,12 +15,13 @@ jobs:
         python-version: 3.8
     - name: Install dependencies
       run: |
-        sudo apt update && sudo apt install -y enchant
+        sudo apt update && sudo apt install -y enchant graphviz
         python -m pip install --upgrade setuptools
         python -m pip install --upgrade doc8 pyenchant sphinx-rtd-theme sphinxcontrib-spelling
     - name: Check spelling
       # show list of misspelled words
       run: |
+        mkdir _build
         make spelling
         if [[ -s "_build/spelling/index.spelling" ]]; then cat "_build/spelling/index.spelling"; fi
     - name: Build documentation
@@ -29,8 +30,9 @@ jobs:
     - name: Lint generated documentation
       run: |
         doc8 --max-line-length 999 index.rst developer/ migration/ user/ -v
-    - name: Spelling errors fail the build
-      # fail the build in case of any misspelled words
+    - name: Warnings and spelling errors fail the build
       run: |
+        if [[ -s "_build/warnings_and_errors.log" ]]; then cat "_build/warnings_and_errors.log"; fi
         if [[ -s "_build/spelling/index.spelling" ]]; then cat "_build/spelling/index.spelling"; fi
+        if [[ -s "_build/warnings_and_errors.log" ]]; then false; fi
         if [[ -s "_build/spelling/index.spelling" ]]; then false; fi

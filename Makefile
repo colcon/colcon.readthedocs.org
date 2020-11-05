@@ -2,7 +2,7 @@
 #
 
 # You can set these variables from the command line.
-SPHINXOPTS    =
+SPHINXOPTS    = -w _build/warnings_and_errors.log
 SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = colcon
 SOURCEDIR     = .
