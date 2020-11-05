@@ -24,9 +24,9 @@ Package-level
 
 .. note::
 
-    Each package installs its files under its install prefix. This corresponds
-    to ``install/<package_name>`` except when ``colcon build
-    --merge-install`` is used. In that case, the install prefix is ``install/``.
+    Each package installs its files under its install prefix.
+    This corresponds to ``install/<package_name>`` except when ``colcon build --merge-install`` is used.
+    In that case, the install prefix is ``install/``.
 
 For each built package ``colcon`` generates a set of package-level scripts (one for each supported shell type): ``share/<package_name>/package.<ext>``.
 These script files update the environment with information specific to this package.
