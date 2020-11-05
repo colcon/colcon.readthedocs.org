@@ -27,3 +27,26 @@ The following arguments are provided by the ``colcon-mixin`` package:
   * **debug**:
 
     - ``cmake-args``: ``['-DCMAKE_BUILD_TYPE=Debug']``
+
+When multiple mixins are used they are interpreted in order with later mixin
+values replacing or extending previous values.
+In case of lists the items are being concatenated.
+In all other cases the latter value replaces the former value.
+
+.. warning::
+
+    At the moment the logic concatenating lists has no semantic knowledge of
+    the data.
+    Therefore the joined list might not have the desired semantic meaning.
+    E.g. for the following two lists:
+
+    * ``cmake-args``: ``['-DCMAKE_C_FLAGS=-fPIC']``
+    * ``cmake-args``: ``['-DCMAKE_C_FLAGS=-g']``
+
+    the joined list will be just a concatenation:
+
+    * ``cmake-args``: ``['-DCMAKE_C_FLAGS=-fPIC', '-DCMAKE_C_FLAGS=-g']``
+
+    But passing these arguments to CMake would result in the latter value of
+    ``CMAKE_C_FLAGS`` overwriting the former even though the user likely wanted
+    both compiler options to be used.
