@@ -15,7 +15,7 @@ jobs:
         python-version: 3.8
     - name: Install dependencies
       run: |
-        sudo apt update && sudo apt install -y enchant
+        sudo apt update && sudo apt install -y enchant graphviz
         python -m pip install --upgrade setuptools
         python -m pip install --upgrade doc8 pyenchant sphinx-rtd-theme sphinxcontrib-spelling
     - name: Check spelling
