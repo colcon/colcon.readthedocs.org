@@ -5,7 +5,7 @@ When developing ``colcon`` you want to have a local checkout of all involved pac
 
 .. note::
 
-    The following steps us the command line tool `vcstool <https://github.com/dirk-thomas/vcstool/>`_ to fetch a set of repositories.
+    The following steps use the command line tool `vcstool <https://github.com/dirk-thomas/vcstool/>`_ to fetch a set of repositories.
     You can e.g. install it using ``pip install vcstool``.
 
 .. note::

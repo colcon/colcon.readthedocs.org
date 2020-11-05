@@ -124,7 +124,7 @@ Before building the workspace with ``colcon`` the steps also fetch some addition
     $ colcon metadata update
     $ colcon build
 
-To run Gazebo which requires environment variables for e.g. the model paths the same commands as for other packages can be used.
+To run Gazebo, which requires environment variables for e.g., the model paths, the same commands as for other packages can be used.
 Using the additional metadata the source script will also automatically source the Gazebo specific file ``share/gazebo/setup.sh`` which defines these environment variables.
 
 .. code-block:: bash
