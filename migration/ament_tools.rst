@@ -60,7 +60,7 @@ ament build
   When using this option to control the parallel execution with arguments like ``-jN`` the substitution is to use the environment variable ``MAKEFLAGS``.
 
 ``--use-ninja``
-  ``--cmake-args -G Ninja``
+  ``--cmake-args -G "Ninja"``
 
 ament test
 ----------

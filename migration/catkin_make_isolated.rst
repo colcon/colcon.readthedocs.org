@@ -20,7 +20,7 @@ The following describes the mapping of some ``catkin_make_isolated`` options and
   ``--merge-install``
 
 ``--use-ninja``
-  ``--cmake-args -G Ninja``
+  ``--cmake-args -G "Ninja"``
 
 ``--use-nmake``
   ``--cmake-args -G "NMake Makefiles"``
