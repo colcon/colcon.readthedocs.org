@@ -30,5 +30,6 @@ For each argument the name in brackets indicates which package contributes it.
 
 \\--parallel-workers NUMBER [``colcon-parallel-executor``]
   The maximum number of jobs to process in parallel.
-  The default value is based on the number of CPU cores.
+  The default value is the number of logical CPU cores as reported by
+  `os.cpu_count() <https://docs.python.org/3/library/os.html#os.cpu_count>`_.
   This option only affects ``--executor parallel``.
