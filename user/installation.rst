@@ -2,7 +2,7 @@ Installation
 ============
 
 The functionality of ``colcon`` is split over multiple Python packages.
-The package ``colcon-core`` provides the command line tool ``colcon`` itself as well as few fundamental extensions.
+The package ``colcon-core`` provides the command line tool ``colcon`` itself as well as a few fundamental extensions.
 Additional functionality is provided by separate packages, e.g. ``colcon-cmake`` adds support for packages which use `CMake <https://cmake.org/>`_.
 The following instructions install a set of common ``colcon`` packages.
 
@@ -11,7 +11,10 @@ Using Debian packages
 
 On platforms which support Debian packages using those is preferred since they will be updated using ``apt`` together with other system packages.
 
-The Debian packages are currently hosted in apt repositories from the ROS project.
+In the context of the ROS project
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The `ROS project <https://www.ros.org/>`_ hosts copies of the Debian packages in their apt repositories.
 You can choose either of the two following apt repositories.
 
 * `ROS 1 repository <http://wiki.ros.org/Installation/Ubuntu#Installation.2BAC8-Ubuntu.2BAC8-Sources-4.Setup_your_sources.list>`_
@@ -33,6 +36,26 @@ After that you can install the Debian package which depends on ``colcon-core`` a
 .. code-block:: bash
 
     $ sudo apt update
+    $ sudo apt install python3-colcon-common-extensions
+
+Outside the ROS project
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The Debian packages are also hosted in an apt repository provided by `packagecloud <https://packagecloud.io/>`_: |packagecloud|
+
+.. |packagecloud| image:: https://img.shields.io/badge/deb-packagecloud.io-844fec.svg
+    :target: https://packagecloud.io/dirk-thomas/colcon
+
+You can add the GPG key as well as the apt repository using the following command (which is described `here <https://packagecloud.io/dirk-thomas/colcon/install>`_).
+
+  .. code-block:: bash
+
+      $ curl -s https://packagecloud.io/install/repositories/dirk-thomas/colcon/script.deb.sh | sudo bash
+
+After that you can install the Debian package which depends on ``colcon-core`` as well as commonly used extension packages (see `setup.cfg <https://github.com/colcon/colcon-common-extensions/blob/master/setup.cfg>`_).
+
+.. code-block:: bash
+
     $ sudo apt install python3-colcon-common-extensions
 
 Using pip on any platform
