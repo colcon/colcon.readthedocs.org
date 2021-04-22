@@ -17,7 +17,7 @@ Before using ``publish-python`` you need to do the following:
 * Configure credentials for packagecloud.io and request to be added as a contributor to the `colcon repository <https://packagecloud.io/dirk-thomas/colcon>`_
 * Create a configuration file for your package
 
-For details please see the `publish-python documentation <https://github.com/dirk-thomas/publish-python/blob/master/README.rst>`_.
+For details please see the `publish-python documentation <https://github.com/dirk-thomas/publish-python/blob/main/README.rst>`_.
 
 Example configuration file ``publish-python.yaml``:
 

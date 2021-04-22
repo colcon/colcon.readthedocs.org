@@ -39,7 +39,7 @@ Fetch the sources
 .. code-block:: bash
 
     $ mkdir colcon-from-source && cd colcon-from-source
-    $ curl --output colcon.repos https://raw.githubusercontent.com/colcon/colcon.readthedocs.org/master/colcon.repos
+    $ curl --output colcon.repos https://raw.githubusercontent.com/colcon/colcon.readthedocs.org/main/colcon.repos
     $ mkdir src
     $ vcs import src < colcon.repos
 
@@ -65,7 +65,7 @@ Make sure the dependencies are available:
 
 .. code-block:: bash
 
-    $ curl --output requirements.txt https://raw.githubusercontent.com/colcon/colcon.readthedocs.org/master/requirements.txt
+    $ curl --output requirements.txt https://raw.githubusercontent.com/colcon/colcon.readthedocs.org/main/requirements.txt
     $ pip install -r requirements.txt
 
 
