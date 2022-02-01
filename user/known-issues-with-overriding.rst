@@ -18,7 +18,7 @@ When it can happen
 * The underlay workspace is a merged workspace
 * The overridden package installs header files (C/C++)
 * The overriding package's headers are different from the overridden package's
-* At least one more package in the underlay:
+* At least one more package in the underlay
   * is not overridden
   * installs headers to the same directory as the overridden package (such as ``include``)
 * A package in the overlay depends on both the package being overridden and the mentioned additional package in the underlay.
@@ -83,3 +83,52 @@ Build everything above the overridden package from source
 
 This means all packages that directly or indirectly depend on the overridden package must be added to the overlay.
 These packages are then themselves overridden.
+
+
+Undefined behavior when overridden package breaks ABI
+-----------------------------------------------------
+
+When it applies
++++++++++++++++
+
+How to avoid it
++++++++++++++++
+
+
+Renamed or deleted Python modules still importable
+--------------------------------------------------
+
+When it applies
++++++++++++++++
+
+How to avoid it
++++++++++++++++
+
+
+One-definition rule violations caused by static linking
+-------------------------------------------------------
+
+When it applies
++++++++++++++++
+
+How to avoid it
++++++++++++++++
+
+Python entry_points duplicated
+------------------------------
+
+When it applies
++++++++++++++++
+
+How to avoid it
++++++++++++++++
+
+
+Deleted Python entry_points still loaded
+----------------------------------------
+
+When it applies
++++++++++++++++
+
+How to avoid it
++++++++++++++++
