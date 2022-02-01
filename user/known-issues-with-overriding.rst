@@ -2,7 +2,7 @@ Known issues with Overriding Packages
 =====================================
 
 A package is said to be overridden when it exists in two or more workspaces that are active at the same time.
-This page lists known issues with this use case.
+This page lists known issues with overridding packages.
 
 Overridden package's Headers found before overriding package's headers
 ----------------------------------------------------------------------
@@ -19,8 +19,8 @@ When it can happen
 * The overridden package installs header files (C/C++)
 * The overriding package's headers are different from the overridden package's
 * At least one more package in the underlay:
-    * is not overridden
-    * installs headers to the same directory as the overridden package (such as ``include``)
+  * is not overridden
+  * installs headers to the same directory as the overridden package (such as ``include``)
 * A package in the overlay depends on both the package being overridden and the mentioned additional package in the underlay.
 
 How to avoid it
