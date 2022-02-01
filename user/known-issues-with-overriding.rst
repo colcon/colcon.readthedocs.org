@@ -7,7 +7,8 @@ This page lists known issues with overridding packages.
 Overridden package's Headers found before overriding package's headers
 ----------------------------------------------------------------------
 
-Consider an overlay containing package ``foo`` and ``bar``, and an underlay containing ``bar`` and ``baz``. ``foo`` depends on ``bar`` and ``baz``.
+Consider an overlay containing package ``foo`` and ``bar``, and an underlay containing ``bar`` and ``baz``.
+``foo`` depends on ``bar`` and ``baz``.
 The underlay is a merged workspace, and both the overriden ``bar`` and ``baz`` install their headers to a directory called ``include/``.
 If any libraries or executables in ``foo`` are configured to search for headers in ``baz``'s include directory first, then headers from overridden ``bar`` will also be found first.
 This can cause a failure to build ``foo``, or undefined behavior at runtime when using ``foo`` depending on the differences between overridden ``bars``'s and overriding ``bar``'s headers.
@@ -63,17 +64,15 @@ All targets in your project should use the following to make it aware of the uni
 Undefined behavior when overridden package breaks API
 -----------------------------------------------------
 
-Consider an overlay containing ``foo`` and ``bar``, and an underlay containing ``bar`` and ``baz``.
-If 
+Consider an overlay containing ``bar``, and an underlay containing ``bar`` and ``baz``.
+``baz`` depends on ``bar``.
+If ``bar`` in the overlay changed an API used by ``baz``, then it is undefined what will happen when ``baz`` is used at runtime.
 
 When it applies
 +++++++++++++++
 
 * The overriding package removed or changed APIs compaired to the overridden package
 * A package in the underlay depends on the overridden package
-* A package in the overlay depends on the overridden package
-* Both the mentioned packages are used at runtim
-
 
 How to avoid it
 +++++++++++++++
@@ -82,17 +81,38 @@ Build everything above the overridden package from source
 *********************************************************
 
 This means all packages that directly or indirectly depend on the overridden package must be added to the overlay.
-These packages are then themselves overridden.
+In this example, that's just ``baz``.
+The version of ``baz`` built in the overlay must be compatible with the version of ``bar`` in the overlay.
 
 
 Undefined behavior when overridden package breaks ABI
 -----------------------------------------------------
 
+Consider an overlay containing ``bar``, and an underlay containing ``bar`` and ``baz``.
+``baz`` depends on ``bar``.
+If ``bar`` in the overlay changed ABI, then it is undefined what will happen when ``baz`` is used at runtime.
+
 When it applies
 +++++++++++++++
 
+* The overridden package uses a compiled language (C/C++, etc)
+* The overriding package is ABI incompatible with the overridden one.
+
 How to avoid it
 +++++++++++++++
+
+Make sure the overriding package is ABI compatible
+**************************************************
+
+Review the changes between the overridden and overridding package to make sure they are ABI compatible.
+`Here are some pointers for C++ <https://community.kde.org/Policies/Binary_Compatibility_Issues_With_C%2B%2B>`_.
+
+Build everything above the overridden package from source
+*********************************************************
+
+This means all packages that directly or indirectly depend on the overridden package must be added to the overlay.
+In this example, that's just ``baz``.
+The version of ``baz`` built in the overlay must be compatible with the version of ``bar`` in the overlay.
 
 
 Renamed or deleted Python modules still importable
