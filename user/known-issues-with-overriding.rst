@@ -4,8 +4,8 @@ Known issues with Overriding Packages
 A package is said to be overridden when it exists in two or more workspaces that are active at the same time.
 This page lists known issues with overridding packages.
 
-.. toctree::
- :maxdepth: 2
+.. contents:: Table of Contents
+    :depth: 2
 
 Overridden package's Headers found before overriding package's headers
 ----------------------------------------------------------------------
