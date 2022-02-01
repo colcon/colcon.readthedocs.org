@@ -5,7 +5,7 @@ A package is said to be overridden when it exists in two or more workspaces that
 This page lists known issues with overridding packages.
 
 .. contents:: Table of Contents
-    :depth: 2
+    :depth: 1
 
 Overridden package's Headers found before overriding package's headers
 ----------------------------------------------------------------------
