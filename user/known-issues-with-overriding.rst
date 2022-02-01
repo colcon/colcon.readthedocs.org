@@ -121,21 +121,49 @@ The version of ``baz`` built in the overlay must be compatible with the version 
 Renamed or deleted Python modules still importable
 --------------------------------------------------
 
+Consider an overlay containing a Python package ``pyfoo`` and an underlay containing a Python package ``pyfoo``.
+``pyfoo`` in the underlay installs the Python modules ``foo``, ``foo.bar``, and ``baz``.
+``pyfoo`` in the overlay installs only the Python modules ``foo``.
+
+When the overlay is active, users will still be able to import ``baz`` from the underlay version of ``pyfoo``
+However, they will not be able to import ``foo.bar`` because Python will find the ``foo`` package in overlay first, and that one does not contain ``bar``.
+
 When it applies
 +++++++++++++++
+
+* The package being overridden is a Python package
+* The overridden package installs top level modules not present in the overridding package
 
 How to avoid it
 +++++++++++++++
 
+There's not yet a workaround.
 
 One-definition rule violations caused by static linking
 -------------------------------------------------------
 
+Consider an overlay containing packages ``foo`` and ``bar``, and an underlay containing packages ``bar`` and ``baz``.
+``foo`` depends on ``bar`` and ``baz``.
+``baz`` depends on ``bar`` and has a library that statically links to another library in ``bar``.
+``foo`` has a library depending on both the mentioned library in ``baz`` and in ``bar``.
+
+When ``foo`` is used there are two definitions for symbols from ``bar``: the ones from the underlay version of ``bar`` via ``baz``, and the one from the overlay version of ``bar``.
+At runtime, the implmementations from the underlay version may be used.
+
 When it applies
 +++++++++++++++
 
+* a package in the underlay statically links to the overridden package
+* a package in the overlay depends on the overriding package and the ather package in the underlay
+
 How to avoid it
 +++++++++++++++
+
+Build everything above the overridden package from source
+*********************************************************
+
+This means all packages that directly or indirectly depend on the overridden package must be added to the overlay.
+In this example, that's just ``baz``.
 
 Python entry_points duplicated
 ------------------------------
