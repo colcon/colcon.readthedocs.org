@@ -13,27 +13,32 @@ This page lists known issues and offers tips for how to avoid them.
     :depth: 3
 
 
-How to avoid most issues when overriding packages
--------------------------------------------------
+How to avoid most issues when overridding
+-----------------------------------------
 
-Make sure the overriding package is API and ABI compatible
-**********************************************************
+Here is general advice describes how to avoid most issues.
+It has been simplified for ease of use, but if it is too restrictive for your case, then see the known issue descriptions for more complex advice.
 
-This advice applies when overriding a package which is depended upon by one or more packages in an underlay.
+Use isolated workspaces
+***********************
 
-The overriding package (the one in the overlay) must be API and `ABI compatible <https://stackoverflow.com/questions/2171177/what-is-an-application-binary-interface-abi>`_ with the same package in any underlay workspace.
+Don't use the ``--merge-install`` option if you suspect you will override a package in this workspace in the future.
+Merged workspaces can have issues include directories when overriding packages from them.
 
-Only override a leaf package or a leaf group of packages
-********************************************************
+If the underlay is a merged workspace, only override a package if it installs its headers to a unique directory
+***************************************************************************************************************
 
-This advice applies when you must override a package with a version that breaks API or ABI.
+If you must override a package in a merged underlay workspace, only do so if it installs its headers to a unique directory.
+You can figure this out by looking at the compile options needed to build a package.
+If the compiler needs ``--isystem <prefix>/include`` or ``-I<prefix>/include`` (where ``<prefix>`` is the path to the root of the workspace), then don't override the package.
+
+When overriding a non-leaf package, override everything that depends on it
+**************************************************************************
 
 A **leaf package** is one that has no other packages that depend on it.
-A **leaf group** of packages is a set of packages that may depend on each other, but no package outside of the group depends on one of its members.
 
 When possible only override leaf packages.
-If that is not possible, then override the leaf group starting with that package.
-That means you must also override every package that depends directly or transitively on the one you actually want to override.
+If you must override a non-leaf package then override every package that depends directly or transitively on the one you actually want to override.
 If there are multiple underlay workspaces, the group of overridden packages must span all of them.
 
 For example, say there are 3 workspaces (**A**, **B** and **C**) where **C** overlays **B** which overlays **A**.
@@ -42,49 +47,49 @@ For example, say there are 3 workspaces (**A**, **B** and **C**) where **C** ove
 **C** is the workspace being built, and you want to override ``foo`` with a version that changed a public API or broke ABI.
 You must also override ``baz``, ``ping``, and ``pong`` in **C**.
 
-Only override a package if the underlay containing it is an isolated workspace
-******************************************************************************
+If other issues prevent you from overriding one of these packages, then don't override any of them.
 
-This advice applies when overriding a package that contains headers.
+Only override a Python package with a version that has identical entry point specifications
+*******************************************************************************************
 
-When possible only override packages from isolated workspaces.
-That means don't override packages from underlay workspaces that were built with the ``colcon build --merge-install``.
+Only override packages that use dynamic linking
+***********************************************
 
-This advice is impossible if the underlay workspace was built by someone else.
-`ROS <https://www.ros.org/>`_ users should be aware that binary packages installed to ``/opt/ros/...`` are effectively in a merged workspace.
+How to make your package easy to override
+-----------------------------------------
 
-Use only packages in the underlay that install their headers to a unique directory
-**********************************************************************************
+Here is general advice to make it easier for users to override your package.
 
-This advice applies when overriding a package that contains headers and the underlay is a merged workspace.
+Install your package's headers to a unique include directory
+************************************************************
 
-Means you'd pass `-I underlay/foo/include/foo`, NOT `-I underlay/foo/include`.
+Install your packages headers to a unique folder rather than ``<prefix>/include``.
 
-Make all packages in the overlay depend on packages from the overlay before packages from the underlay 
-******************************************************************************************************
+Consider a CMake package that has a ``CMakeLists.txt`` and a folder ``include/`` containing headers.
+It can avoid its headers being found accidentally when it is overridden by installing its headers to ``include/${PROJECT_NAME}``.
 
-This advice applies when overriding a package that contains headers, the underlay is a merged workspace, and an overridden package installs its headers to a directory shared with another package.
+.. code-block:: CMake
 
-`ROS 1 <https://www.ros.org/>`_ users should be aware that ``find_package(catkin REQUIRED COMPONENTS ...)`` does this, but all packages in the overlay must use it to work.
+  install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 
-`CMake <https://cmake.org/>`_ users should be aware that ordering include directories according to the workspace order can be impractical when using modern CMake targets.
+All targets in your project should use the following to make it aware of the unique directory when exported.
 
-Avoid renaming or removing top-level Python modules
-***************************************************
+.. code-block:: CMake
 
-Top level modules can still be imported.
-Stuff in underlay may try to impor the old module
+    target_include_directories(some_target_name_here INTERFACE
+      "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+      "$<INSTALL_INTERFACE:include/${PROJECT_NAME}>")
 
-Avoid renaming or removing Python entry points
-**********************************************
+Dynamically link to libraries outside your package
+**************************************************
 
-Entrypoints are collected globally, so overriding only
+If your package ``foo`` statically links to ``libbar.lib`` from package ``bar``, then users can't override ``bar`` without also overriding yours.
+Prefer dynamic linking to ``libbar.so`` instead.
 
-When writing software that uses Python Entrypoints, ignore duplicates or prefer the last one
-********************************************************************************************
+Similarly, consider not providing static libraries so that other packages can't statically link to yours.
 
-Known issues with Overriding Packages
--------------------------------------
+All Known issues
+----------------
 
 Include Directory Search Order Problem
 **************************************
@@ -128,25 +133,10 @@ The only known implementation of sorting include directories according to worksp
 It requires all ``catkin`` packages to use CMake and old-style standard CMake variables.
 Include directories are searched in workspace order as long as all packages in the overlay only find other packages using ``find_package(catkin REQUIRED COMPONENTS ...)`` and then use only ``${catkin_INCLUDE_DIRS}`` to add include directories to their targets.
 
-Install headers to unique include directories
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Only override packages that install headers to unique include directories
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If every package in the underlay installs their headers to unique directories, then packages in the overlay cannot accidentally find headers when depending on other packages in the underlay.
-
-Consider a CMake package that has a ``CMakeLists.txt`` and a folder ``include/`` containing headers.
-It can avoid its headers being found accidentally by installing its headers to ``include/${PROJECT_NAME}``.
-
-.. code-block:: CMake
-
-  install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
-
-All targets in your project should use the following to make it aware of the unique directory when exported.
-
-.. code-block:: CMake
-
-    target_include_directories(some_target_name_here INTERFACE
-      "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
-      "$<INSTALL_INTERFACE:include/${PROJECT_NAME}>")
 
 
 Undefined behavior when overridden package breaks API
@@ -250,8 +240,8 @@ Build everything above the overridden package from source
 This means all packages that directly or indirectly depend on the overridden package must be added to the overlay.
 In this example, that's just ``baz``.
 
-Python entry_points duplicated
-******************************
+Python entry_points are duplicated
+**********************************
 
 When it applies
 +++++++++++++++
@@ -260,8 +250,8 @@ How to avoid it
 +++++++++++++++
 
 
-Deleted Python entry_points still loaded
-****************************************
+Deleted Python entry_points may still be loaded
+***********************************************
 
 When it applies
 +++++++++++++++
