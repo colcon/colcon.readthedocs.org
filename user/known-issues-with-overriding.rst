@@ -41,7 +41,7 @@ The group of overridden packages must span all underlays.
 
 Say there are 3 workspaces (**A**, **B** and **C**) where **C** overlays **B** which overlays **A**.
 **A** contains packages ``foo`` and ``baz`` where ``baz`` depends on ``foo``.
-**B** contains packages ``ping`` and ``pong`` that also depend on ``foo``.
+**B** contains packages ``ping`` that depends on ``foo``and  ``pong`` that depends on ``baz``.
 **C** is the workspace being built.
 If you want to override ``foo`` then you should also override ``baz``, ``ping``, and ``pong``.
 
