@@ -17,7 +17,7 @@ This page lists known issues and offers tips for how to avoid them.
 How to avoid most issues
 ------------------------
 
-This advice describes how to avoid most issues, and has been simplified for ease of use.
+This advice describes how to avoid most issues when overriding packages.
 See the known issue descriptions for more complex advice.
 
 Use isolated workspaces
@@ -48,32 +48,35 @@ If you want to override ``foo`` then you should also override ``baz``, ``ping``,
 Make sure overridden Python packages do not change entry point specifications
 *****************************************************************************
 
-Python packages may have [entrypoint specifications](https://packaging.python.org/en/latest/specifications/entry-points/) in a `setup.py` or `setup.cfg` file.
+Python packages may have `entry point specifications <https://packaging.python.org/en/latest/specifications/entry-points/>`_ in a `setup.py` or `setup.cfg` file.
 If overriding a package that provides entry points, make sure the overriding package has identical specifications, or only adds new ones.
 If any specification has been changed or removed then it may not be possible to override this package.
 
 How to make your package easier to override
 -------------------------------------------
 
-Here is general advice to make it easier for users to override your package.
+This section is for package authors.
+Following this advice will make it easier for others to use your package when overriding it or other pacakges.
 
-Install your package's headers to a unique include directory
-************************************************************
+Install headers to a unique include directory
+*********************************************
 
-Install your packages headers to a unique folder rather than ``<prefix>/include``.
+Install your package's headers to a unique folder rather than a shared folder.
+Say you're the author of a package ``foo``, and it has a header meant to be included like ``#include <foo/foo.hpp>``.
+Instead of installing the header to ``<prefix>/include/foo/foo.hpp``, install it to ``<prefix>/include/foo/foo/foo.hpp``.
 
-Consider a CMake package that has a ``CMakeLists.txt`` and a folder ``include/`` containing headers.
-It can avoid its headers being found accidentally when it is overridden by installing its headers to ``include/${PROJECT_NAME}``.
+Say the source of ``foo`` has the directory structure ``include/foo/foo.hpp``.
+It can install its headers to a unique directory by following:
 
 .. code-block:: CMake
 
   install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 
-All targets in your project should use the following to make it aware of the unique directory when exported.
+All targets in the project should export the unique include directory too.
 
 .. code-block:: CMake
 
-    target_include_directories(some_target_name_here INTERFACE
+    target_include_directories(some_library_in_foo INTERFACE
       "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
       "$<INSTALL_INTERFACE:include/${PROJECT_NAME}>")
 
@@ -83,7 +86,26 @@ Dynamically link to libraries outside your package
 If your package ``foo`` statically links to ``libbar.lib`` from package ``bar``, then users can't override ``bar`` without also overriding yours.
 Prefer dynamic linking to ``libbar.so`` instead.
 
-Similarly, consider not providing static libraries so that other packages can't statically link to yours.
+When loading entry points, ignore duplicates and use the last one found
+***********************************************************************
+
+If your package loads Python entry points and it encounters two specifications with the same name, then it should use the last specification returned by `entry_points() <https://docs.python.org/3/library/importlib.metadata.html#entry-points>`_.
+
+Here's how that might be done:
+
+.. code-block:: Python
+
+    from importlib.metadata import entry_points
+
+    # Deduplicate entry point specifications before loading any
+    deduplicated_entry_points = {}
+    for ep in entry_points()['your_group_name']:
+        deduplicated_entry_points[ep.name] = ep
+
+    # Now the deduplicated entry points can be loaded and used
+    for ep in deduplicated_entry_points:
+        inst = ep.load()
+        # ...
 
 All Known issues
 ----------------
@@ -134,7 +156,6 @@ Only override packages that install headers to unique include directories
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If every package in the underlay installs their headers to unique directories, then packages in the overlay cannot accidentally find headers when depending on other packages in the underlay.
-
 
 Undefined behavior when overridden package breaks API
 *****************************************************
