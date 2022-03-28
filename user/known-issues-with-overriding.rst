@@ -1,62 +1,59 @@
 Overriding Packages and Known Issues
 ====================================
 
-Two or more colcon workspaces can be active at the same time.
-This is called overlaying a workspace, and it's used to extend already-built workspaces with new packages.
-Earlier workspaces are called underlay workspaces, and later ones are called overlay workspaces.
+Multiple workspaces can be activated at the same time in the same terminal, but the order they're activated is important.
+Earlier workspaces are called **underlay workspaces**, and later ones are called **overlay workspaces**.
+Usualy overlay workspaces only add new packages, but they can also be used to change the version of a package.
+Replacing a package with an overlay workspace is called **overriding** a package.
 
-When a package exists in two or more workspaces that are active at the same time in the same terminal, the package in the latest overlay workspace **overrides** the same package in all underlay workspaces.
-Overriding a package is used to change the version of a package used, maybe to add features or fix bugs in the package, but it may not work in all cases.
+Overriding allows using a different version of a package - maybe one with more features or bug fixes -  without rebuilding the underlay.
+However, overriding a package is not always possible.
 This page lists known issues and offers tips for how to avoid them.
 
 .. contents:: Table of Contents
     :depth: 3
 
 
-How to avoid most issues when overridding
------------------------------------------
+How to avoid most issues
+------------------------
 
-Here is general advice describes how to avoid most issues.
-It has been simplified for ease of use, but if it is too restrictive for your case, then see the known issue descriptions for more complex advice.
+This advice describes how to avoid most issues, and has been simplified for ease of use.
+See the known issue descriptions for more complex advice.
 
 Use isolated workspaces
 ***********************
 
-Don't use the ``--merge-install`` option if you suspect you will override a package in this workspace in the future.
-Merged workspaces can have issues include directories when overriding packages from them.
+If you are building a workspace and suspect you may overriding a package from it in the future, then use an isolated workspace.
+This avoids include directory search order issues.
 
-If the underlay is a merged workspace, only override a package if it installs its headers to a unique directory
-***************************************************************************************************************
-
-If you must override a package in a merged underlay workspace, only do so if it installs its headers to a unique directory.
-You can figure this out by looking at the compile options needed to build a package.
-If the compiler needs ``--isystem <prefix>/include`` or ``-I<prefix>/include`` (where ``<prefix>`` is the path to the root of the workspace), then don't override the package.
-
-When overriding a non-leaf package, override everything that depends on it
-**************************************************************************
+Override every package that depends on the one you want to override
+*******************************************************************
 
 A **leaf package** is one that has no other packages that depend on it.
+A **non-leaf package** has at least one other package in an underlay workspace that depends on it.
 
-When possible only override leaf packages.
-If you must override a non-leaf package then override every package that depends directly or transitively on the one you actually want to override.
-If there are multiple underlay workspaces, the group of overridden packages must span all of them.
+Overriding a non-leaf package can be problematic.
+Packages in the underlay that depend on it are built against the underlay version, but will be expected to run with the overlay version.
+If their build process stores some information about the non-leaf package, such as an expected ABI, then undefined behavior can happen at runtime.
 
-For example, say there are 3 workspaces (**A**, **B** and **C**) where **C** overlays **B** which overlays **A**.
+If you must override a non-leaf package then override every package that directly or indirecctly depends on it.
+The group of overridden packages must span all underlays.
+
+Say there are 3 workspaces (**A**, **B** and **C**) where **C** overlays **B** which overlays **A**.
 **A** contains packages ``foo`` and ``baz`` where ``baz`` depends on ``foo``.
 **B** contains packages ``ping`` and ``pong`` that also depend on ``foo``.
-**C** is the workspace being built, and you want to override ``foo`` with a version that changed a public API or broke ABI.
-You must also override ``baz``, ``ping``, and ``pong`` in **C**.
+**C** is the workspace being built.
+If you want to override ``foo`` then you should also override ``baz``, ``ping``, and ``pong``.
 
-If other issues prevent you from overriding one of these packages, then don't override any of them.
+Make sure overridden Python packages do not change entry point specifications
+*****************************************************************************
 
-Only override a Python package with a version that has identical entry point specifications
-*******************************************************************************************
+Python packages may have [entrypoint specifications](https://packaging.python.org/en/latest/specifications/entry-points/) in a `setup.py` or `setup.cfg` file.
+If overriding a package that provides entry points, make sure the overriding package has identical specifications, or only adds new ones.
+If any specification has been changed or removed then it may not be possible to override this package.
 
-Only override packages that use dynamic linking
-***********************************************
-
-How to make your package easy to override
------------------------------------------
+How to make your package easier to override
+-------------------------------------------
 
 Here is general advice to make it easier for users to override your package.
 
