@@ -41,14 +41,14 @@ The group of overridden packages must span all underlays.
 
 Say there are 3 workspaces (**A**, **B** and **C**) where **C** overlays **B** which overlays **A**.
 **A** contains packages ``foo`` and ``baz`` where ``baz`` depends on ``foo``.
-**B** contains packages ``ping`` that depends on ``foo``and  ``pong`` that depends on ``baz``.
+**B** contains packages ``ping`` that depends on ``foo`` and  ``pong`` that depends on ``baz``.
 **C** is the workspace being built.
 If you want to override ``foo`` then you should also override ``baz``, ``ping``, and ``pong``.
 
 Make sure overridden Python packages do not change entry point specifications
 *****************************************************************************
 
-Python packages may have `entry point specifications <https://packaging.python.org/en/latest/specifications/entry-points/>`_ in a `setup.py` or `setup.cfg` file.
+Python packages may have `entry point specifications <https://packaging.python.org/en/latest/specifications/entry-points/>`_ in a ``setup.py`` or ``setup.cfg`` file.
 If overriding a package that provides entry points, make sure the overriding package has identical specifications, or only adds new ones.
 If any specification has been changed or removed then it may not be possible to override this package.
 
