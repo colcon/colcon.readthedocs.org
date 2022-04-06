@@ -9,7 +9,7 @@ The newest workspace is called an **overlay workspace**.
 If there are multiple existing workspaces, each one sourced is said to **overlay** the previous one.
 
 Overriding a package is not always possible.
-This page lists known issues and offers tips for how to avoid them.
+This page lists known issues and offers tips for avoidding them.
 
 .. contents:: Table of Contents
     :depth: 3
