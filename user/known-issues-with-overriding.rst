@@ -138,12 +138,11 @@ When it can happen
 How to avoid it
 +++++++++++++++
 
-
 Use isolated workspaces
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Isolated workspaces install each package to their own folder, meaning no two installed packages will have the same include directory.
-This is not always possible.
+If your underlay is a merged workspace, then no two packages in it will have the same include directory.
+Using isolated workspaces won't help if your underlay is merged workspace.
 
 Sort include directories according to the workspace order
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -162,10 +161,10 @@ Undefined behavior when overridden package breaks API
 
 Consider an overlay containing ``bar``, and an underlay containing ``bar`` and ``baz``.
 ``baz`` depends on ``bar``.
-If ``bar`` in the overlay changed an API used by ``baz``, then it is undefined what will happen when ``baz`` is used at runtime.
+If ``bar`` in the overlay changed an API used by ``baz``, then undefined will result when ``baz`` is used at runtime.
 
-When it applies
-+++++++++++++++
+When it can happen
+++++++++++++++++++
 
 * The overriding package removed or changed APIs compaired to the overridden package
 * A package in the underlay depends on the overridden package
@@ -176,10 +175,8 @@ How to avoid it
 Build everything above the overridden package from source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This means all packages that directly or indirectly depend on the overridden package must be added to the overlay.
-In this example, that's just ``baz``.
-The version of ``baz`` built in the overlay must be compatible with the version of ``bar`` in the overlay.
-
+If an API has changed, then every package in the underlay which depends on the overridden package (directly or indirectly) must be overridden too.
+You may have to find different versions of those packages that are compatible with the API changes.
 
 Undefined behavior when overridden package breaks ABI
 *****************************************************
@@ -188,8 +185,8 @@ Consider an overlay containing ``bar``, and an underlay containing ``bar`` and `
 ``baz`` depends on ``bar``.
 If ``bar`` in the overlay changed ABI, then it is undefined what will happen when ``baz`` is used at runtime.
 
-When it applies
-+++++++++++++++
+When it can happen
+++++++++++++++++++
 
 * The overridden package uses a compiled language (C/C++, etc)
 * The overriding package is ABI incompatible with the overridden one.
@@ -197,19 +194,11 @@ When it applies
 How to avoid it
 +++++++++++++++
 
-Make sure the overriding package is ABI compatible
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Review the changes between the overridden and overridding package to make sure they are ABI compatible.
-`Here are some pointers for C++ <https://community.kde.org/Policies/Binary_Compatibility_Issues_With_C%2B%2B>`_.
-
 Build everything above the overridden package from source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This means all packages that directly or indirectly depend on the overridden package must be added to the overlay.
-In this example, that's just ``baz``.
-The version of ``baz`` built in the overlay must be compatible with the version of ``bar`` in the overlay.
-
+If ABI has changed, then every package in the underlay which depends on the overridden package (directly or indirectly) must be overridden too.
+If only ABI has changed, the same versions of those packages can be used because they only need to be recompiled.
 
 Renamed or deleted Python modules still importable
 **************************************************
@@ -221,8 +210,8 @@ Consider an overlay containing a Python package ``pyfoo`` and an underlay contai
 When the overlay is active, users will still be able to import ``baz`` from the underlay version of ``pyfoo``
 However, they will not be able to import ``foo.bar`` because Python will find the ``foo`` package in overlay first, and that one does not contain ``bar``.
 
-When it applies
-+++++++++++++++
+When it can happen
+++++++++++++++++++
 
 * The package being overridden is a Python package
 * The overridden package installs top level modules not present in the overridding package
@@ -230,7 +219,7 @@ When it applies
 How to avoid it
 +++++++++++++++
 
-There's not yet a workaround.
+No workaround is known yet.
 
 One-definition rule violations caused by static linking
 *******************************************************
@@ -243,8 +232,8 @@ Consider an overlay containing packages ``foo`` and ``bar``, and an underlay con
 When ``foo`` is used there are two definitions for symbols from ``bar``: the ones from the underlay version of ``bar`` via ``baz``, and the one from the overlay version of ``bar``.
 At runtime, the implmementations from the underlay version may be used.
 
-When it applies
-+++++++++++++++
+When it can happen
+++++++++++++++++++
 
 * a package in the underlay statically links to the overridden package
 * a package in the overlay depends on the overriding package and the ather package in the underlay
@@ -256,23 +245,43 @@ Build everything above the overridden package from source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This means all packages that directly or indirectly depend on the overridden package must be added to the overlay.
-In this example, that's just ``baz``.
+The same versions of those packages can be used because they only need to be recompiled.
 
 Python entry_points are duplicated
 **********************************
 
-When it applies
-+++++++++++++++
+Consider a package ``pyfoo`` that has an entry point specification  ``foobar = pyfoo.bar:baz``.
+If ``pyfoo`` is overridden and the overridden version has same specification, then the entry point will be listed twice.
+Whether or not it is a problem depends on how those entry points are loaded.
+
+If the code loading entry points loads all of them without checking for duplicates, then the same entry points may be used twice.
+
+When it can happen
+++++++++++++++++++
+
+* A python package providing entrypoints is overridden with a version that provides the same specification.
 
 How to avoid it
 +++++++++++++++
 
+When it's a problem, there's no known workaround.
 
 Deleted Python entry_points may still be loaded
 ***********************************************
 
-When it applies
-+++++++++++++++
+Consider a package ``pyfoo`` that has an entry point specification  ``foobar = pyfoo.bar:baz``.
+say ``pyfoo`` is overridden and the overridden version does not have that specification.
+Whether or not it is a problem depends on whether the specification is still importable, and how that entry point is used.
+
+If the specification is still importable, then entry points from the underlay may be run undesirably.
+If the specification is not importable, then the code loading them must gracefully handle import errors.
+
+When it can happen
+++++++++++++++++++
+
+* A python package providing entrypoints is overridden with a version that omits an entry point available in the underlay.
 
 How to avoid it
 +++++++++++++++
+
+When it's a problem, there's no known workaround.
