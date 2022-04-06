@@ -1,13 +1,14 @@
-Overriding Packages and Known Issues
-====================================
+Overriding Packages
+===================
 
-Multiple workspaces can be activated at the same time in the same terminal, but the order they're activated is important.
-Earlier workspaces are called **underlay workspaces**, and later ones are called **overlay workspaces**.
-Usualy overlay workspaces only add new packages, but they can also be used to change the version of a package.
-Replacing a package with an overlay workspace is called **overriding** a package.
+Sometimes it's desirable to change the version of a package in a workspace after it's been built without rebuilding the workspace.
+This is called **overriding** the package.
+It's accomplished by sourcing the existing workspace, then building the package again in a new workspace.
+The existing workspace is called an **underlay workspace**.
+The newest workspace is called an **overlay workspace**.
+If there are multiple existing workspaces, each one sourced is said to **overlay** the previous one.
 
-Overriding allows using a different version of a package - maybe one with more features or bug fixes -  without rebuilding the underlay.
-However, overriding a package is not always possible.
+Overriding a package is not always possible.
 This page lists known issues and offers tips for how to avoid them.
 
 .. contents:: Table of Contents
@@ -17,7 +18,7 @@ This page lists known issues and offers tips for how to avoid them.
 How to avoid most issues
 ------------------------
 
-This advice describes how to avoid most issues when overriding packages.
+This advice describes how to avoid most issues when overriding packages, however it's still possible to run into issues.
 See the known issue descriptions for more complex advice.
 
 Use isolated workspaces
@@ -33,10 +34,10 @@ A **leaf package** is one that has no other packages that depend on it.
 A **non-leaf package** has at least one other package in an underlay workspace that depends on it.
 
 Overriding a non-leaf package can be problematic.
-Packages in the underlay that depend on it are built against the underlay version, but will be expected to run with the overlay version.
+Packages in the underlay were built against the underlay version, but will be expected to run with the overlay version.
 If their build process stores some information about the non-leaf package, such as an expected ABI, then undefined behavior can happen at runtime.
 
-If you must override a non-leaf package then override every package that directly or indirecctly depends on it.
+Problems caused by packages remembering information at build time can be avoided by overriding every package that directly or indirectly depends on the one you actually want to override.
 The group of overridden packages must span all underlays.
 
 Say there are 3 workspaces (**A**, **B** and **C**) where **C** overlays **B** which overlays **A**.
@@ -49,14 +50,13 @@ Make sure overridden Python packages do not change entry point specifications
 *****************************************************************************
 
 Python packages may have `entry point specifications <https://packaging.python.org/en/latest/specifications/entry-points/>`_ in a ``setup.py`` or ``setup.cfg`` file.
-If overriding a package that provides entry points, make sure the overriding package has identical specifications, or only adds new ones.
+Make sure the package in the overlay has identical specifications to the version in the underlay, or only adds new ones.
 If any specification has been changed or removed then it may not be possible to override this package.
 
-How to make your package easier to override
--------------------------------------------
+How to make it easier for your users override
+---------------------------------------------
 
-This section is for package authors.
-Following this advice will make it easier for others to use your package when overriding it or other pacakges.
+This section has advice for package authors about how to make easier for others to use your package and overriding it or other pacakges.
 
 Install headers to a unique include directory
 *********************************************
@@ -65,14 +65,14 @@ Install your package's headers to a unique folder rather than a shared folder.
 Say you're the author of a package ``foo``, and it has a header meant to be included like ``#include <foo/foo.hpp>``.
 Instead of installing the header to ``<prefix>/include/foo/foo.hpp``, install it to ``<prefix>/include/foo/foo/foo.hpp``.
 
-Say the source of ``foo`` has the directory structure ``include/foo/foo.hpp``.
-It can install its headers to a unique directory by following:
+Here's an example.
+If your package ``foo`` has the directory structure ``include/foo/foo.hpp``, then in CMake it can install its headers to a unique directory with this:
 
 .. code-block:: CMake
 
   install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 
-All targets in the project should export the unique include directory too.
+All exported targets in your project should export the unique include directory too.
 
 .. code-block:: CMake
 
@@ -86,26 +86,30 @@ Dynamically link to libraries outside your package
 If your package ``foo`` statically links to ``libbar.lib`` from package ``bar``, then users can't override ``bar`` without also overriding yours.
 Prefer dynamic linking to ``libbar.so`` instead.
 
-When loading entry points, ignore duplicates and use the last one found
-***********************************************************************
+Handling Python entry point specifications
+******************************************
 
 If your package loads Python entry points and it encounters two specifications with the same name, then it should use the last specification returned by `entry_points() <https://docs.python.org/3/library/importlib.metadata.html#entry-points>`_.
+It should also ignore entry points that can't be loaded.
 
-Here's how that might be done:
+Here's how that can be done:
 
 .. code-block:: Python
 
     from importlib.metadata import entry_points
 
-    # Deduplicate entry point specifications before loading any
+    # Deduplicate entry point specifications before loading
     deduplicated_entry_points = {}
+    # When faced with duplicates, this loop keeps the last entry point found
     for ep in entry_points()['your_group_name']:
         deduplicated_entry_points[ep.name] = ep
 
-    # Now the deduplicated entry points can be loaded and used
     for ep in deduplicated_entry_points:
-        inst = ep.load()
-        # ...
+        try:
+            inst = ep.load()
+        except ImportError:
+            # Ignore entry point specifications that can't be loaded
+            pass
 
 All Known issues
 ----------------
@@ -113,8 +117,8 @@ All Known issues
 Include Directory Search Order Problem
 **************************************
 An overridden package's headers might be included instead of the overriding package's.
-This may present as: no issues, or a failure to build, or undefined behavior at runtime.
-If the wrong headers are found the the behavior depend on the differences between the overriding and overridden package's headers.
+The behavior depends on the differences between the overriding and overridden package's headers.
+It may cause no issues, a failure to build, or undefined behavior at runtime.
 
 Example:
 ++++++++
