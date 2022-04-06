@@ -3,13 +3,12 @@ Overriding Packages
 
 Sometimes it's desirable to change the version of a package in a workspace after it's been built without rebuilding the workspace.
 This is called **overriding** the package.
-It's accomplished by sourcing the existing workspace, then building the package again in a new workspace.
-The existing workspace is called an **underlay workspace**.
-The newest workspace is called an **overlay workspace**.
-If there are multiple existing workspaces, each one sourced is said to **overlay** the previous one.
+It's accomplished by sourcing the existing workspace, then building a different version of that package again in a new workspace.
+The existing workspace is called an **underlay workspace**, and the new one is an **overlay workspace**.
+If there are multiple existing workspaces then each one sourced is said to **overlay** the previous one.
 
 Overriding a package is not always possible.
-This page lists known issues and offers tips for avoidding them.
+This page offers tips for avoiding most issues.
 
 .. contents:: Table of Contents
     :depth: 3
@@ -18,8 +17,8 @@ This page lists known issues and offers tips for avoidding them.
 How to avoid most issues
 ------------------------
 
-This advice describes how to avoid most issues when overriding packages, however it's still possible to run into issues.
-See the known issue descriptions for more complex advice.
+These are good practices to avoid most issues.
+If the advice is too restrictive then see the known issue descriptions for more complex advice.
 
 Use isolated workspaces
 ***********************
@@ -31,10 +30,8 @@ Override every package that depends on the one you want to override
 *******************************************************************
 
 A **leaf package** is one that has no other packages that depend on it.
-A **non-leaf package** has at least one other package in an underlay workspace that depends on it.
-
 Overriding a non-leaf package can be problematic.
-Packages in the underlay were built against the underlay version, but will be expected to run with the overlay version.
+Packages in the underlay were built against the underlay version of the package, but they will be expected to run with the overlay version.
 If their build process stores some information about the non-leaf package, such as an expected ABI, then undefined behavior can happen at runtime.
 
 Problems caused by packages remembering information at build time can be avoided by overriding every package that directly or indirectly depends on the one you actually want to override.
@@ -56,7 +53,7 @@ If any specification has been changed or removed then it may not be possible to 
 How to make it easier for your users override
 ---------------------------------------------
 
-This section has advice for package authors about how to make easier for others to use your package and overriding it or other pacakges.
+This section has advice for package authors about how to make easier for your users to use your package and override it or other pacakges.
 
 Install headers to a unique include directory
 *********************************************
@@ -72,7 +69,7 @@ If your package ``foo`` has the directory structure ``include/foo/foo.hpp``, the
 
   install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 
-All exported targets in your project should export the unique include directory too.
+All exported targets in your project need to export the unique include directory too.
 
 .. code-block:: CMake
 
@@ -92,7 +89,7 @@ Handling Python entry point specifications
 If your package loads Python entry points and it encounters two specifications with the same name, then it should use the last specification returned by `entry_points() <https://docs.python.org/3/library/importlib.metadata.html#entry-points>`_.
 It should also ignore entry points that can't be loaded.
 
-Here's how that can be done:
+Here's how to do it:
 
 .. code-block:: Python
 
@@ -116,17 +113,13 @@ All Known issues
 
 Include Directory Search Order Problem
 **************************************
-An overridden package's headers might be included instead of the overriding package's.
-The behavior depends on the differences between the overriding and overridden package's headers.
-It may cause no issues, a failure to build, or undefined behavior at runtime.
+When overriding a package, it's possible for packages to find its headers from the underlay instead of the overlay.
+This may cause a failure to build or undefined behavior at runtime depending on the differences between those headers.
 
-Example:
-++++++++
 Consider an overlay containing package ``foo`` and ``bar``, and an underlay containing ``bar`` and ``baz``.
 ``foo`` depends on ``bar`` and ``baz``.
-The underlay is a merged workspace, and both the overriden ``bar`` and ``baz`` install their headers to a directory called ``include/``.
+Say the underlay is a merged workspace, and both the overriden ``bar`` and ``baz`` install their headers to a directory called ``include/``.
 If any libraries or executables in ``foo`` are configured to search for headers in ``baz``'s include directory first, then headers from overridden ``bar`` will also be found first.
-This can cause a failure to build ``foo``, or undefined behavior at runtime when using ``foo`` depending on the differences between overridden ``bars``'s and overriding ``bar``'s headers.
 
 When it can happen
 ++++++++++++++++++
@@ -145,8 +138,8 @@ How to avoid it
 Use isolated workspaces
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-If your underlay is a merged workspace, then no two packages in it will have the same include directory.
-Using isolated workspaces won't help if your underlay is merged workspace.
+If your underlay is an isolated workspace, then no two packages in it will have the same include directory.
+Using an isolated overlay workspace won't help if your underlay is already a merged workspace.
 
 Sort include directories according to the workspace order
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -165,7 +158,7 @@ Undefined behavior when overridden package breaks API
 
 Consider an overlay containing ``bar``, and an underlay containing ``bar`` and ``baz``.
 ``baz`` depends on ``bar``.
-If ``bar`` in the overlay changed an API used by ``baz``, then undefined will result when ``baz`` is used at runtime.
+If ``bar`` in the overlay changed an API used by ``baz``, then the behavior of ``baz`` at runtime is undefined.
 
 When it can happen
 ++++++++++++++++++
@@ -180,7 +173,7 @@ Build everything above the overridden package from source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If an API has changed, then every package in the underlay which depends on the overridden package (directly or indirectly) must be overridden too.
-You may have to find different versions of those packages that are compatible with the API changes.
+You will need to find versions of those packages that are compatible with the API changes.
 
 Undefined behavior when overridden package breaks ABI
 *****************************************************
@@ -223,7 +216,7 @@ When it can happen
 How to avoid it
 +++++++++++++++
 
-No workaround is known yet.
+No workaround is known yet, but it's unlikely to cause problems unless combined with another issue.
 
 One-definition rule violations caused by static linking
 *******************************************************
@@ -240,7 +233,7 @@ When it can happen
 ++++++++++++++++++
 
 * a package in the underlay statically links to the overridden package
-* a package in the overlay depends on the overriding package and the ather package in the underlay
+* a package in the overlay depends on the overriding package and the package in the underlay
 
 How to avoid it
 +++++++++++++++
@@ -275,7 +268,6 @@ Deleted Python entry_points may still be loaded
 
 Consider a package ``pyfoo`` that has an entry point specification  ``foobar = pyfoo.bar:baz``.
 say ``pyfoo`` is overridden and the overridden version does not have that specification.
-Whether or not it is a problem depends on whether the specification is still importable, and how that entry point is used.
 
 If the specification is still importable, then entry points from the underlay may be run undesirably.
 If the specification is not importable, then the code loading them must gracefully handle import errors.
