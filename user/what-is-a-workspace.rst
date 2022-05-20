@@ -17,13 +17,13 @@ A workspace has these parts:
 All these parts are usually put into a single folder.
 Lets create a single folder for our workspace.
 
-..code-block:: bash
+.. code-block:: bash
 
 	mkdir ws
 
-Lets go into the root of our new workspace
+Go into the root of our new workspace.
 
-..code-block:: bash
+.. code-block:: bash
 
 	cd ws
 
@@ -35,7 +35,7 @@ A workspace needs to have the source code of all the software packages to be bui
 Colcon will search all subfolders of the workspace to look for packages, but an established convention is to put all the packages into a directory called ``src``.
 Let's create a directory for source code.
 
-..code-block:: bash
+.. code-block:: bash
 
 	mkdir src
 
@@ -51,7 +51,7 @@ Let's create a Python package.
 
 Put this content into ``src/foo/setup.py``:
 
-..code-block:: Python
+.. code-block:: Python
 
 	from setuptools import setup
 
@@ -59,7 +59,7 @@ Put this content into ``src/foo/setup.py``:
 
 Put this content into ``src/foo/setup.cfg``:
 
-..code-block:: Python
+.. code-block:: Python
 	[metadata]
 	name = foo
 	version = 0.1.0
@@ -78,7 +78,7 @@ Put this content into ``src/foo/setup.cfg``:
 
 Put this content into ``src/foo/foo.py``:
 
-..code-block:: Python
+.. code-block:: Python
 
 	def foo_func():
 		print('Hello from foo.py')
@@ -94,13 +94,13 @@ Colcon always directs packages to build out-of-source, meaning the build artifac
 Every package gets its own build directory, but all build directories are put into a single base directory.
 That single directory is called the ``build base``, and by default it's named  ``build`` at the root of the workspace.
 
-..note::
+.. note::
 
 	You can change where build artifacts are put using the ``--build-base`` option to ``colcon build``.
 
 Lets build the software and see its build artifacts.
 
-..code-block:: bash
+.. code-block:: bash
 
 	# Make sure you run this command from the root of the workspace!
 	# cd ws
@@ -109,7 +109,7 @@ Lets build the software and see its build artifacts.
 You'll see these new folders: ``build``, ``install``, and ``log``.
 
 
-..code-block::
+.. code-block::
 
 	ws
 	├── build
@@ -133,7 +133,7 @@ If you've built software before you know there can be a lot of console output, b
 This output was instead written to the ``log`` directory.
 Let's look at it.
 
-..code-block::
+.. code-block::
 
 	log
 	├── build_2022-05-20_11-50-03
@@ -149,7 +149,7 @@ Let's look at it.
 	├── latest -> latest_build
 	└── latest_build -> build_2022-05-20_11-50-03
 
-..note::
+.. note::
 
 	The ``--event-handlers`` argument can be used to output build logs to the console. For example, ``colcon build --event-handlers console_direct+`` will output everything in real time.
 
@@ -162,8 +162,8 @@ The symlink ``latest_build`` always point to the most recent build.
 	TODO(sloretz) what is events.log and logger_all.log?
 
 The folder ``log/build_<date anmd time>/foo`` contains all logs from building ``foo``.
-``command.log`` shows the commands colcon ran to build the package.
-``stderr.log`` and ``stdout.log`` show the console output produced while building ``foo``.
+The file ``command.log`` shows the commands colcon ran to build the package.
+The files ``stderr.log`` and ``stdout.log`` show the console output produced while building ``foo``.
 ``stdout_stderror.log``
 
 ..
@@ -176,13 +176,13 @@ Let's add tests to ``foo`` and see the output.
 
 Make a new file for the test.
 
-..code-block:: bash
+.. code-block:: bash
 
 	touch src/foo/test_foo.py
 
 Put the following content into ``test_foo.py``:
 
-..code-block:: Python
+.. code-block:: Python
 
 	import unittest
 	
@@ -199,10 +199,16 @@ Put the following content into ``test_foo.py``:
 	    unittest.main()
 
 
-Run ``colcon test``.
+Tell ``colcon`` to run the tests.
+
+.. code-block:: bash
+
+	# Make sure you run this command from the root of the workspace!
+	colcon test
+
 Lets look in the ``log`` folder again.
 
-..code-block::
+.. code-block::
 
 	log
 	├── build_2022-05-20_11-50-03/...
@@ -225,11 +231,11 @@ A new symlink ``latest_test`` was created, and it points to a new folder ``log/t
 This holds the console output from running the test.
 Checkout ``stdout_stderr.log``  and see the output of the latest test
 
-..code-block:: bash
+.. code-block:: bash
 
 	cat log/latest_test/foo/stdout_stderr.log
 
-..note::
+.. note::
 
 	The command ``colcon test-result`` outputs a summary of test results to the console.
 	Full test output can be printed to the console in real time with
