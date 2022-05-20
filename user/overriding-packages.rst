@@ -113,7 +113,8 @@ All Known issues
 
 Include Directory Search Order Problem
 **************************************
-When overriding a package, it's possible for packages to find its headers from the underlay instead of the overlay.
+
+When overriding a package, it's possible for a package to find its headers from the underlay instead of the overlay.
 This may cause a failure to build or undefined behavior at runtime depending on the differences between those headers.
 
 Consider an overlay containing package ``foo`` and ``bar``, and an underlay containing ``bar`` and ``baz``.
