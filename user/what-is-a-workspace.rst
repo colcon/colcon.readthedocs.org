@@ -89,8 +89,8 @@ Put this content into ``src/foo/foo.py``:
 Build artifacts
 ***************
 
-When software is built, the build process often produces intermediate build artifacts.
-They are usually not used directly, but they can be reused to speed up building if packages are built again.
+The software build process often produces intermediate build artifacts.
+They are usually not used directly, but hey can be reused to make subsequent builds faster.
 Colcon always directs packages to build out-of-source, meaning the build artifacts are put into a directory separate from the source code.
 Every package gets its own build directory, but all build directories are put into a single base directory.
 That single directory is called the ``build base``, and by default it's named  ``build`` at the root of the workspace.
