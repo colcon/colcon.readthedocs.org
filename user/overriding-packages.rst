@@ -8,7 +8,7 @@ The existing workspace is called an **underlay workspace**, and the new one is a
 If there are multiple existing workspaces then each one sourced is said to **overlay** the previous one.
 
 Overriding a package is not always possible.
-This page offers tips for avoiding most issues.
+This page offers tips for avoiding common issues.
 
 .. contents:: Table of Contents
     :depth: 3
