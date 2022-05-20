@@ -230,7 +230,7 @@ Checkout ``stdout_stderr.log``  and see the output of the latest test
 
 .. note::
 
-	Full test output can be printed to the console in real time with
+	The test's output can be printed to the console in real time with
 	``colcon test --event-handlers console_direct+``.
 
 .. note::
