@@ -21,6 +21,7 @@ Lets create a single folder for our workspace.
 
 	mkdir ws
 
+This is our **workspace root**.
 Go into the root of our new workspace.
 
 .. code-block:: bash
@@ -31,7 +32,7 @@ Go into the root of our new workspace.
 Software packages
 *****************
 
-A workspace needs to have the source code of all the software packages to be built.
+To build software packages, a workspace needs the source code of all the software to be built.
 Colcon will search all subfolders of the workspace to look for packages, but an established convention is to put all the packages into a directory called ``src``.
 Let's create a directory for source code.
 
@@ -42,7 +43,7 @@ Let's create a directory for source code.
 We'll need at least one software package in the workspace.
 Let's create a Python package.
 
-..code-block:: bash
+.. code-block:: bash
 
 	mkdir src/foo
 	touch src/foo/setup.py
@@ -51,7 +52,7 @@ Let's create a Python package.
 
 Put this content into ``src/foo/setup.py``:
 
-.. code-block:: Python
+.. code-block:: python
 
 	from setuptools import setup
 
@@ -59,7 +60,8 @@ Put this content into ``src/foo/setup.py``:
 
 Put this content into ``src/foo/setup.cfg``:
 
-.. code-block:: Python
+.. code-block:: ini
+
 	[metadata]
 	name = foo
 	version = 0.1.0
@@ -78,7 +80,7 @@ Put this content into ``src/foo/setup.cfg``:
 
 Put this content into ``src/foo/foo.py``:
 
-.. code-block:: Python
+.. code-block:: python
 
 	def foo_func():
 		print('Hello from foo.py')
@@ -108,8 +110,7 @@ Lets build the software and see its build artifacts.
 
 You'll see these new folders: ``build``, ``install``, and ``log``.
 
-
-.. code-block::
+::
 
 	ws
 	├── build
@@ -131,9 +132,15 @@ Logs
 
 If you've built software before you know there can be a lot of console output, but you might have noticed not much was output when you ran ``colcon build``.
 This output was instead written to the ``log`` directory.
-Let's look at it.
 
-.. code-block::
+.. note::
+
+	The ``--event-handlers`` argument can be used to output build logs to the console. For example, ``colcon build --event-handlers console_direct+`` will output everything in real time.
+
+
+Let's look at the ``log`` directory.
+
+::
 
 	log
 	├── build_2022-05-20_11-50-03
@@ -149,10 +156,6 @@ Let's look at it.
 	├── latest -> latest_build
 	└── latest_build -> build_2022-05-20_11-50-03
 
-.. note::
-
-	The ``--event-handlers`` argument can be used to output build logs to the console. For example, ``colcon build --event-handlers console_direct+`` will output everything in real time.
-
 
 The directory ``log/build_<date and time>`` contains all logs from the invocation of ``colcon build``.
 A new folder is created every time ``colcon build`` is run.
@@ -161,7 +164,7 @@ The symlink ``latest_build`` always point to the most recent build.
 ..
 	TODO(sloretz) what is events.log and logger_all.log?
 
-The folder ``log/build_<date anmd time>/foo`` contains all logs from building ``foo``.
+The  ``foo`` directory contains all logs from building ``foo``.
 The file ``command.log`` shows the commands colcon ran to build the package.
 The files ``stderr.log`` and ``stdout.log`` show the console output produced while building ``foo``.
 ``stdout_stderror.log``
@@ -182,7 +185,7 @@ Make a new file for the test.
 
 Put the following content into ``test_foo.py``:
 
-.. code-block:: Python
+.. code-block:: python
 
 	import foo
 
@@ -199,7 +202,7 @@ Tell ``colcon`` to run the tests.
 
 Lets look in the ``log`` folder again.
 
-.. code-block::
+::
 
 	log
 	├── build_2022-05-20_11-50-03/...
@@ -230,7 +233,10 @@ Checkout ``stdout_stderr.log``  and see the output of the latest test
 
 	Full test output can be printed to the console in real time with
 	``colcon test --event-handlers console_direct+``.
-	The command ``colcon test-result`` outputs a summary of test results to the console after tests have been run.
+
+.. note::
+
+	Use the command ``colcon test-result`` to see a summary of test results on the console after tests have been run.
 
 
 
@@ -238,11 +244,16 @@ Install artifacts
 *****************
 
 The last folder to talk about is the ``install`` folder.
-It contains both the installed software, and shell scripts.
+It contains both the installed software, and shell scripts that enable you to use it.
+This is sometimes called the **install space**.
 
-Let's look inside it.
+.. note::
 
-.. code-block::
+	You can change where packages are installed to with the ``--install-base`` option to ``colcon build``.
+
+Let's look inside.
+
+::
 
 	install
 	├── COLCON_IGNORE
@@ -251,22 +262,57 @@ Let's look inside it.
 	├── _local_setup_util_[sh|ps1|...].py
 	└── setup.[bash|bat|ps1|sh|zsh|...]
 
+The package ``foo`` was installed into the folder ``install/foo``.
 By default colcon builds an **isolated workspace**.
-That means every package is installed to its own folder.
-The package ``foo`` was installed into ``install/foo``.
+That means every package is installed into its own folder.
 
-..code-block:: Python
+The shell scripts set environment variables that allow you to use the the software.
+You'll need to invoke the shell scripts, which is commonly called **sourcing a workspace**.
+
+.. node::
+
+	Always source a workspace from a different terminal than the one you used ``colcon build``.
+	Failure to do so can prevent colcon from detecting incorrect dependencies.
+
+..
+	TODO(sloretz) what's the difference between local_setup and setup?
+
+Source the workspace using the appropriate script for your shell.
+
+``sh`` compatible shells:
+
+.. code-block:: sh
+
+	# Note the . at the front; that's important!
+	. install/setup.bash
+
+``bash``:
+
+.. code-block:: bash
+
+	source install/setup.bash
+
+Windows ``cmd.exe``:
+
+.. code-block:: bat
+
+	call install/setup.bat
+
+
+.. node::
+
+	Always source a workspace from a different terminal than the one you used ``colcon build``.
+	Failure to do so can prevent colcon from detecting incorrect dependencies.
+
+Now you can use ``foo``.
+Open a ``python`` interactive console and try it out.
+
+.. code-block:: python
 
 	>>> import foo
 	>>> foo.foo_func()
 	Hello from foo.py
 	True
-
-
-.. note::
-
-	You can change where packages are installed to with the ``--install-base`` option to ``colcon build``.
-
 
 Conclusion
 ----------
