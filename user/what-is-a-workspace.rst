@@ -32,7 +32,7 @@ Software packages
 *****************
 
 A workspace needs the source code of all the software to be built.
-Colcon will search all subdirectorys of the workspace to look for packages, but an established convention is to put all the packages into a directory called ``src``.
+Colcon will search all subdirectories of the workspace to look for packages, but an established convention is to put all the packages into a directory called ``src``.
 Let's create a directory for source code.
 
 .. code-block:: bash
@@ -107,7 +107,7 @@ Lets build the software and see its build artifacts.
 	# cd ws
 	colcon build
 
-You'll see these new directorys: ``build``, ``install``, and ``log``.
+You'll see these new directories: ``build``, ``install``, and ``log``.
 
 ::
 
