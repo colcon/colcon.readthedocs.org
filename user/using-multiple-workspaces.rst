@@ -16,9 +16,9 @@ Workspaces are **independent** if neither workspace has a package that depends o
 	source bar_ws/install/setup.bash
 
 
-When sourcing more then two workspaces each workspace is said to **overlay** the previous one.
 The first workspace ``foo_ws`` is called the **underlay workspace**.
 The second, ``bar_ws``, is called the **overlay workspace**.
+When sourcing more then two workspaces each workspace is said to **overlay** the previous one.
 
 Independent workspaces can usually be sourced in any order.
 
