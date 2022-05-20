@@ -90,7 +90,7 @@ Build artifacts
 ***************
 
 The software build process often produces intermediate build artifacts.
-They are usually not used directly, but hey can be reused to make subsequent builds faster.
+They are usually not used directly, but keeping them around makes subsequent builds faster.
 Colcon always directs packages to build out-of-source, meaning the build artifacts are put into a directory separate from the source code.
 Every package gets its own build directory, but all build directories are put into a single base directory.
 That single directory is called the ``build base``, and by default it's named  ``build`` at the root of the workspace.
