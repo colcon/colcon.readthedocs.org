@@ -284,7 +284,7 @@ Source the workspace using the appropriate script for your shell.
 .. code-block:: sh
 
 	# Note the . at the front; that's important!
-	. install/setup.bash
+	. install/setup.sh
 
 ``bash``:
 

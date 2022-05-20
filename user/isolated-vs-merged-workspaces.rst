@@ -76,4 +76,4 @@ Conclusion
 ----------
 
 Now you know the difference between an isolated and a merged workspace.
-Next checkout :doc:`this documentation on using multiple workspaces <chaining-multiple-workspaces>`.
+Next checkout :doc:`this documentation on using multiple workspaces <using-multiple-workspaces>`.

@@ -1,11 +1,10 @@
 Overriding Packages
 ===================
 
-Sometimes it is desirable to change the version of a package in a workspace after it's been built without rebuilding the workspace.
-This is called **overriding** the package.
-It's accomplished by sourcing the existing workspace, then building a different version of that package again in a new workspace.
-The existing workspace is called an **underlay workspace**, and the new one is an **overlay workspace**.
-If there are multiple existing workspaces then each one sourced is said to **overlay** the previous one.
+Assuming you know :doc:`what a workspace is <what-is-a-workspace>` and :doc:`how to use multiple workspaces<using-multiple-workspaces>`, you may decide you want to change the version of a package in an underlay without rebuilding the whole chain of workspaces.
+
+This can be done by  **overriding** the package.
+It is accomplished by sourcing the existing workspace, then building a different version of that package again in a new workspace.
 
 Overriding a package is not always possible.
 This page offers tips for avoiding common issues.
