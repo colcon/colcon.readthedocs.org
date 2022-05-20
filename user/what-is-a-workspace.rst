@@ -168,7 +168,7 @@ The symlink ``latest_build`` always point to the most recent build.
 The  ``foo`` directory contains all logs from building ``foo``.
 The file ``command.log`` shows the commands colcon ran to build the package.
 The files ``stderr.log`` and ``stdout.log`` show the console output produced while building ``foo``.
-``stdout_stderror.log``
+The file ``stdout_stderr.log`` shows stdout and stderr interleaved as they were emitted.
 
 ..
 	TODO(sloretz) what is streams.log?
