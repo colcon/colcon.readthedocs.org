@@ -121,6 +121,7 @@ You'll see these new folders: ``build``, ``install``, and ``log``.
 	└── src
 	    └── foo
 	        ├── foo.py
+	        ├── setup.cfg
 	        └── setup.py
 
 Notice the ``build`` directory has a subdirectory ``foo`` and a file ``COLCON_IGNORE``.
