@@ -269,7 +269,7 @@ That means every package is installed into its own folder.
 The shell scripts set environment variables that allow you to use the the software.
 You'll need to invoke the shell scripts, which is commonly called **sourcing a workspace**.
 
-.. node::
+.. note::
 
 	Always source a workspace from a different terminal than the one you used ``colcon build``.
 	Failure to do so can prevent colcon from detecting incorrect dependencies.
