@@ -62,8 +62,7 @@ Install your package's headers to a unique folder rather than a shared folder.
 Say you're the author of a package ``foo``, and it has a header meant to be included like ``#include <foo/foo.hpp>``.
 Instead of installing the header to ``<prefix>/include/foo/foo.hpp``, install it to ``<prefix>/include/foo/foo/foo.hpp``.
 
-Here's an example.
-If your package ``foo`` has the directory structure ``include/foo/foo.hpp``, then in CMake it can install its headers to a unique directory with this:
+If you have a CMake package ``foo``  with the directory structure ``include/foo/foo.hpp``, then it can install its headers to a unique directory with this:
 
 .. code-block:: CMake
 
