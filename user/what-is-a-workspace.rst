@@ -299,7 +299,7 @@ Windows ``cmd.exe``:
 	call install/setup.bat
 
 
-.. node::
+.. note::
 
 	Always source a workspace from a different terminal than the one you used ``colcon build``.
 	Failure to do so can prevent colcon from detecting incorrect dependencies.
