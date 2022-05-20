@@ -256,7 +256,7 @@ If the code loading entry points loads all of them without checking for duplicat
 When it can happen
 ++++++++++++++++++
 
-* A python package providing entrypoints is overridden with a version that provides the same specification.
+* A python package providing entry points is overridden with a version that provides the same specification.
 
 How to avoid it
 +++++++++++++++
