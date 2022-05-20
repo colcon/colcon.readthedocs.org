@@ -318,4 +318,4 @@ Conclusion
 ----------
 
 Now you know what a colcon workspace is and how it's layed out.
-Next checkout `this documentation on isolated versus merged workspaces <isolated-vs-merged-workspaces>`_.
+Next checkout :doc:`this documentation on isolated versus merged workspaces <isolated-vs-merged-workspaces>`.
