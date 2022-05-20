@@ -2,7 +2,7 @@ What is a Workspace?
 ====================
 
 Colcon is a command line tool to build and test multiple software packages.
-Those packages are built and tested in a workspace, but what is a workspace?
+Those packages are built and tested in a **colcon workspace**, but what is a workspace?
 
 What's in a workspace?
 ----------------------
@@ -228,23 +228,48 @@ Checkout ``stdout_stderr.log``  and see the output of the latest test
 
 .. note::
 
-	The command ``colcon test-result`` outputs a summary of test results to the console.
 	Full test output can be printed to the console in real time with
 	``colcon test --event-handlers console_direct+``.
+	The command ``colcon test-result`` outputs a summary of test results to the console after tests have been run.
+
 
 
 Install artifacts
 *****************
 
-Just the install space is still called a workspace.
-Merged vs isolated
+The last folder to talk about is the ``install`` folder.
+It contains both the installed software, and shell scripts.
 
-Look at install folder
-Source shell scripts
+Let's look inside it.
+
+.. code-block::
+
+	install
+	├── COLCON_IGNORE
+	├── foo/...
+	├── local_setup.[bash|bat|ps1|sh|zsh|...]
+	├── _local_setup_util_[sh|ps1|...].py
+	└── setup.[bash|bat|ps1|sh|zsh|...]
+
+By default colcon builds an **isolated workspace**.
+That means every package is installed to its own folder.
+The package ``foo`` was installed into ``install/foo``.
+
+..code-block:: Python
+
+	>>> import foo
+	>>> foo.foo_func()
+	Hello from foo.py
+	True
 
 
-Using multiple workspaces
--------------------------
+.. note::
 
-Underlays and overlays
-Warning about overriding, and link to overriding packages issues.
+	You can change where packages are installed to with the ``--install-base`` option to ``colcon build``.
+
+
+Conclusion
+----------
+
+Now you know what a colcon workspace is and how it's layed out.
+Next checkout `this documentation on isolated versus merged workspaces <isolated-vs-merged-workspaces>`_.
