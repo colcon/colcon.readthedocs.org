@@ -211,7 +211,7 @@ When it can happen
 ++++++++++++++++++
 
 * The package being overridden is a Python package
-* The overridden package installs top level modules not present in the overridding package
+* The overridden package installs top level modules not present in the overriding package
 
 How to avoid it
 +++++++++++++++
