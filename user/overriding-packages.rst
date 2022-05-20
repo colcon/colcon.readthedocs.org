@@ -14,8 +14,8 @@ This page offers tips for avoiding most issues.
     :depth: 3
 
 
-How to avoid most issues
-------------------------
+How to avoid common issues
+--------------------------
 
 These are good practices to avoid common issues.
 If the advice is too restrictive then see the known issue descriptions for more complex advice.
