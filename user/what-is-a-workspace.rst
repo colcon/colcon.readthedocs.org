@@ -9,7 +9,7 @@ What's in a workspace?
 
 A workspace has these parts:
 
-* Source code
+* Software packages
 * Build artifacts
 * Logs
 * Install artifacts
