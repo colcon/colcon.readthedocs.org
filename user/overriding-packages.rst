@@ -17,7 +17,7 @@ This page offers tips for avoiding most issues.
 How to avoid most issues
 ------------------------
 
-These are good practices to avoid most issues.
+These are good practices to avoid common issues.
 If the advice is too restrictive then see the known issue descriptions for more complex advice.
 
 Use isolated workspaces
