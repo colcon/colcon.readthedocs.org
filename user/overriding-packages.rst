@@ -139,7 +139,7 @@ Use isolated workspaces
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 If your underlay is an isolated workspace, then no two packages in it will have the same include directory.
-Using an isolated overlay workspace won't help if your underlay is already a merged workspace.
+Using an isolated overlay workspace won't help if your underlay is already a merged workspace (for example, the default ROS installation when installed from binary packages).
 
 Sort include directories according to the workspace order
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
