@@ -2,26 +2,25 @@ What is a Workspace?
 ====================
 
 Colcon is a command line tool to build and test multiple software packages.
-Those packages are built and tested in a **colcon workspace**, but what is a workspace?
+It builds and tests those packages in a **colcon workspace**, but what is a workspace?
 
 What's in a workspace?
 ----------------------
 
 A workspace has these parts:
 
-* Software packages to be built and tested
-* Build artifacts of all packages that have been built
-* Logs of the build process
-* Install artifacts of all packages that have been built
+* Source code
+* Build artifacts
+* Logs
+* Install artifacts
 
-All these parts are usually put into a single folder.
-Lets create a single folder for our workspace.
+All these parts are usually put into a single directory, called the **workspace root**.
+Lets create a single directory for our workspace.
 
 .. code-block:: bash
 
 	mkdir ws
 
-This is our **workspace root**.
 Go into the root of our new workspace.
 
 .. code-block:: bash
@@ -33,7 +32,7 @@ Software packages
 *****************
 
 To build software packages, a workspace needs the source code of all the software to be built.
-Colcon will search all subfolders of the workspace to look for packages, but an established convention is to put all the packages into a directory called ``src``.
+Colcon will search all subdirectorys of the workspace to look for packages, but an established convention is to put all the packages into a directory called ``src``.
 Let's create a directory for source code.
 
 .. code-block:: bash
@@ -108,7 +107,7 @@ Lets build the software and see its build artifacts.
 	# cd ws
 	colcon build
 
-You'll see these new folders: ``build``, ``install``, and ``log``.
+You'll see these new directorys: ``build``, ``install``, and ``log``.
 
 ::
 
@@ -126,7 +125,7 @@ You'll see these new folders: ``build``, ``install``, and ``log``.
 
 Notice the ``build`` directory has a subdirectory ``foo`` and a file ``COLCON_IGNORE``.
 The ``foo`` subdirectory has all the build artifacts produced when building ``foo``.
-The ``COLCON_IGNORE`` file tells colcon there are no software packages in this folder.
+The ``COLCON_IGNORE`` file tells colcon there are no software packages in this directory.
 
 Logs
 ****
@@ -159,7 +158,7 @@ Let's look at the ``log`` directory.
 
 
 The directory ``log/build_<date and time>`` contains all logs from the invocation of ``colcon build``.
-A new folder is created every time ``colcon build`` is run.
+A new directory is created every time ``colcon build`` is run.
 The symlink ``latest_build`` always point to the most recent build.
 
 ..
@@ -201,7 +200,7 @@ Tell ``colcon`` to run the tests.
 	# Make sure you run this command from the root of the workspace!
 	colcon test
 
-Lets look in the ``log`` folder again.
+Lets look in the ``log`` directory again.
 
 ::
 
@@ -222,7 +221,7 @@ Lets look in the ``log`` folder again.
 	    └── logger_all.log
 
 
-A new symlink ``latest_test`` was created, and it points to a new folder ``log/test_<date and time>``.
+A new symlink ``latest_test`` was created, and it points to a new directory ``log/test_<date and time>``.
 This holds the console output from running the test.
 Checkout ``stdout_stderr.log``  and see the output of the latest test
 
@@ -244,7 +243,7 @@ Checkout ``stdout_stderr.log``  and see the output of the latest test
 Install artifacts
 *****************
 
-The last folder to talk about is the ``install`` folder.
+The last directory to talk about is the ``install`` directory.
 It contains both the installed software, and shell scripts that enable you to use it.
 This is sometimes called the **install space**.
 
@@ -263,9 +262,9 @@ Let's look inside.
 	├── _local_setup_util_[sh|ps1|...].py
 	└── setup.[bash|bat|ps1|sh|zsh|...]
 
-The package ``foo`` was installed into the folder ``install/foo``.
+The package ``foo`` was installed into the directory ``install/foo``.
 By default colcon builds an **isolated workspace**.
-That means every package is installed into its own folder.
+That means every package is installed into its own directory.
 
 The shell scripts set environment variables that allow you to use the the software.
 You'll need to invoke the shell scripts, which is commonly called **sourcing a workspace**.
