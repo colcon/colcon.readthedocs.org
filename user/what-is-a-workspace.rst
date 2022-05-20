@@ -184,19 +184,10 @@ Put the following content into ``test_foo.py``:
 
 .. code-block:: Python
 
-	import unittest
-	
 	import foo
-	
-	
-	class TestStringMethods(unittest.TestCase):
-	
-	    def test_foo(self):
-	        self.assertTrue(foo.foo_func())
-	
-	
-	if __name__ == '__main__':
-	    unittest.main()
+
+	def test_foo():
+	    assert foo.foo_func()
 
 
 Tell ``colcon`` to run the tests.
