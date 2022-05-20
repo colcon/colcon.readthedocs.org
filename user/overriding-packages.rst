@@ -163,7 +163,7 @@ If ``bar`` in the overlay changed an API used by ``baz``, then the behavior of `
 When it can happen
 ++++++++++++++++++
 
-* The overriding package removed or changed APIs compaired to the overridden package
+* The overriding package removed or changed APIs compared to the overridden package
 * A package in the underlay depends on the overridden package
 
 How to avoid it
