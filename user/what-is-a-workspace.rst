@@ -104,7 +104,6 @@ Lets build the software and see its build artifacts.
 .. code-block:: bash
 
 	# Make sure you run this command from the root of the workspace!
-	# cd ws
 	colcon build
 
 You'll see these new directories: ``build``, ``install``, and ``log``.
