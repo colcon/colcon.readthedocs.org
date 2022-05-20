@@ -280,4 +280,4 @@ When it can happen
 How to avoid it
 +++++++++++++++
 
-When it's a problem, there's no known workaround.
+There is no known workaround.
