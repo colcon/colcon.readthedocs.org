@@ -37,7 +37,7 @@ If their build process stores some information about the non-leaf package, such 
 Problems caused by packages remembering information at build time can be avoided by overriding every package that directly or indirectly depends on the one you actually want to override.
 The group of overridden packages must span all underlays.
 
-Say there are 3 workspaces (**A**, **B** and **C**) where **C** overlays **B** which overlays **A**.
+Say there are 3 workspaces, **A**, **B** and **C**, where **C** overlays **B** and **B** overlays **A**.
 **A** contains packages ``foo`` and ``baz`` where ``baz`` depends on ``foo``.
 **B** contains packages ``ping`` that depends on ``foo`` and  ``pong`` that depends on ``baz``.
 **C** is the workspace being built.
