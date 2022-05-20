@@ -31,7 +31,7 @@ Go into the root of our new workspace.
 Software packages
 *****************
 
-To build software packages, a workspace needs the source code of all the software to be built.
+A workspace needs the source code of all the software to be built.
 Colcon will search all subdirectorys of the workspace to look for packages, but an established convention is to put all the packages into a directory called ``src``.
 Let's create a directory for source code.
 
