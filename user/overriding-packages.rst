@@ -50,8 +50,8 @@ Python packages may have `entry point specifications <https://packaging.python.o
 Make sure the package in the overlay has identical specifications to the version in the underlay, or only adds new ones.
 If any specification has been changed or removed then it may not be possible to override this package.
 
-How to make it easier for your users override
----------------------------------------------
+How to make it easier for your users to override
+------------------------------------------------
 
 This section has advice for package authors about how to make easier for your users to use your package and override it or other pacakges.
 
