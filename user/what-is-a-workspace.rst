@@ -14,7 +14,7 @@ A workspace has these parts:
 * Logs
 * Install artifacts
 
-All these parts are usually put into a single directory, called the **workspace root**.
+All these parts are put into different subdirectories of single directory, called the **workspace root**.
 Lets create a single directory for our workspace.
 
 .. code-block:: bash
