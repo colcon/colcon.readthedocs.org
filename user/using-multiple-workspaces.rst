@@ -47,7 +47,7 @@ Source the underlay in an new terminal and build the overlay.
 	colcon build
 
 In this example ``pong_ws`` overlays ``ping_ws``.
-``pong_ws`` may use package that depend on packages in ``ping_ws``, but ``ping_ws`` may not depend on packages in ``pong_ws``.
+``pong_ws`` may have a package that depends on packages in ``ping_ws``, but ``ping_ws`` cannot have a package that depends on packages in ``pong_ws``.
 
 Only the last workspace in a chain needs to be sourced.
 
@@ -66,5 +66,5 @@ Extending workspaces has no known issues and is the most common use case.
 
 It is also possible for an overlay workspace to contain a different version of a package that already exists in one of the underlay workspaces.
 This is called **overriding a package**.
-Ideally the version in the overlay workspace should be the one used when the workspace chain is sourced, but that can't be guaranteed in general.
+Ideally the version in the overlay workspace should be the one used when the workspace chain is sourced, but that doesn't work in all cases.
 See :doc:`overriding-packages` for more information about known issues.
