@@ -1,4 +1,4 @@
-Isolated vs Merged workspaces
+Isolated vs Merged Workspaces
 =============================
 
 Assuming you know :doc:`what a workspace is <what-is-a-workspace>`, you know that by default colcon builds an **isolated workspace**.
