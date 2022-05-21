@@ -59,7 +59,7 @@ Only the last workspace in a chain needs to be sourced.
 You can chain any numger of workspaces together by repeating these step with more overlay workspace.
 
 Extending workspaces versus overriding packages
-***********************************************
+-----------------------------------------------
 
 An overlay workspace **extends** an underlay workspace when it provides new packages.
 Extending workspaces has no known issues and is the most common use case.
