@@ -312,9 +312,3 @@ Open a ``python`` interactive console and try it out.
 	>>> foo.foo_func()
 	Hello from foo.py
 	True
-
-Conclusion
-----------
-
-Now you know what a colcon workspace is and how it's layed out.
-Next checkout :doc:`this documentation on isolated versus merged workspaces <isolated-vs-merged-workspaces>`.
