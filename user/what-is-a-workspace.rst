@@ -158,7 +158,7 @@ Let's look at the ``log`` directory.
 
 The directory ``log/build_<date and time>`` contains all logs from the invocation of ``colcon build``.
 A new directory is created every time ``colcon build`` is run.
-The symlink ``latest_build`` always point to the most recent build.
+The symlink ``latest_build`` always points to the most recent build.
 
 ..
 	TODO(sloretz) what is events.log and logger_all.log?
