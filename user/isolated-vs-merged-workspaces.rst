@@ -38,7 +38,7 @@ Building an isolated workspace just means every software package is installed in
 An isolated workspace has some advantages.
 When colcon tests a package in an isolated workspace it will only give the tests access to the install artifacts of the depdencencies it declares.
 This allows users to catch undeclared dependencies.
-An isolated workspace also allows doing a clean install of a single package by deleting just that package's directory.
+An isolated workspace also allows removing a single package's install artifacts by deleting its directory.
 
 
 Merged Workspace
