@@ -141,9 +141,9 @@ Using an isolated overlay workspace won't help if your underlay is already a mer
 Sort include directories according to the workspace order
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The only known implementation of sorting include directories according to workspace order is in ``catkin`` in ROS 1.
-It requires all ``catkin`` packages to use CMake and old-style standard CMake variables.
-Include directories are searched in workspace order as long as all packages in the overlay only find other packages using ``find_package(catkin REQUIRED COMPONENTS ...)`` and then use only ``${catkin_INCLUDE_DIRS}`` to add include directories to their targets.
+One solution is to sort include directories before passing them to the compiler such that headers are found in overlay workspaces before underlays.
+This requires making the build system for every package in an overlay aware of workspaces and the order they were sourced.
+The only known implementation of this is in ``catkin`` in ROS 1.
 
 Only override packages that install headers to unique include directories
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
