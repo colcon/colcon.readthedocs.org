@@ -183,7 +183,7 @@ When it can happen
 ++++++++++++++++++
 
 * The overridden package uses a compiled language (C/C++, etc.)
-* The overriding package is ABI incompatible with the overridden one.
+* The overriding package is ABI incompatible with the overridden one
 
 How to avoid it
 +++++++++++++++
