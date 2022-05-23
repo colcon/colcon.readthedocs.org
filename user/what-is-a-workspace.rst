@@ -45,6 +45,7 @@ Let's create a Python package.
 .. code-block:: bash
 
 	mkdir src/foo
+	touch src/foo/setup.cfg
 	touch src/foo/setup.py
 	touch src/foo/foo.py
 
