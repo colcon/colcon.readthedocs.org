@@ -1,7 +1,7 @@
 Overriding Packages
 ===================
 
-Assuming you know :doc:`what a workspace is <what-is-a-workspace>` and :doc:`how to use multiple workspaces<using-multiple-workspaces>`, you may decide you want to change the version of a package in an underlay without rebuilding the whole chain of workspaces.
+Assuming you know :doc:`what a workspace is <what-is-a-workspace>` and :doc:`how to use multiple workspaces <using-multiple-workspaces>`, you may decide you want to change the version of a package in an underlay without rebuilding the whole chain of workspaces.
 This can be done by  **overriding** the package.
 It is accomplished by sourcing an existing workspace, then building a different version of that package again in a new overlay workspace.
 
