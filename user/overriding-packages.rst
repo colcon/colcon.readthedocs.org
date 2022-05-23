@@ -192,7 +192,8 @@ Build everything above the overridden package from source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If ABI has changed, then every package in the underlay which depends on the overridden package (directly or indirectly) must be overridden too.
-If only ABI has changed, the same versions of those packages can be used because they only need to be recompiled.
+If only ABI has changed, then no changes to the packages are needed.
+Compiling them again is enough.
 
 Renamed or deleted Python modules still importable
 **************************************************
@@ -238,8 +239,9 @@ How to avoid it
 Build everything above the overridden package from source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This means all packages that directly or indirectly depend on the overridden package must be added to the overlay.
-The same versions of those packages can be used because they only need to be recompiled.
+All packages directly or indirectly depending on the overridden package must be added to the overlay.
+No changes to the packages are needed.
+Compiling them again is enough.
 
 Python entry_points are duplicated
 **********************************
