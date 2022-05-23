@@ -298,12 +298,6 @@ Windows ``cmd.exe``:
 
 	call install/setup.bat
 
-
-.. note::
-
-	Always source a workspace from a different terminal than the one you used ``colcon build``.
-	Failure to do so can prevent colcon from detecting incorrect dependencies.
-
 Now you can use ``foo``.
 Open a ``python`` interactive console and try it out.
 
