@@ -263,8 +263,7 @@ Let's look inside.
 	└── setup.[bash|bat|ps1|sh|zsh|...]
 
 The package ``foo`` was installed into the directory ``install/foo``.
-By default colcon builds an **isolated workspace**.
-That means every package is installed into its own directory.
+By default colcon builds an **isolated workspace** (for more info see :doc:`isolated-vs-merged-workspaces`).
 
 The shell scripts set environment variables that allow you to use the the software.
 You'll need to invoke the shell scripts, which is commonly called **sourcing a workspace**.
