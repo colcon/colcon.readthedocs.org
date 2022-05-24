@@ -2,7 +2,7 @@ Using Multiple Workspaces
 =========================
 
 Assuming you know :doc:`what a workspace is <what-is-a-workspace>`, you know **sourcing a workspace** allows you to use the installed software.
-It is possible use software from multiple workspaces at the same time.
+It is possible to use software from multiple workspaces at the same time.
 
 Using multiple independent workspaces
 -------------------------------------
