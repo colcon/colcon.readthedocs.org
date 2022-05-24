@@ -21,7 +21,7 @@ If the advice is too restrictive then see the known issue descriptions for more 
 Use isolated workspaces
 ***********************
 
-If you are building a workspace and suspect you may overriding a package from it in the future, then use an isolated workspace.
+If you are building a workspace and suspect you may override a package from it in the future, then use an isolated workspace.
 This avoids include directory search order issues.
 See :doc:`this documentation <isolated-vs-merged-workspaces>` if you're unsure what an isolated workspace is.
 
