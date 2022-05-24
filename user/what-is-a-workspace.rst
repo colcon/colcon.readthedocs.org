@@ -137,10 +137,9 @@ This output was instead written to the ``log`` directory.
 
 .. note::
 
-	The ``--event-handlers`` argument can be used to output build logs to the console. For example, ``colcon build --event-handlers console_direct+`` will output everything in real time.
+    You can change where logs are written to using the ``--log-base`` option to ``colcon``.
 
-
-Let's look at the ``log`` directory.
+Let's look at the ``log`` directory:
 
 ::
 
@@ -161,21 +160,9 @@ Let's look at the ``log`` directory.
 
 The directory ``log/build_<date and time>`` contains all logs from the invocation of ``colcon build``.
 A new directory is created every time ``colcon build`` is run.
-The symlink ``latest_build`` always points to the most recent build.
+The  ``foo`` sub directory contains all logs from building ``foo``.
+There's a more complete description of log files at this page: :doc:`log-files`.
 
-..
-	TODO(sloretz) what is events.log and logger_all.log?
-
-The  ``foo`` directory contains all logs from building ``foo``.
-The file ``command.log`` shows the commands colcon ran to build the package.
-The files ``stderr.log`` and ``stdout.log`` show the console output produced while building ``foo``.
-The file ``stdout_stderr.log`` shows stdout and stderr interleaved as they were emitted.
-
-..
-	TODO(sloretz) what is streams.log?
-
-
-The ``log`` directory contains logs from building and testing packages.
 We've only built ``foo``, so there are only build logs.
 Let's add tests to ``foo`` and see the output.
 
@@ -223,18 +210,12 @@ Lets look in the ``log`` directory again.
 	    └── logger_all.log
 
 
-A new symlink ``latest_test`` was created, and it points to a new directory ``log/test_<date and time>``.
-This holds the console output from running the test.
-Checkout ``stdout_stderr.log``  and see the output of the latest test
+There's a new directory ``test_<date and time>``.
+Let's look at ``stdout_stderr.log``  to see the output of the latest test.
 
 .. code-block:: bash
 
 	cat log/latest_test/foo/stdout_stderr.log
-
-.. note::
-
-	The test's output can be printed to the console in real time with
-	``colcon test --event-handlers console_direct+``.
 
 .. note::
 
