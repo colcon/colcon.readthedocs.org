@@ -69,5 +69,5 @@ The ``lib`` and ``share`` directories are now directly in ``install``.
 
 Building a merged workspace just means every software package is installed into the same directory.
 
-A merged workspace is advantageous on platforms where environment variables have a maximum length, such as Windows 10.
+A merged workspace is advantageous on platforms where environment variables length is more tightly constrained, such as Windows 10.
 Environment variables set by the shell scripts, such as ``PYTHONPATH``, will be shorter because there only needs to be one entry for all of the installed packages.
