@@ -78,8 +78,8 @@ All exported targets in your project need to export the unique include directory
 Dynamically link to libraries outside your package
 **************************************************
 
-If your package ``foo`` statically links to ``libbar.lib`` from package ``bar``, then users can't override ``bar`` without also overriding yours.
-Prefer dynamic linking to ``libbar.so`` instead.
+If your package ``foo`` statically links to a library from package ``bar``, then users can't override ``bar`` without also overriding yours.
+Prefer dynamic linking instead.
 
 Handling Python entry point specifications
 ******************************************
