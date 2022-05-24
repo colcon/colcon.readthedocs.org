@@ -31,7 +31,7 @@ Override every package that depends on the one you want to override
 A **leaf package** is one that has no other packages that depend on it.
 Overriding a non-leaf package can be problematic.
 Packages in the underlay were built against the underlay version of the package, but they will be expected to run with the overlay version.
-If their build process stores some information about the non-leaf package, such as an expected ABI, then undefined behavior can happen at runtime.
+If their build process stores some information about the non-leaf package, such as an expected ABI, then the behavior at runtime is unpredicatable.
 
 Problems caused by packages remembering information at build time can be avoided by overriding every package that directly or indirectly depends on the one you actually want to override.
 The group of overridden packages must span all underlays.
@@ -113,7 +113,7 @@ Include Directory Search Order Problem
 **************************************
 
 When overriding a package, it's possible for another package to find that package's headers from the underlay instead of the overlay.
-This may cause a failure to build or undefined behavior at runtime depending on the differences between those headers.
+This may cause a failure to build or unexpected behavior at runtime depending on the differences between those headers.
 
 Consider an overlay containing package ``foo`` and ``bar``, and an underlay containing ``bar`` and ``baz``.
 ``foo`` depends on ``bar`` and ``baz``.
@@ -150,12 +150,12 @@ Only override packages that install headers to unique include directories
 
 If every package in the underlay installs their headers to unique directories, then packages in the overlay cannot accidentally find headers when depending on other packages in the underlay.
 
-Undefined behavior when overridden package breaks API
-*****************************************************
+Unpredictable behavior when overridden package breaks API
+*********************************************************
 
 Consider an overlay containing ``bar``, and an underlay containing ``bar`` and ``baz``.
 ``baz`` depends on ``bar``.
-If ``bar`` in the overlay changed an API used by ``baz``, then the behavior of ``baz`` at runtime is undefined.
+If ``bar`` in the overlay changed an API used by ``baz``, then the behavior of ``baz`` at runtime can't be predicted.
 
 When it can happen
 ++++++++++++++++++
@@ -177,7 +177,7 @@ Undefined behavior when overridden package breaks ABI
 
 Consider an overlay containing ``bar``, and an underlay containing ``bar`` and ``baz``.
 ``baz`` depends on ``bar``.
-If ``bar`` in the overlay changed ABI, then it is undefined what will happen when ``baz`` is used at runtime.
+If ``bar`` in the overlay changed ABI, then it is unpredictable what will happen when ``baz`` is used at runtime.
 
 When it can happen
 ++++++++++++++++++
