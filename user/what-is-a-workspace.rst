@@ -4,6 +4,8 @@ What is a Workspace?
 Colcon is a command line tool to build and test multiple software packages.
 It builds and tests those packages in a **colcon workspace**, but what is a workspace?
 
+This page assumes you have ``colcon-common-extensions`` installed.
+
 What's in a workspace?
 ----------------------
 
