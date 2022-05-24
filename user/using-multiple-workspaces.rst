@@ -56,7 +56,7 @@ Only the last workspace in a chain needs to be sourced.
 	# Sourcing pong_ws automatically sources ping_ws first
 	source pong_ws/install/setup.bash
 
-You can chain any numger of workspaces together by repeating these step with more overlay workspace.
+You can chain any number of workspaces together by repeating these step with more overlay workspace.
 
 Extending workspaces versus overriding packages
 -----------------------------------------------
