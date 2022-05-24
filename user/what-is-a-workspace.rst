@@ -256,9 +256,6 @@ Invoking the shell scripts is called **sourcing a workspace**.
 	Always source a workspace from a different terminal than the one you used ``colcon build``.
 	Failure to do so can prevent colcon from detecting incorrect dependencies.
 
-..
-	TODO(sloretz) what's the difference between local_setup and setup?
-
 Source the workspace using the appropriate script for your shell.
 
 ``sh`` compatible shells:

@@ -56,6 +56,10 @@ Only the last workspace in a chain needs to be sourced.
 	# Sourcing pong_ws automatically sources ping_ws first
 	source pong_ws/install/setup.bash
 
+.. note::
+
+	Use ``local_setup.[sh|bash|bat|...]`` if you want to source a workspace without automatically sourcing the underlays it depends on, such as when you've already sourced the underlay.
+
 You can chain any number of workspaces together by repeating these step with more overlay workspace.
 
 Extending workspaces versus overriding packages
