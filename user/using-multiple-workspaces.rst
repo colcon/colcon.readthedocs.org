@@ -64,7 +64,7 @@ Extending workspaces versus overriding packages
 An overlay workspace **extends** an underlay workspace when it provides new packages.
 Extending workspaces has no known issues and is the most common use case.
 
-It is also possible for an overlay workspace to contain a different version of a package that already exists in one of the underlay workspaces.
+It is also possible for an overlay workspace to contain a different version of a package which has already been built in one of the underlay workspaces.
 This is called **overriding a package**.
 Ideally the version in the overlay workspace should be the one used when the workspace chain is sourced, but that doesn't work in all cases.
 See :doc:`overriding-packages` for more information about known issues.
