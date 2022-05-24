@@ -249,7 +249,7 @@ The package ``foo`` was installed into the directory ``install/foo``.
 By default colcon builds an **isolated workspace** (for more info see :doc:`isolated-vs-merged-workspaces`).
 
 The shell scripts set environment variables that allow you to use the the software.
-You'll need to invoke the shell scripts, which is commonly called **sourcing a workspace**.
+Invoking the shell scripts is called **sourcing a workspace**.
 
 .. note::
 
@@ -289,3 +289,6 @@ Open a ``python`` interactive console and try it out.
 	>>> foo.foo_func()
 	Hello from foo.py
 	True
+
+Sourcing a workspace also allows you to build more software that depends on the packages in it.
+For more info about using colcon to build software that depends on packages in another workspace, see :doc:`using-multiple-workspaces`.
