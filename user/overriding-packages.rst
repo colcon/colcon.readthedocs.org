@@ -31,7 +31,7 @@ Override every package that depends on the one you want to override
 A **leaf package** is one that has no other packages that depend on it.
 Overriding a non-leaf package can be problematic.
 Packages in the underlay were built against the underlay version of the package, but they will be expected to run with the overlay version.
-If their build process stores some information about the non-leaf package, such as an expected ABI, then the behavior at runtime is unpredicatable.
+If their build process stores some information about the non-leaf package, such as an expected ABI, then the behavior at runtime is unpredictable.
 
 Problems caused by packages remembering information at build time can be avoided by overriding every package that directly or indirectly depends on the one you actually want to override.
 The group of overridden packages must span all underlays.
@@ -52,7 +52,7 @@ If any specification has been changed or removed then it may not be possible to 
 How to make it easier for your users to override
 ------------------------------------------------
 
-This section has advice for package authors about how to make easier for your users to use your package and override it or other pacakges.
+This section has advice for package authors about how to make easier for your users to use your package and override it or other packages.
 
 Install headers to a unique include directory
 *********************************************
@@ -117,7 +117,7 @@ This may cause a failure to build or unexpected behavior at runtime depending on
 
 Consider an overlay containing package ``foo`` and ``bar``, and an underlay containing ``bar`` and ``baz``.
 ``foo`` depends on ``bar`` and ``baz``.
-Say the underlay is a merged workspace, and both the overriden ``bar`` and ``baz`` install their headers to a directory called ``include/``.
+Say the underlay is a merged workspace, and both the overridden ``bar`` and ``baz`` install their headers to a directory called ``include/``.
 If any libraries or executables in ``foo`` are configured to search for headers in ``baz``'s include directory first, then headers from overridden ``bar`` will also be found first.
 
 When it can happen
@@ -225,7 +225,7 @@ Consider an overlay containing packages ``foo`` and ``bar``, and an underlay con
 ``foo`` has a library depending on both the mentioned library in ``baz`` and in ``bar``.
 
 When ``foo`` is used there are two definitions for symbols from ``bar``: the ones from the underlay version of ``bar`` via ``baz``, and the one from the overlay version of ``bar``.
-At runtime, the implmementations from the underlay version may be used.
+At runtime, the implementations from the underlay version may be used.
 
 When it can happen
 ++++++++++++++++++
@@ -274,7 +274,7 @@ If the specification is not importable, then the code loading them must graceful
 When it can happen
 ++++++++++++++++++
 
-* A python package providing entrypoints is overridden with a version that omits an entry point available in the underlay.
+* A python package providing entry points is overridden with a version that omits an entry point available in the underlay.
 
 How to avoid it
 +++++++++++++++
