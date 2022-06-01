@@ -34,6 +34,11 @@ Information about development is also available:
    user/quick-start
    user/configuration
    user/how-to
+   user/what-is-a-workspace
+   user/log-files
+   user/isolated-vs-merged-workspaces
+   user/using-multiple-workspaces
+   user/overriding-packages
 
 .. _reference-docs:
 

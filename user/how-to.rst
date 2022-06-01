@@ -173,31 +173,3 @@ For debugging purposes you can enable logging messages with other levels (e.g. `
 .. code-block:: bash
 
     $ colcon --log-level info <verb> ...
-
-Log files of past invocations
------------------------------
-
-By default the ``log`` directory is created as a sibling to the ``src`` directory.
-Some verbs (e.g. ``build``, ``test``, ``test-result``) generate log files in a subdirectory which is named following the pattern ``<verb>_<timestamp>``.
-For the latest invocation of a specific verb there is a symlink named ``latest_<verb>`` (on platforms which support symbolic links).
-For the latest invocation there is another symlink just named ``latest`` (on platforms which support symbolic links).
-
-Each log directory contains a couple of files in the root:
-
-* ``events.log`` contains all internal events dispatched.
-  This file is mostly for debugging purposes.
-* ``logger_all.log`` contains all logging messages even though the invocation didn't show them on the console.
-  This is helpful to see log message with a different level after a command was run.
-  The first line of this file contains the exact command line invocation including all the arguments passed.
-
-For each package additional files are being created in a subdirectory named after the package:
-
-* ``command.log`` contains the commands which have been invoked for the package, e.g. calls to ``python setup.py``.
-* ``stdout.log`` contains all the output the invoked commands printed to ``stdout``.
-* ``stderr.log`` contains all the output the invoked commands printed to ``stderr``.
-* ``stdout_stderr.log`` contains all the output the invoked commands printed to either of the two pipes in the order they appeared.
-* ``streams.log`` combines the output of all the other log files in the order they appeared.
-
-.. note::
-
-    While ``colcon`` is doing its best to read concurrently from the ``stdout`` and ``stderr`` pipes to preserve the order of output it can't guarantee the correctness of the order in all cases.
