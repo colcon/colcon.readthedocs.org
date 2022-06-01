@@ -17,20 +17,20 @@ Build the workspace from :doc:`what-is-a-workspace` without any extra arguments.
 
 .. code-block:: bash
 
-	colcon build
+    colcon build
 
 Now let's look in the ``install`` folder.
 
 ::
 
-	install
-	├── COLCON_IGNORE
-	├── foo
-	│	├── lib/...
-	│	└── share/...
-	├── local_setup.[bash|bat|ps1|sh|zsh|...]
-	├── _local_setup_util_[sh|ps1|...].py
-	└── setup.[bash|bat|ps1|sh|zsh|...]
+    install
+    ├── COLCON_IGNORE
+    ├── foo
+    │    ├── lib/...
+    │    └── share/...
+    ├── local_setup.[bash|bat|ps1|sh|zsh|...]
+    ├── _local_setup_util_[sh|ps1|...].py
+    └── setup.[bash|bat|ps1|sh|zsh|...]
 
 Colcon created a directory ``install/foo`` and installed the package ``foo`` inside of it.
 Building an isolated workspace just means every software package is installed into its own directory.
@@ -48,20 +48,20 @@ Delete the ``install`` directory and build the workspace again with the ``--merg
 
 .. code-block:: bash
 
-	colcon build --merge-install
+    colcon build --merge-install
 
 
 Let's look in the ``install`` folder again.
 
 ::
 
-	install
-		├── COLCON_IGNORE
-		├── lib/..
-		├── share/..
-		├── local_setup.[bash|bat|ps1|sh|zsh|...]
-		├── _local_setup_util_[sh|ps1|...].py
-		└── setup.[bash|bat|ps1|sh|zsh|...]
+    install
+        ├── COLCON_IGNORE
+        ├── lib/..
+        ├── share/..
+        ├── local_setup.[bash|bat|ps1|sh|zsh|...]
+        ├── _local_setup_util_[sh|ps1|...].py
+        └── setup.[bash|bat|ps1|sh|zsh|...]
 
 
 Notice how there's no longer a ``foo`` folder. 

@@ -12,8 +12,8 @@ Workspaces are **independent** if neither workspace has a package that depends o
 
 .. code-block:: bash
 
-	source foo_ws/install/setup.bash
-	source bar_ws/install/setup.bash
+    source foo_ws/install/setup.bash
+    source bar_ws/install/setup.bash
 
 
 The first workspace ``foo_ws`` is called the **underlay workspace**.
@@ -24,9 +24,9 @@ Independent workspaces can usually be sourced in any order.
 
 .. note::
 
-	Be cautious when sourcing multiple workspaces.
-	Undefined behavior can result if packages from one depend on packages from another, meaning they're not actually independent.
-	Chain the workspaces instead if you're unsure.
+    Be cautious when sourcing multiple workspaces.
+    Undefined behavior can result if packages from one depend on packages from another, meaning they're not actually independent.
+    Chain the workspaces instead if you're unsure.
 
 
 Chaining workspaces
@@ -38,13 +38,13 @@ Source the underlay in an new terminal and build the overlay.
 
 .. code-block:: bash
 
-	# Build ping_ws
-	cd ping_ws
-	colcon build
-	# In a new terminal source ping_ws and build pong_ws
-	source ping_ws/install/setup.bash
-	cd pong_ws
-	colcon build
+    # Build ping_ws
+    cd ping_ws
+    colcon build
+    # In a new terminal source ping_ws and build pong_ws
+    source ping_ws/install/setup.bash
+    cd pong_ws
+    colcon build
 
 In this example ``pong_ws`` overlays ``ping_ws``.
 ``pong_ws`` may have a package that depends on packages in ``ping_ws``, but ``ping_ws`` cannot have a package that depends on packages in ``pong_ws``.
@@ -53,12 +53,12 @@ Only the last workspace in a chain needs to be sourced.
 
 .. code-block:: bash
 
-	# Sourcing pong_ws automatically sources ping_ws first
-	source pong_ws/install/setup.bash
+    # Sourcing pong_ws automatically sources ping_ws first
+    source pong_ws/install/setup.bash
 
 .. note::
 
-	Use ``local_setup.[sh|bash|bat|...]`` if you want to source a workspace without automatically sourcing the underlays it depends on, such as when you've already sourced the underlay.
+    Use ``local_setup.[sh|bash|bat|...]`` if you want to source a workspace without automatically sourcing the underlays it depends on, such as when you've already sourced the underlay.
 
 You can chain any number of workspaces together by repeating these step with more overlay workspace.
 
