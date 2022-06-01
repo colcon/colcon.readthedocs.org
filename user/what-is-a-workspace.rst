@@ -21,13 +21,13 @@ Lets create a single directory for our workspace.
 
 .. code-block:: bash
 
-	mkdir ws
+    mkdir ws
 
 Go into the root of our new workspace.
 
 .. code-block:: bash
 
-	cd ws
+    cd ws
 
 
 Software packages
@@ -39,54 +39,54 @@ Let's create a directory for source code.
 
 .. code-block:: bash
 
-	mkdir src
+    mkdir src
 
 We'll need at least one software package in the workspace.
 Let's create a Python package.
 
 .. code-block:: bash
 
-	mkdir src/foo
-	touch src/foo/setup.cfg
-	touch src/foo/setup.py
-	touch src/foo/foo.py
+    mkdir src/foo
+    touch src/foo/setup.cfg
+    touch src/foo/setup.py
+    touch src/foo/foo.py
 
 
 Put this content into ``src/foo/setup.py``:
 
 .. code-block:: python
 
-	from setuptools import setup
+    from setuptools import setup
 
-	setup()
+    setup()
 
 Put this content into ``src/foo/setup.cfg``:
 
 .. code-block:: ini
 
-	[metadata]
-	name = foo
-	version = 0.1.0
+    [metadata]
+    name = foo
+    version = 0.1.0
 
-	[options]
-	py_modules =
-	  foo
-	zip_safe = true
+    [options]
+    py_modules =
+      foo
+    zip_safe = true
 
-	[options.extras_require]
-	test =
-	  pytest
+    [options.extras_require]
+    test =
+      pytest
 
-	[tool:pytest]
-	junit_suite_name = foo
+    [tool:pytest]
+    junit_suite_name = foo
 
 Put this content into ``src/foo/foo.py``:
 
 .. code-block:: python
 
-	def foo_func():
-		print('Hello from foo.py')
-		return True
+    def foo_func():
+        print('Hello from foo.py')
+        return True
 
 
 Build artifacts
@@ -100,30 +100,30 @@ By default it's named  ``build`` at the root of the workspace.
 
 .. note::
 
-	You can change where build artifacts are put using the ``--build-base`` option to ``colcon build``.
+    You can change where build artifacts are put using the ``--build-base`` option to ``colcon build``.
 
 Lets build the software and see its build artifacts.
 
 .. code-block:: bash
 
-	# Make sure you run this command from the root of the workspace!
-	colcon build
+    # Make sure you run this command from the root of the workspace!
+    colcon build
 
 You'll see these new directories: ``build``, ``install``, and ``log``.
 
 ::
 
-	ws
-	├── build
-	│	├── COLCON_IGNORE
-	│	└── foo/...
-	├── install/...
-	├── log/...
-	└── src
-	    └── foo
-	        ├── foo.py
-	        ├── setup.cfg
-	        └── setup.py
+    ws
+    ├── build
+    │    ├── COLCON_IGNORE
+    │    └── foo/...
+    ├── install/...
+    ├── log/...
+    └── src
+        └── foo
+            ├── foo.py
+            ├── setup.cfg
+            └── setup.py
 
 Notice the ``build`` directory has a subdirectory ``foo`` and a file ``COLCON_IGNORE``.
 The ``foo`` subdirectory has all the build artifacts produced when building ``foo``.
@@ -143,19 +143,19 @@ Let's look at the ``log`` directory:
 
 ::
 
-	log
-	├── build_2022-05-20_11-50-03
-	│	├── events.log
-	│	├── foo
-	│	│	├── command.log
-	│	│	├── stderr.log
-	│	│	├── stdout.log
-	│	│	├── stdout_stderr.log
-	│	│	└── streams.log
-	│	└── logger_all.log
-	├── COLCON_IGNORE
-	├── latest -> latest_build
-	└── latest_build -> build_2022-05-20_11-50-03
+    log
+    ├── build_2022-05-20_11-50-03
+    │    ├── events.log
+    │    ├── foo
+    │    │    ├── command.log
+    │    │    ├── stderr.log
+    │    │    ├── stdout.log
+    │    │    ├── stdout_stderr.log
+    │    │    └── streams.log
+    │    └── logger_all.log
+    ├── COLCON_IGNORE
+    ├── latest -> latest_build
+    └── latest_build -> build_2022-05-20_11-50-03
 
 
 The directory ``log/build_<date and time>`` contains all logs from the invocation of ``colcon build``.
@@ -170,44 +170,44 @@ Make a new file for the test.
 
 .. code-block:: bash
 
-	touch src/foo/test_foo.py
+    touch src/foo/test_foo.py
 
 Put the following content into ``test_foo.py``:
 
 .. code-block:: python
 
-	import foo
+    import foo
 
-	def test_foo():
-	    assert foo.foo_func()
+    def test_foo():
+        assert foo.foo_func()
 
 
 Tell ``colcon`` to run the tests.
 
 .. code-block:: bash
 
-	# Make sure you run this command from the root of the workspace!
-	colcon test
+    # Make sure you run this command from the root of the workspace!
+    colcon test
 
 Lets look in the ``log`` directory again.
 
 ::
 
-	log
-	├── build_2022-05-20_11-50-03/...
-	├── COLCON_IGNORE
-	├── latest -> latest_test
-	├── latest_build -> build_2022-05-20_11-50-03
-	├── latest_test -> test_2022-05-20_11-50-05
-	└── test_2022-05-20_11-50-05
-	    ├── events.log
-	    ├── foo
-	    │	├── command.log
-	    │	├── stderr.log
-	    │	├── stdout.log
-	    │	├── stdout_stderr.log
-	    │	└── streams.log
-	    └── logger_all.log
+    log
+    ├── build_2022-05-20_11-50-03/...
+    ├── COLCON_IGNORE
+    ├── latest -> latest_test
+    ├── latest_build -> build_2022-05-20_11-50-03
+    ├── latest_test -> test_2022-05-20_11-50-05
+    └── test_2022-05-20_11-50-05
+        ├── events.log
+        ├── foo
+        │    ├── command.log
+        │    ├── stderr.log
+        │    ├── stdout.log
+        │    ├── stdout_stderr.log
+        │    └── streams.log
+        └── logger_all.log
 
 
 There's a new directory ``test_<date and time>``.
@@ -215,11 +215,11 @@ Let's look at ``stdout_stderr.log``  to see the output of the latest test.
 
 .. code-block:: bash
 
-	cat log/latest_test/foo/stdout_stderr.log
+    cat log/latest_test/foo/stdout_stderr.log
 
 .. note::
 
-	Use the command ``colcon test-result`` to see a summary of test results on the console after tests have been run.
+    Use the command ``colcon test-result`` to see a summary of test results on the console after tests have been run.
 
 
 
@@ -232,18 +232,18 @@ This is sometimes called the **install space**.
 
 .. note::
 
-	You can change where packages are installed to with the ``--install-base`` option to ``colcon build``.
+    You can change where packages are installed to with the ``--install-base`` option to ``colcon build``.
 
 Let's look inside.
 
 ::
 
-	install
-	├── COLCON_IGNORE
-	├── foo/...
-	├── local_setup.[bash|bat|ps1|sh|zsh|...]
-	├── _local_setup_util_[sh|ps1|...].py
-	└── setup.[bash|bat|ps1|sh|zsh|...]
+    install
+    ├── COLCON_IGNORE
+    ├── foo/...
+    ├── local_setup.[bash|bat|ps1|sh|zsh|...]
+    ├── _local_setup_util_[sh|ps1|...].py
+    └── setup.[bash|bat|ps1|sh|zsh|...]
 
 The package ``foo`` was installed into the directory ``install/foo``.
 By default colcon builds an **isolated workspace** (for more info see :doc:`isolated-vs-merged-workspaces`).
@@ -253,8 +253,8 @@ Invoking the shell scripts is called **sourcing a workspace**.
 
 .. note::
 
-	Always source a workspace from a different terminal than the one you used ``colcon build``.
-	Failure to do so can prevent colcon from detecting incorrect dependencies.
+    Always source a workspace from a different terminal than the one you used ``colcon build``.
+    Failure to do so can prevent colcon from detecting incorrect dependencies.
 
 Source the workspace using the appropriate script for your shell.
 
@@ -262,30 +262,30 @@ Source the workspace using the appropriate script for your shell.
 
 .. code-block:: sh
 
-	# Note the . at the front; that's important!
-	. install/setup.sh
+    # Note the . at the front; that's important!
+    . install/setup.sh
 
 ``bash``:
 
 .. code-block:: bash
 
-	source install/setup.bash
+    source install/setup.bash
 
 Windows ``cmd.exe``:
 
 .. code-block:: bat
 
-	call install/setup.bat
+    call install/setup.bat
 
 Now you can use ``foo``.
 Open a ``python`` interactive console and try it out.
 
 .. code-block:: python
 
-	>>> import foo
-	>>> foo.foo_func()
-	Hello from foo.py
-	True
+    >>> import foo
+    >>> foo.foo_func()
+    Hello from foo.py
+    True
 
 Sourcing a workspace also allows you to build more software that depends on the packages in it.
 For more info about using colcon to build software that depends on packages in another workspace, see :doc:`using-multiple-workspaces`.
