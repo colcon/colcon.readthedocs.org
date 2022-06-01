@@ -64,7 +64,7 @@ Let's look in the ``install`` folder again.
         └── setup.[bash|bat|ps1|sh|zsh|...]
 
 
-Notice how there's no longer a ``foo`` folder. 
+Notice how there's no longer a ``foo`` folder.
 The ``lib`` and ``share`` directories are now directly in ``install``.
 
 Building a merged workspace just means every software package is installed into the same directory.
