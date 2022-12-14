@@ -41,10 +41,10 @@ Additionally, the following specific command line arguments can be used:
 .. _test-verb_test-result-base_arg:
 
 \\--test-result-base TEST_RESULT_BASE
-  The base path for all test results.
+  The base path for all CTest test results.
   The default value is the ``--build-base`` argument.
   Each package uses a subdirectory in that base path as its package specific
-  test result directory.
+  test result directory. This will not determine the location of other artifacts produced by tests such as ``.xunit.xml`` files.
 
 .. _test-verb_retest-until-fail_arg:
 
