@@ -9,7 +9,7 @@ For each argument the name in brackets indicates which package contributes it.
 
 .. _colcon_log-base_arg:
 
-\\--log-base LOG_BASE [``colcon-core``]
+\--log-base LOG_BASE [``colcon-core``]
   The base path for all log directories.
   The default value is ``./log``.
   To completely disable logging, pass ``/dev/null`` (on POSIX) / ``nul`` (on
@@ -48,7 +48,7 @@ For each argument the name in brackets indicates which package contributes it.
 
 .. _colcon_log-level_arg:
 
-\\--log-level LOG_LEVEL [``colcon-core``]
+\--log-level LOG_LEVEL [``colcon-core``]
   Set the log level for the console output.
   The log file ``<log-dir>/logger_all.log`` always contains messages of all
   levels.
