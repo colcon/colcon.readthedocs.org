@@ -26,18 +26,18 @@ Additionally, the following specific command line arguments can be used:
 
 .. _graph-verb_density_arg:
 
-\\--density
+\--density
   Output the density of the dependency graph.
   This option is only supported without ``--dot``.
 
 .. _graph-verb_legend_arg:
 
-\\--legend
+\--legend
   Output a legend for the dependency graph.
 
 .. _graph-verb_dot_arg:
 
-\\--dot
+\--dot
   Output topological graph in DOT.
   Commonly the output should be piped to ``dot``, e.g.
   ``| dot -Tpng -o graph.png``.
@@ -49,13 +49,13 @@ Additionally, the following specific command line arguments can be used:
 
 .. _graph-verb_dot-cluster_arg:
 
-\\--dot-cluster
+\--dot-cluster
   Cluster packages by their file system path.
   This option only affects ``--dot``.
 
 .. _graph-verb_dot-include-skipped_arg:
 
-\\--dot-include-skipped
+\--dot-include-skipped
   Include skipped packages in the rendered graph with a gray color.
   This option only affects ``--dot``.
 

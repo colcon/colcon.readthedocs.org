@@ -5,7 +5,7 @@ The event handlers are used by several verbs to generate any kind of output
 based on the progress of the invocation.
 For each argument the name in brackets indicates which package contributes it.
 
-\\--event-handlers [name1+ [name2- ...]] [``colcon-core``]
+\--event-handlers [name1+ [name2- ...]] [``colcon-core``]
   A list of event handlers to enable (trailing ``+``) or disable (trailing
   ``-``).
   The default is chosen by each available event handler (see
