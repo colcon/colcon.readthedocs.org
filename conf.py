@@ -50,6 +50,10 @@ try:
 except ImportError:
     pass
 
+# Allow/suppress warning that spelling_filters is unpicklable 
+# and cannot be cached (which will cause CI workflow to fail)
+suppress_warnings = ["config.cache"]
+
 spelling_word_list_filename = 'spelling_wordlist.txt'
 
 # Add any paths that contain templates here, relative to this directory.
