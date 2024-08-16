@@ -50,7 +50,7 @@ try:
 except ImportError:
     pass
 
-# Allow/suppress warning that spelling_filters is unpickable 
+# Allow/suppress warning that spelling_filters is unpicklable 
 # and cannot be cached (which will cause CI workflow to fail)
 suppress_warnings = ["config.cache"]
 
