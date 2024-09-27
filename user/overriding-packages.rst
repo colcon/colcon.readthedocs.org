@@ -8,6 +8,11 @@ It is accomplished by sourcing an existing workspace, then building a different 
 Overriding a package is not always possible.
 This page offers tips for avoiding common issues.
 
+.. image:: ../_static/ros2_workspace_concept.png
+  :width: 100%
+  :alt: Left: Overriding an old version of the pkg 'foo' with a new version Overlay. Right: Example of 3 workspaces, A, B, C in this page.
+Images: [**Left**] Overriding an old version of the pkg 'foo' with a new version Overlay. [**Right**] Example of 3 workspaces, A, B, C in this page.
+	
 .. contents:: Table of Contents
     :depth: 3
 
