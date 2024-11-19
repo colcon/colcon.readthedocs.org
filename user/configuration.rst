@@ -94,9 +94,16 @@ The following are a few examples (see e.g. ``colcon build --help``):
 defaults.yaml
 -------------
 
-If the configuration file ``$COLCON_HOME/defaults.yaml`` exists it is used to customize the default behavior of the CLI.
-The location can also be modified using the environment variable ``COLCON_DEFAULTS_FILE`` (see ``colcon --help``).
+Default files are used to configure ``colcon`` behavior for all packages being operated on.
+Multiple configuration files can be used to modify verb behavior without using the CLI:
 
+* If the configuration file ``$COLCON_HOME/defaults.yaml`` exists it is used to customize the default behavior of the CLI.
+  The location can also be modified using the environment variable ``COLCON_DEFAULTS_FILE`` (see ``colcon --help``).
+
+* If the configuration file ``colcon_defaults.yaml`` exists in a workspace root, it will be used to change the behavior of any invocation of ``colcon`` in that workspace.
+  The option values specified in the workspace file will always override the global defaults.
+
+Configuration files use standard YAML (or JSON) syntax.
 The first level of the configuration file is a dictionary.
 The key is the ``verb`` name.
 In the case of more than one nested verbs the key is the names separated by dots.
