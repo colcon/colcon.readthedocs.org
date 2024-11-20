@@ -137,12 +137,12 @@ Bash / zsh
 
 On Linux / macOS the above instructions install the package ``colcon-argcomplete`` which offers command completion for bash and bash-like shells.
 To enable this feature you need to source the shell-specific script provided by that package.
-These scripts are named ``colcon-argcomplete.bash`` / ``colcon-argcomplete.zsh``.
+These scripts are named ``colcon_cd-argcomplete.bash`` / ``colcon_cd-argcomplete.zsh``.
 For convenience you might want to source the one matching your shell in the user configuration, e.g. ``~/.bashrc``:
 
 Depending on which instructions you followed to install the packages the location will vary:
 
-* Debian package: ``/usr/share/colcon_argcomplete/hook``
+* Debian package: ``/usr/share/colcon_cd/function``
 * PIP - user specific: ``$HOME/.local/share/colcon_argcomplete/hook``
 * PIP - global: ``/usr/local/share/colcon_argcomplete/hook``
 
