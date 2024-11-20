@@ -1,6 +1,9 @@
 name: colcon.readthedocs.org
 
-on: [push]
+on:
+  push:
+    branches: ['main']
+  pull_request:
 
 jobs:
   build:
@@ -36,3 +39,29 @@ jobs:
         if [[ -s "_build/spelling/index.spelling" ]]; then cat "_build/spelling/index.spelling"; fi
         if [[ -s "_build/warnings_and_errors.log" ]]; then false; fi
         if [[ -s "_build/spelling/index.spelling" ]]; then false; fi
+
+  upload:
+    if: ${{ github.event_name == "push" }}
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Upload build for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _build/html
+
+  deploy:
+    permissions:
+      contents: read
+      id-token: write
+      pages: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    if: ${{ github.event_name == "push" }}
+    needs: upload
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
