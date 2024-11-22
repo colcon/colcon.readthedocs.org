@@ -5,7 +5,7 @@ If you are developing a Python package containing colcon extensions you might wa
 Commonly that involves bumping the version number and tagging the commit with that version.
 
 Commonly Python packages are released to PyPI following the `packaging instructions for Python projects <https://packaging.python.org/tutorials/packaging-projects/>`_.
-For colcon packages the recommendation is to use `publish-python <https://github.com/dirk-thomas/publish-python>`_ which not only uploads a wheel to PyPI but also creates and uploads Debian packages.
+For colcon packages the recommendation is to use `publish-python <https://github.com/colcon/publish-python>`_ which not only uploads a wheel to PyPI but also creates and uploads Debian packages.
 
 First-time setup
 ----------------
@@ -17,7 +17,7 @@ Before using ``publish-python`` you need to do the following:
 * Configure credentials for packagecloud.io and request to be added as a contributor to the `colcon repository <https://packagecloud.io/dirk-thomas/colcon>`_
 * Create a configuration file for your package
 
-For details please see the `publish-python documentation <https://github.com/dirk-thomas/publish-python/blob/main/README.rst>`_.
+For details please see the `publish-python documentation <https://github.com/colcon/publish-python/blob/main/README.rst>`_.
 
 Example configuration file ``publish-python.yaml``:
 
