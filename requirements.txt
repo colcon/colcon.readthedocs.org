@@ -2,7 +2,7 @@ argcomplete; sys_platform != 'win32'
 catkin_pkg
 coloredlogs; sys_platform == 'win32'
 distlib
-EmPy<4
+EmPy
 notify2; sys_platform == 'linux'
 pypiwin32; sys_platform == 'win32'
 pytest
