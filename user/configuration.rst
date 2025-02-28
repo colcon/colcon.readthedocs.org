@@ -91,10 +91,12 @@ The following are a few examples (see e.g. ``colcon build --help``):
 
     The default value for the environment variable ``COLCON_HOME`` is pointing to the directory ``.colcon`` within the users home directory.
 
+.. _configuration_defaults-yaml:
+
 defaults.yaml
 -------------
 
-Default files are used to configure ``colcon`` behavior for all packages being operated on.
+Default files are used to configure the **default** ``colcon`` behavior for all packages being operated on.
 Multiple configuration files can be used to modify verb behavior without using the CLI:
 
 * If the configuration file ``$COLCON_HOME/defaults.yaml`` exists it is used to customize the default behavior of the CLI.
@@ -109,6 +111,10 @@ The key is the ``verb`` name.
 In the case of more than one nested verbs the key is the names separated by dots.
 To specify configuration options *before* the first verb use an empty string key.
 The value is another dictionary containing the verb specific configuration.
+
+.. note::
+
+    When using a :doc:`mixin <../reference/mixin-arguments>` through the CLI, the mixin's option values override default values from a default file.
 
 Verb specific configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
