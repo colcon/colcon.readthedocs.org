@@ -4,7 +4,7 @@
 The ``list`` verb enumerates a set of packages.
 It is provided by the ``colcon-package-information`` package.
 
-For each package a line is shown containing the the name, path and type (in
+For each package a line is shown containing the name, path and type (in
 parentheses) separated by tabs.
 By default the list is ordered alphabetically by the package name.
 Optionally, it can order the packages topologically based on their dependencies.
