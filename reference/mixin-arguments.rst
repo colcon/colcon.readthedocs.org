@@ -50,3 +50,5 @@ In all other cases the latter value replaces the former value.
     But passing these arguments to CMake would result in the latter value of
     ``CMAKE_C_FLAGS`` overwriting the former even though the user likely wanted
     both compiler options to be used.
+
+    Furthermore, the option values of a mixin used through the CLI override the default values of a :ref:`default file <configuration_defaults-yaml>`.
