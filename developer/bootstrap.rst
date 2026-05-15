@@ -31,7 +31,7 @@ You might want to make sure that the venv is using up-to-date versions of the so
 
 .. code-block:: bash
 
-    $ pip install -U pip setuptools
+    $ pip install -U pip 'setuptools>=40.5.0,<80'
 
 Fetch the sources
 -----------------
