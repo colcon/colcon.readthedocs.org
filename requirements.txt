@@ -3,6 +3,7 @@ catkin_pkg
 coloredlogs; sys_platform == 'win32'
 distlib
 EmPy
+importlib-metadata; python_version < "3.8"
 notify2; sys_platform == 'linux'
 pypiwin32; sys_platform == 'win32'
 pytest
@@ -11,4 +12,5 @@ pytest-repeat
 pytest-rerunfailures
 pytest-runner
 PyYAML
-setuptools>=40.5.0
+setuptools>=40.5.0,<80
+tomli>=1.0.0; python_version < "3.11"
