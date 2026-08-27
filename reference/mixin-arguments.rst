@@ -52,3 +52,59 @@ In all other cases the latter value replaces the former value.
     both compiler options to be used.
 
     Furthermore, the option values of a mixin used through the CLI override the default values of a :ref:`default file <configuration_defaults-yaml>`.
+
+Mixins referencing other mixins
+-------------------------------
+
+A mixin can be composed out of other mixins by using the reserved ``mixin``
+key.
+Its value is a list of names of other mixins defined for the same verb.
+
+An example mixin file defining a mixin which references two other mixins:
+
+.. code-block:: yaml
+
+    {
+        "build": {
+            "debug": {
+                "cmake-args": ["-DCMAKE_BUILD_TYPE=Debug"]
+            },
+            "compile-commands": {
+                "cmake-args": ["-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"]
+            },
+            "develop": {
+                "mixin": ["debug", "compile-commands"],
+                "cmake-args": ["-DCMAKE_VERBOSE_MAKEFILE=ON"]
+            }
+        }
+    }
+
+Invoking ``colcon build --mixin develop`` is equivalent to using the ``debug``
+and the ``compile-commands`` mixin followed by the arguments defined by the
+``develop`` mixin itself:
+
+* ``cmake-args``: ``['-DCMAKE_BUILD_TYPE=Debug', '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON', '-DCMAKE_VERBOSE_MAKEFILE=ON']``
+
+The referenced mixins are always applied before the mixin referencing them.
+Therefore the referencing mixin is applied last and its values replace or
+extend the values of the mixins it references, following the same rules as
+described above.
+The ``mixin`` key itself is only used to resolve the references, it is never
+passed as a command line argument.
+
+References are resolved recursively, so a referenced mixin can reference
+further mixins itself.
+The resolution happens depth first, meaning for each referenced mixin all of
+its own references are applied before it.
+If the same mixin is reached through more than one path it is applied once for
+each path to keep the semantic that the value applied last wins.
+
+Values passed explicitly on the command line still take precedence over the
+values of all mixins, independent of whether a mixin was requested on the
+command line or through a reference.
+
+.. note::
+
+    Using a mixin which can't be resolved results in an error.
+    That is the case if a referenced mixin doesn't exist, if the references
+    form a cycle or if the value of a ``mixin`` key isn't a list of strings.
